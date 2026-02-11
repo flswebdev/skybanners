@@ -1,0 +1,111 @@
+// Barrel re-export — all existing imports from "@/lib/constants" continue to work
+
+export { SITE_NAME, SITE_DESCRIPTION, SITE_URL, CONTACT } from "./site";
+
+export {
+  NAV_ITEMS,
+  NAV_LINKS,
+  FOOTER_SERVICES,
+  FOOTER_EXPLORE,
+  FOOTER_ABOUT,
+  FOOTER_BUSINESS,
+  FOOTER_PERSONAL,
+} from "./nav";
+export type { NavItem } from "./nav";
+
+export {
+  HERO,
+  STATS,
+  SERVICES,
+  BENEFITS,
+  BUSINESS_SOLUTIONS,
+  CELEBRATIONS,
+  STEPS,
+  COVERAGE_AREAS,
+  FLIGHT_INFO,
+  INCLUSIONS,
+  FAQS,
+  CAMPAIGN_TYPES,
+} from "./home";
+
+export {
+  FEATURED_CLIENTS,
+  B2B_BANNER_OPTIONS,
+  B2B_WHY_AERIAL,
+  B2B_USE_CASES,
+  FLIGHT_DURATIONS,
+  B2B_INCLUSIONS,
+} from "./business";
+
+export {
+  PERSONAL_OCCASIONS,
+  SMOKE_COLORS,
+  PERSONAL_BANNER_OPTIONS,
+  PERSONAL_INCLUSIONS,
+  PERSONAL_FAQS,
+} from "./personal";
+
+export {
+  BILLBOARD_PAGE,
+  BILLBOARD_SPECS,
+  BILLBOARD_BENEFITS,
+  BILLBOARD_USE_CASES,
+  LETTER_PAGE,
+  LETTER_SPECS,
+  LETTER_SIZE_LIMITS,
+  LETTER_BENEFITS,
+  LETTER_USE_CASES,
+  COMBO_PAGE,
+  COMBO_SPECS,
+  COMBO_BENEFITS,
+  COMBO_USE_CASES,
+  SMOKE_PAGE,
+  SMOKE_SPECS,
+  SMOKE_BENEFITS,
+  SMOKE_USE_CASES,
+  ALL_SERVICES,
+} from "./services";
+
+export {
+  WHY_AERIAL_PAGE,
+  WHY_AERIAL_DEEP_STATS,
+  WHY_AERIAL_COMPARISON,
+  WHY_AERIAL_SOCIAL_EFFECT,
+  WHY_AERIAL_AUDIENCE_REACH,
+  WHY_AERIAL_PRIVATE_AIR_SHOW,
+} from "./why-aerial";
+
+export {
+  HOW_IT_WORKS_PAGE,
+  EXPANDED_STEPS,
+  FILE_FORMATS,
+  LEAD_TIMES,
+  DELIVERABLES,
+  PROCESS_FAQS,
+} from "./how-it-works";
+
+export {
+  LOCATIONS_PAGE,
+  COVERAGE_CITIES,
+  VENUE_TYPES,
+  OPERATING_SEASON,
+  EVENT_TYPES,
+} from "./locations";
+
+export {
+  ABOUT_PAGE,
+  COMPANY_STORY,
+  FLEET_INFO,
+  DIFFERENTIATORS,
+  CLIENT_LOGOS,
+} from "./about";
+
+export { FAQ_CATEGORIES } from "./faq";
+export type { FAQItem, FAQCategory } from "./faq";
+
+export {
+  GALLERY_PAGE,
+  GALLERY_CATEGORIES,
+  GALLERY_ITEMS,
+  GALLERY_SUBMIT,
+} from "./gallery";

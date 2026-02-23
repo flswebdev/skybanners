@@ -2,7 +2,7 @@ export const HERO = {
   title: "Your Message.",
   titleAccent: "Their Sky.",
   subtitle:
-    "In a world of digital noise and ad fatigue, aerial advertising cuts through the clutter. When people see a message in the sky, they stop and look up\u2014there\u2019s no scrolling past, no ad blockers, and no banner blindness.",
+    "No scrolling past. No ad blockers. No banner blindness. Your message, in the sky, over your exact audience.",
   primaryCta: "Book Your Flight",
   secondaryCta: "Explore Services",
 } as const;
@@ -51,19 +51,21 @@ export const SERVICES = [
     icon: "PenLine" as const,
     title: "Letter Banners",
     href: "/services/letter-banners",
-    description: "Custom text messages with a maximum of 40 characters, ideal for short, punchy messages.",
+    description: "Custom text messages up to 40 characters. No production cost — ready in as little as 24 hrs.",
+    badge: "Fastest Turnaround" as const,
   },
   {
     icon: "Palette" as const,
     title: "Combo Banners",
     href: "/services/combo-banners",
-    description: "Billboard banners with text, combining visual design with custom messaging for maximum impact.",
+    description: "Billboard graphic paired with bold text. Our highest-engagement format for brands and events.",
+    badge: "Most Popular" as const,
   },
   {
     icon: "Wind" as const,
-    title: "Smoke Services",
+    title: "Smoke Displays",
     href: "/services/smoke-displays",
-    description: "Specialized smoke displays for gender reveals and special celebrations.",
+    description: "Coloured smoke trails in 8 colours for gender reveals, celebrations, and events.",
   },
 ] as const;
 
@@ -234,7 +236,7 @@ export const FAQS = [
   {
     question: "How much does aerial advertising cost?",
     answer:
-      "Pricing varies based on banner size, flight duration, and location. With a CPM under $6, aerial advertising is one of the most cost-effective forms of outdoor advertising. Contact us for a custom quote.",
+      "Letter banners are the most affordable option — no production cost, you only pay for the flight. Billboard and combo banners include custom design and printing. Every campaign includes photo & video documentation and a social media content package. Contact us for a custom quote — consultations are free.",
   },
   {
     question: "How long does it take to create a banner?",

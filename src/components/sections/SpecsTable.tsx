@@ -10,15 +10,13 @@ interface SpecsTableProps {
 
 export function SpecsTable({ title, specs }: SpecsTableProps) {
   return (
-    <div className="rounded-xl border border-card-border bg-card p-6 shadow-sm">
-      <h3 className="text-xl font-bold text-heading mb-4">{title}</h3>
-      <dl className="space-y-3">
+    <div>
+      <h3 className="text-sm font-semibold uppercase tracking-widest text-muted mb-3">{title}</h3>
+      <dl className="divide-y divide-card-border">
         {specs.map((spec) => (
-          <div key={spec.label} className="flex justify-between gap-4">
-            <dt className="text-sm text-muted font-medium">{spec.label}</dt>
-            <dd className="text-sm text-heading font-semibold text-right">
-              {spec.value}
-            </dd>
+          <div key={spec.label} className="flex justify-between gap-4 py-3">
+            <dt className="text-sm text-muted">{spec.label}</dt>
+            <dd className="text-sm text-heading font-semibold text-right">{spec.value}</dd>
           </div>
         ))}
       </dl>

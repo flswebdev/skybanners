@@ -1,5 +1,4 @@
-import { ClipboardList, PenLine, Palette, Wind } from "lucide-react";
-import { Card } from "@/components/ui";
+import { ClipboardList, PenLine, Palette, Wind, ArrowRight } from "lucide-react";
 import { ALL_SERVICES } from "@/lib/constants";
 
 const iconMap = { ClipboardList, PenLine, Palette, Wind } as const;
@@ -12,33 +11,30 @@ export function CrossPromoSection({ currentSlug }: CrossPromoSectionProps) {
   const others = ALL_SERVICES.filter((s) => s.slug !== currentSlug);
 
   return (
-    <section className="py-20 bg-background-alt">
+    <section className="py-16 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-            Explore Our Other Services
-          </h2>
-          <p className="text-muted max-w-2xl mx-auto">
-            Not sure which format is right? Explore all our aerial advertising
-            options and find the perfect fit for your campaign.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <p className="text-sm font-semibold uppercase tracking-widest text-muted mb-6">
+          Other Services
+        </p>
+        <div className="divide-y divide-card-border border-y border-card-border">
           {others.map((service) => {
             const Icon = iconMap[service.icon as keyof typeof iconMap];
             return (
-              <a key={service.slug} href={`/services/${service.slug}`}>
-                <Card glow className="h-full">
-                  <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-red" />
+              <a
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="flex items-center justify-between gap-6 py-5 group"
+              >
+                <div className="flex items-center gap-4">
+                  <Icon className="h-5 w-5 text-red shrink-0" />
+                  <div>
+                    <span className="font-semibold text-heading group-hover:text-red transition-colors">
+                      {service.title}
+                    </span>
+                    <p className="text-sm text-muted">{service.description}</p>
                   </div>
-                  <h3 className="text-lg font-semibold text-heading mb-2">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {service.description}
-                  </p>
-                </Card>
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted group-hover:text-red transition-colors shrink-0" />
               </a>
             );
           })}

@@ -7,18 +7,30 @@ import { cn } from "@/lib/utils";
 interface AccordionItemProps {
   question: string;
   answer: string;
+  dark?: boolean;
 }
 
-export function AccordionItem({ question, answer }: AccordionItemProps) {
+export function AccordionItem({ question, answer, dark }: AccordionItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-card-border rounded-xl overflow-hidden bg-card shadow-sm">
+    <div className={cn(
+      "rounded-xl overflow-hidden transition-colors",
+      dark
+        ? "border border-white/10 bg-white/5 hover:border-white/20"
+        : "border border-card-border bg-card shadow-sm"
+    )}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between p-5 text-left hover:bg-background-alt transition-colors cursor-pointer"
+        className={cn(
+          "flex w-full items-center justify-between p-5 text-left transition-colors cursor-pointer",
+          dark ? "hover:bg-white/5" : "hover:bg-background-alt"
+        )}
       >
-        <h3 className="text-lg font-semibold text-heading pr-4">{question}</h3>
+        <h3 className={cn(
+          "text-lg font-semibold pr-4",
+          dark ? "text-white" : "text-heading"
+        )}>{question}</h3>
         <ChevronDown
           className={cn(
             "h-5 w-5 shrink-0 text-red transition-transform duration-200",
@@ -33,7 +45,10 @@ export function AccordionItem({ question, answer }: AccordionItemProps) {
         )}
       >
         <div className="overflow-hidden">
-          <p className="px-5 pb-5 text-muted leading-relaxed">{answer}</p>
+          <p className={cn(
+            "px-5 pb-5 leading-relaxed",
+            dark ? "text-white/60" : "text-muted"
+          )}>{answer}</p>
         </div>
       </div>
     </div>

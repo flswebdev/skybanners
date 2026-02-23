@@ -4,7 +4,7 @@ import {
   Building2, Megaphone, Trophy, Heart, Store, Calendar,
   ArrowRight,
 } from "lucide-react";
-import { Button, Card } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { ServiceHero, SpecsTable, CrossPromoSection } from "@/components/sections";
 import {
   COMBO_PAGE,
@@ -58,72 +58,45 @@ export default function ComboBannersPage() {
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Benefits + Use Cases */}
       <section className="py-20 bg-background-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
+          <div className="mb-14">
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">
               Why Choose Combo Banners?
             </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              The ultimate aerial format for brands that want it all&mdash;visuals
-              and messaging, together.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {COMBO_BENEFITS.map((item) => {
-              const Icon = benefitIcons[item.icon as keyof typeof benefitIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-red" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+              {COMBO_BENEFITS.map((item) => {
+                const Icon = benefitIcons[item.icon as keyof typeof benefitIcons];
+                return (
+                  <div key={item.title}>
+                    <div className="h-10 w-10 rounded-lg bg-red/10 flex items-center justify-center mb-3">
+                      <Icon className="h-5 w-5 text-red" />
+                    </div>
+                    <h3 className="text-base font-semibold text-heading mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                   </div>
-                  <h3 className="text-lg font-semibold text-heading mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {item.description}
-                  </p>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Use Cases */}
-      <section className="py-20 bg-background">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-              Ideal For
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              Any campaign that benefits from showing and telling at the same
-              time.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {COMBO_USE_CASES.map((item) => {
-              const Icon = useCaseIcons[item.icon as keyof typeof useCaseIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-blue/10 flex items-center justify-center shrink-0">
-                      <Icon className="h-5 w-5 text-blue" />
-                    </div>
+          <div className="border-t border-card-border pt-14">
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">Ideal For</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+              {COMBO_USE_CASES.map((item) => {
+                const Icon = useCaseIcons[item.icon as keyof typeof useCaseIcons];
+                return (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <Icon className="h-5 w-5 text-blue mt-0.5 shrink-0" />
                     <div>
-                      <h3 className="text-lg font-semibold text-heading mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted leading-relaxed">
-                        {item.description}
-                      </p>
+                      <h3 className="text-base font-semibold text-heading mb-0.5">{item.title}</h3>
+                      <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                     </div>
                   </div>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

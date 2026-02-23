@@ -54,15 +54,15 @@ export const DIFFERENTIATORS = [
 ] as const;
 
 export const CLIENT_LOGOS = [
-  "McDonald's",
-  "Sony",
-  "Subway",
-  "Shell Gas",
-  "McCain's",
-  "Mooseheads",
-  "East Park",
-  "GTA Exotics",
-  "Jet Auto Wash",
-  "Wealthsimple",
-  "MGM",
+  { name: "McDonald's",  logo: "/logos/clients/mcdonalds.svg",   dark: false },
+  { name: "Sony",        logo: "/logos/clients/sony.svg",        dark: false },
+  { name: "Subway",      logo: "/logos/clients/subway.svg",      dark: false },
+  { name: "Shell",       logo: "/logos/clients/shell.svg",       dark: false },
+  { name: "McCain's",    logo: "/logos/clients/mccain.svg",      dark: false },
+  { name: "Mooseheads",  logo: "/logos/clients/mooseheads.png",  dark: false },
+  { name: "East Park",   logo: "/logos/clients/eastpark.svg",    dark: false },
+  { name: "GTA Exotics", logo: null,                             dark: false },
+  { name: "Jet Auto Wash", logo: "/logos/clients/jetautowash.png", dark: false },
+  { name: "Wealthsimple", logo: "/logos/clients/wealthsimple.svg", dark: false },
+  { name: "MGM",         logo: "/logos/clients/mgm.png",         dark: false },
 ] as const;

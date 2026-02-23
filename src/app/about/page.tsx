@@ -108,12 +108,20 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {CLIENT_LOGOS.map((name) => (
+            {CLIENT_LOGOS.map((client) => (
               <div
-                key={name}
-                className="rounded-xl border border-card-border bg-card p-5 text-center shadow-sm hover:border-red/30 hover:shadow-md transition-all duration-300"
+                key={client.name}
+                className="rounded-xl border border-card-border bg-card p-5 flex items-center justify-center shadow-sm hover:border-red/30 hover:shadow-md transition-all duration-300 min-h-[80px]"
               >
-                <span className="text-lg font-bold text-heading">{name}</span>
+                {client.logo ? (
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="max-h-10 max-w-full object-contain"
+                  />
+                ) : (
+                  <span className="text-sm font-bold text-heading text-center leading-tight">{client.name}</span>
+                )}
               </div>
             ))}
           </div>

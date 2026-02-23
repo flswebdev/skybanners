@@ -2,36 +2,38 @@
 
 @theme inline {
   --color-background: #FFFFFF;
-  --color-background-alt: #F3F4F6;
+  --color-background-alt: #F8F9FB;
   --color-foreground: #1F2937;
-  --color-red: #FF1A1A;
-  --color-blue: #0066FF;
+  --color-red: #E81C1C;
+  --color-blue: #0055DD;
   --color-red-light: #FF6666;
   --color-blue-light: #3388FF;
   --color-card: #FFFFFF;
   --color-card-border: #E5E7EB;
-  --color-heading: #111827;
+  --color-heading: #0D1117;
   --color-muted: #6B7280;
-  --color-charcoal: #374151;
+  --color-charcoal: #0D1117;
   --font-sans: var(--font-inter);
 
-  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
-  --animate-fade-in-up: fadeInUp 0.6s ease-out forwards;
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(255, 26, 26, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(255, 26, 26, 0.4);
-  }
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
+  --animate-slide-down: slideDown 0.2s ease-out forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;

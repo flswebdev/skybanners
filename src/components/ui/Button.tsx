@@ -12,17 +12,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-red text-white hover:bg-red/90 shadow-sm transition-colors",
+    "bg-red text-white hover:bg-red/90 shadow-sm hover:shadow-md active:scale-[0.98] transition-all",
   secondary:
-    "border border-blue/30 text-blue hover:bg-blue/5 transition-colors",
+    "border border-blue/40 text-blue hover:bg-blue/5 hover:border-blue/60 transition-all",
   outline:
-    "border border-card-border text-charcoal hover:bg-background-alt transition-colors",
+    "border border-card-border text-charcoal hover:bg-background-alt hover:border-muted/40 transition-all",
   light:
-    "bg-white text-heading shadow-sm border border-card-border hover:bg-background-alt transition-colors",
+    "bg-white text-heading shadow-sm border border-card-border hover:shadow-md hover:border-muted/40 transition-all",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  default: "px-6 py-2.5 text-sm",
+  default: "px-5 py-2.5 text-sm",
   large: "px-8 py-3.5 text-base",
 };
 
@@ -35,7 +35,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-none font-semibold cursor-pointer",
+    "inline-flex items-center justify-center rounded-lg font-semibold cursor-pointer",
     variantStyles[variant],
     sizeStyles[size],
     className

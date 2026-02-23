@@ -43,15 +43,22 @@ export function ContactForm() {
     }
   }
 
+  const inputClass = "w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-white/30 focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue";
+
   return (
-    <section id="contact" className="py-20 bg-background-alt">
+    <section id="contact" className="py-20 bg-charcoal">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-            Get Your Free Quote
+          <div className="inline-flex items-center gap-2 rounded-full border border-red/30 bg-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red mb-5">
+            Limited Availability
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Ready to Take Your Message to the{" "}
+            <span className="text-red">Sky?</span>
           </h2>
-          <p className="text-muted max-w-2xl mx-auto">
-            Tell us about your campaign and we&apos;ll create a custom proposal
+          <p className="text-white/50 max-w-2xl mx-auto">
+            One of the only aerial advertising providers in Southern Ontario.
+            Tell us about your campaign and we&apos;ll get back to you within 24 hours.
           </p>
         </div>
 
@@ -59,17 +66,17 @@ export function ContactForm() {
           {/* Form */}
           <div className="lg:col-span-2">
             {status === "success" ? (
-              <div className="rounded-xl border border-blue/30 bg-card p-8 text-center shadow-sm">
-                <CheckCircle className="h-12 w-12 text-blue mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-heading mb-2">
+              <div className="rounded-xl border border-blue/20 bg-blue/5 p-8 text-center">
+                <CheckCircle className="h-12 w-12 text-blue-light mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-white mb-2">
                   Quote Request Sent!
                 </h3>
-                <p className="text-muted">
+                <p className="text-white/60">
                   We&apos;ll get back to you within 24 hours.
                 </p>
                 <Button
-                  className="mt-6"
-                  variant="secondary"
+                  className="mt-6 border-white/20 text-white hover:bg-white/10 hover:border-white/40"
+                  variant="outline"
                   onClick={() => setStatus("idle")}
                 >
                   Send Another
@@ -78,58 +85,41 @@ export function ContactForm() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="rounded-xl border border-card-border bg-card p-6 space-y-5 shadow-sm"
+                className="rounded-xl border border-white/10 bg-white/5 p-6 space-y-5"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-heading mb-1.5">
+                    <label htmlFor="name" className="block text-sm font-medium text-white mb-1.5">
                       Name *
                     </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full rounded-lg border border-card-border bg-background-alt px-4 py-2.5 text-heading placeholder-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
-                    />
+                    <input type="text" id="name" name="name" required className={inputClass} />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-heading mb-1.5">
+                    <label htmlFor="email" className="block text-sm font-medium text-white mb-1.5">
                       Email *
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full rounded-lg border border-card-border bg-background-alt px-4 py-2.5 text-heading placeholder-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
-                    />
+                    <input type="email" id="email" name="email" required className={inputClass} />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-heading mb-1.5">
+                    <label htmlFor="phone" className="block text-sm font-medium text-white mb-1.5">
                       Phone
                     </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full rounded-lg border border-card-border bg-background-alt px-4 py-2.5 text-heading placeholder-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
-                    />
+                    <input type="tel" id="phone" name="phone" className={inputClass} />
                   </div>
                   <div>
-                    <label htmlFor="campaignType" className="block text-sm font-medium text-heading mb-1.5">
+                    <label htmlFor="campaignType" className="block text-sm font-medium text-white mb-1.5">
                       Campaign Type *
                     </label>
                     <select
                       id="campaignType"
                       name="campaignType"
                       required
-                      className="w-full rounded-lg border border-card-border bg-background-alt px-4 py-2.5 text-heading focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
+                      className={inputClass}
                     >
                       {CAMPAIGN_TYPES.map((type) => (
-                        <option key={type.value} value={type.value}>
+                        <option key={type.value} value={type.value} className="bg-[#0D1117] text-white">
                           {type.label}
                         </option>
                       ))}
@@ -137,7 +127,7 @@ export function ContactForm() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-heading mb-1.5">
+                  <label htmlFor="message" className="block text-sm font-medium text-white mb-1.5">
                     Tell us about your campaign *
                   </label>
                   <textarea
@@ -146,7 +136,7 @@ export function ContactForm() {
                     rows={5}
                     required
                     placeholder="What's your message? Where and when would you like to fly? Any specific requirements?"
-                    className="w-full rounded-lg border border-card-border bg-background-alt px-4 py-2.5 text-heading placeholder-muted focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue resize-none"
+                    className={`${inputClass} resize-none`}
                   />
                 </div>
 
@@ -163,16 +153,16 @@ export function ContactForm() {
           </div>
 
           {/* Contact info sidebar */}
-          <div className="rounded-xl border border-card-border bg-card p-6 h-fit shadow-sm">
-            <h3 className="text-lg font-semibold text-heading mb-5">
+          <div className="rounded-xl border border-white/10 bg-white/5 p-6 h-fit">
+            <h3 className="text-lg font-semibold text-white mb-5">
               Contact Information
             </h3>
             <div className="space-y-5">
               <div className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-red mt-0.5 shrink-0" />
                 <div>
-                  <span className="block text-sm font-medium text-heading">Phone</span>
-                  <span className="text-sm text-muted">
+                  <span className="block text-sm font-medium text-white">Phone</span>
+                  <span className="text-sm text-white/60">
                     {CONTACT.phone}
                     <br />({CONTACT.phoneFormatted})
                   </span>
@@ -181,15 +171,15 @@ export function ContactForm() {
               <div className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-red mt-0.5 shrink-0" />
                 <div>
-                  <span className="block text-sm font-medium text-heading">Email</span>
-                  <span className="text-sm text-muted">{CONTACT.email}</span>
+                  <span className="block text-sm font-medium text-white">Email</span>
+                  <span className="text-sm text-white/60">{CONTACT.email}</span>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-red mt-0.5 shrink-0" />
                 <div>
-                  <span className="block text-sm font-medium text-heading">Service Area</span>
-                  <span className="text-sm text-muted">
+                  <span className="block text-sm font-medium text-white">Service Area</span>
+                  <span className="text-sm text-white/60">
                     {CONTACT.serviceArea}
                     <br />{CONTACT.cities}
                   </span>
@@ -198,8 +188,8 @@ export function ContactForm() {
               <div className="flex items-start gap-3">
                 <Clock className="h-5 w-5 text-red mt-0.5 shrink-0" />
                 <div>
-                  <span className="block text-sm font-medium text-heading">Office Hours</span>
-                  <span className="text-sm text-muted">
+                  <span className="block text-sm font-medium text-white">Office Hours</span>
+                  <span className="text-sm text-white/60">
                     {CONTACT.officeHours}
                     <br />{CONTACT.weekendHours}
                   </span>

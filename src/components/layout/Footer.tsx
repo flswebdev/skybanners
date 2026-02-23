@@ -14,8 +14,13 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-bold mb-2">{SITE_NAME}</h3>
-            <p className="text-white/60 text-sm">
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="h-7 w-7 rounded-lg bg-red flex items-center justify-center flex-shrink-0">
+                <span className="text-white text-xs font-black leading-none">SB</span>
+              </div>
+              <h3 className="text-lg font-bold tracking-tight">{SITE_NAME}</h3>
+            </div>
+            <p className="text-white/50 text-sm leading-relaxed">
               Aerial advertising in Southern Ontario
             </p>
           </div>

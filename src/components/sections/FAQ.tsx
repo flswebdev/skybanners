@@ -5,22 +5,26 @@ import { FAQS } from "@/lib/constants";
 
 export function FAQ() {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-charcoal">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
+          <div className="inline-flex items-center gap-2 rounded-full border border-red/30 bg-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red mb-5">
+            FAQ
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted max-w-2xl mx-auto">
+          <p className="text-white/50 max-w-2xl mx-auto">
             Everything you need to know about aerial advertising
           </p>
         </div>
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-3">
           {FAQS.map((faq) => (
             <AccordionItem
               key={faq.question}
               question={faq.question}
               answer={faq.answer}
+              dark
             />
           ))}
         </div>

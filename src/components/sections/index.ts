@@ -1,9 +1,8 @@
 export { Hero } from "./Hero";
 export { Stats } from "./Stats";
 export { Services } from "./Services";
+export { AudienceSplit } from "./AudienceSplit";
 export { WhyAerial } from "./WhyAerial";
-export { BusinessSolutions } from "./BusinessSolutions";
-export { PersonalCelebrations } from "./PersonalCelebrations";
 export { HowItWorks } from "./HowItWorks";
 export { CoverageArea } from "./CoverageArea";
 export { WhatsIncluded } from "./WhatsIncluded";

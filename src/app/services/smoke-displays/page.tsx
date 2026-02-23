@@ -4,7 +4,7 @@ import {
   Heart, Trophy, PartyPopper, Building2, GraduationCap,
   ArrowRight,
 } from "lucide-react";
-import { Button, Card } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { ServiceHero, SpecsTable, CrossPromoSection } from "@/components/sections";
 import {
   SMOKE_PAGE,
@@ -52,17 +52,17 @@ export default function SmokeDisplaysPage() {
                 smoke for our most popular personal package.
               </p>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <SpecsTable title="Smoke Display Specs" specs={SMOKE_SPECS} />
-              <div className="rounded-xl border border-card-border bg-card p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-heading mb-4">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted mb-4">
                   Available Colours
                 </h3>
-                <div className="grid grid-cols-4 gap-4">
+                <div className="grid grid-cols-4 gap-x-4 gap-y-5">
                   {SMOKE_COLORS.map((smoke) => (
                     <div key={smoke.color} className="text-center">
                       <div
-                        className="w-14 h-14 rounded-full mx-auto mb-2 border-2 border-card-border shadow-md"
+                        className="w-12 h-12 rounded-full mx-auto mb-2"
                         style={{ backgroundColor: smoke.hex }}
                       />
                       <span className="text-xs text-muted font-medium">
@@ -77,70 +77,45 @@ export default function SmokeDisplaysPage() {
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Benefits + Use Cases */}
       <section className="py-20 bg-background-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
+          <div className="mb-14">
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">
               Why Choose Smoke Displays?
             </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              Nothing creates a spectacle quite like coloured smoke in the sky.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {SMOKE_BENEFITS.map((item) => {
-              const Icon = benefitIcons[item.icon as keyof typeof benefitIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-red" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+              {SMOKE_BENEFITS.map((item) => {
+                const Icon = benefitIcons[item.icon as keyof typeof benefitIcons];
+                return (
+                  <div key={item.title}>
+                    <div className="h-10 w-10 rounded-lg bg-red/10 flex items-center justify-center mb-3">
+                      <Icon className="h-5 w-5 text-red" />
+                    </div>
+                    <h3 className="text-base font-semibold text-heading mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                   </div>
-                  <h3 className="text-lg font-semibold text-heading mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {item.description}
-                  </p>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Use Cases */}
-      <section className="py-20 bg-background">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-              Ideal For
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              Smoke displays add spectacle and emotion to any outdoor event.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SMOKE_USE_CASES.map((item) => {
-              const Icon = useCaseIcons[item.icon as keyof typeof useCaseIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-blue/10 flex items-center justify-center shrink-0">
-                      <Icon className="h-5 w-5 text-blue" />
-                    </div>
+          <div className="border-t border-card-border pt-14">
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">Ideal For</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+              {SMOKE_USE_CASES.map((item) => {
+                const Icon = useCaseIcons[item.icon as keyof typeof useCaseIcons];
+                return (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <Icon className="h-5 w-5 text-blue mt-0.5 shrink-0" />
                     <div>
-                      <h3 className="text-lg font-semibold text-heading mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted leading-relaxed">
-                        {item.description}
-                      </p>
+                      <h3 className="text-base font-semibold text-heading mb-0.5">{item.title}</h3>
+                      <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                     </div>
                   </div>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

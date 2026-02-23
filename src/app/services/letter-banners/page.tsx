@@ -4,7 +4,7 @@ import {
   Heart, Megaphone, PartyPopper, Store, TrendingUp, Calendar,
   ArrowRight,
 } from "lucide-react";
-import { Button, Card } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { ServiceHero, SpecsTable, CrossPromoSection } from "@/components/sections";
 import {
   LETTER_PAGE,
@@ -53,15 +53,15 @@ export default function LetterBannersPage() {
                 fewer characters but greater visibility.
               </p>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-8">
               <SpecsTable title="Letter Banner Specs" specs={LETTER_SPECS} />
-              <div className="rounded-xl border border-card-border bg-card p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-heading mb-4">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted mb-3">
                   Character Limits by Size
                 </h3>
-                <div className="space-y-3">
+                <dl className="divide-y divide-card-border">
                   {LETTER_SIZE_LIMITS.map((size) => (
-                    <div key={size.height} className="flex items-center justify-between gap-4 rounded-lg bg-background-alt px-4 py-3">
+                    <div key={size.height} className="flex items-center justify-between gap-4 py-3">
                       <div>
                         <span className="text-sm font-semibold text-heading">{size.height} letters</span>
                         <span className="block text-xs text-muted">{size.description}</span>
@@ -69,79 +69,52 @@ export default function LetterBannersPage() {
                       <span className="text-lg font-extrabold text-blue">{size.maxChars}</span>
                     </div>
                   ))}
-                </div>
+                </dl>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Benefits + Use Cases */}
       <section className="py-20 bg-background-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
+          <div className="mb-14">
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">
               Why Choose Letter Banners?
             </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              Fast, affordable, and unmissable. Letter banners are the go-to
-              choice for text-based messages.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {LETTER_BENEFITS.map((item) => {
-              const Icon = benefitIcons[item.icon as keyof typeof benefitIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-red" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+              {LETTER_BENEFITS.map((item) => {
+                const Icon = benefitIcons[item.icon as keyof typeof benefitIcons];
+                return (
+                  <div key={item.title}>
+                    <div className="h-10 w-10 rounded-lg bg-red/10 flex items-center justify-center mb-3">
+                      <Icon className="h-5 w-5 text-red" />
+                    </div>
+                    <h3 className="text-base font-semibold text-heading mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                   </div>
-                  <h3 className="text-lg font-semibold text-heading mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {item.description}
-                  </p>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Use Cases */}
-      <section className="py-20 bg-background">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-              Ideal For
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              Any message that can be expressed in text works beautifully as a
-              letter banner.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {LETTER_USE_CASES.map((item) => {
-              const Icon = useCaseIcons[item.icon as keyof typeof useCaseIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-blue/10 flex items-center justify-center shrink-0">
-                      <Icon className="h-5 w-5 text-blue" />
-                    </div>
+          <div className="border-t border-card-border pt-14">
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">Ideal For</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+              {LETTER_USE_CASES.map((item) => {
+                const Icon = useCaseIcons[item.icon as keyof typeof useCaseIcons];
+                return (
+                  <div key={item.title} className="flex items-start gap-3">
+                    <Icon className="h-5 w-5 text-blue mt-0.5 shrink-0" />
                     <div>
-                      <h3 className="text-lg font-semibold text-heading mb-1">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted leading-relaxed">
-                        {item.description}
-                      </p>
+                      <h3 className="text-base font-semibold text-heading mb-0.5">{item.title}</h3>
+                      <p className="text-sm text-muted leading-relaxed">{item.description}</p>
                     </div>
                   </div>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

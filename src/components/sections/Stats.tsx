@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { X, ArrowRight } from "lucide-react";
-import { Card, Button } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { STATS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -12,27 +12,26 @@ export function Stats() {
   const active = STATS.find((s) => s.id === activeStat);
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-charcoal">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {STATS.map((stat, i) => (
-            <Card
+            <div
               key={stat.id}
-              glow
-              className="text-center cursor-pointer hover:scale-105 transition-transform duration-300"
+              className="group relative cursor-pointer rounded-xl border border-white/10 bg-white/5 p-6 text-center hover:border-white/20 hover:bg-white/10 transition-all duration-200"
               onClick={() => setActiveStat(stat.id)}
             >
               <div className={cn(
-                "text-4xl font-extrabold mb-2",
-                i % 2 === 0 ? "text-red" : "text-blue"
+                "text-4xl font-extrabold mb-2 tabular-nums",
+                i % 2 === 0 ? "text-red" : "text-blue-light"
               )}>
                 {stat.number}
               </div>
-              <div className="text-sm text-muted mb-3">{stat.label}</div>
-              <div className="text-xs text-muted/60 flex items-center justify-center gap-1">
-                Click to learn more <ArrowRight className="h-3 w-3" />
+              <div className="text-sm font-medium text-white/80 mb-3">{stat.label}</div>
+              <div className="text-xs text-white/30 flex items-center justify-center gap-1 group-hover:text-white/50 transition-colors">
+                View source <ArrowRight className="h-3 w-3" />
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>

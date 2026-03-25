@@ -11,3 +11,12 @@ export const CONTACT = {
   officeHours: "Mon-Fri: 9am - 6pm EST",
   weekendHours: "Sat-Sun: By Appointment",
 } as const;
+
+// Update hrefs once social accounts are created.
+// Leave href as "" to hide the icon in the Footer automatically.
+export const SOCIAL_LINKS = {
+  instagram: { href: "", label: "Instagram" },
+  tiktok:    { href: "", label: "TikTok" },
+  facebook:  { href: "", label: "Facebook" },
+  linkedin:  { href: "", label: "LinkedIn" },
+} as const;

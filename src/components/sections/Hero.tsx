@@ -1,4 +1,8 @@
+"use client";
+
+import { LayoutGroup, motion } from "motion/react";
 import { Button } from "@/components/ui";
+import { TextRotate } from "@/components/ui/text-rotate";
 import { HERO } from "@/lib/constants";
 
 export function Hero() {
@@ -22,11 +26,43 @@ export function Hero() {
           Southern Ontario&apos;s Aerial Advertising Specialists
         </div>
 
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
           <span className="text-red">{HERO.title}</span>
           <br />
-          <span className="text-blue">{HERO.titleAccent}</span>
+          <LayoutGroup>
+            <motion.span
+              className="inline-flex items-center justify-center gap-3 whitespace-nowrap"
+              layout
+            >
+              <motion.span
+                className="text-heading"
+                layout
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              >
+                Their
+              </motion.span>
+              <TextRotate
+                texts={[
+                  "Sky.",
+                  "Commute.",
+                  "Beach Day.",
+                  "Game Day.",
+                  "Festival.",
+                ]}
+                mainClassName="text-white bg-red px-3 py-1 rounded-lg overflow-hidden justify-center"
+                splitLevelClassName="overflow-hidden pb-2"
+                staggerFrom="last"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2500}
+              />
+            </motion.span>
+          </LayoutGroup>
         </h1>
+
         <p className="mx-auto max-w-2xl text-lg text-muted leading-relaxed mb-10">
           {HERO.subtitle}
         </p>

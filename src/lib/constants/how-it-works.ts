@@ -79,7 +79,7 @@ export const FILE_FORMATS = {
     { format: "JPG", description: "Acceptable. Use highest quality settings (300 DPI minimum)." },
     { format: "PDF", description: "Vector PDF preferred for logos and text-heavy designs." },
     { format: "AI", description: "Adobe Illustrator native files. Ideal for vector artwork." },
-    { format: "PSD", description: "Adobe Photoshop files with layers intact." },
+    { format: "EPS", description: "Encapsulated PostScript files, ideal for scalable vector artwork." },
   ],
   note: "Don\u2019t have a design? No problem. Our team can create one from your brand guidelines, logo, or even a rough sketch.",
 } as const;

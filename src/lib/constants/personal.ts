@@ -50,14 +50,9 @@ export const PERSONAL_OCCASIONS = [
 ] as const;
 
 export const SMOKE_COLORS = [
-  { color: "White", hex: "#FFFFFF" },
   { color: "Red", hex: "#EF4444" },
   { color: "Blue", hex: "#3B82F6" },
-  { color: "Green", hex: "#22C55E" },
-  { color: "Yellow", hex: "#EAB308" },
-  { color: "Orange", hex: "#F97316" },
-  { color: "Purple", hex: "#A855F7" },
-  { color: "Pink", hex: "#EC4899" },
+  { color: "Pink", hex: "#F43F5E" },
 ] as const;
 
 export const PERSONAL_BANNER_OPTIONS = [
@@ -82,7 +77,7 @@ export const PERSONAL_BANNER_OPTIONS = [
   {
     icon: "Wind" as const,
     title: "Smoke Display",
-    description: "Coloured smoke trails in the sky. Available in 8 colours. Perfect for gender reveals (pink or blue) or adding dramatic flair to any celebration.",
+    description: "Coloured smoke trails in the sky. Available in red or blue. Perfect for gender reveals or adding dramatic flair to any celebration.",
     bestFor: "Gender reveals & dramatic reveals",
   },
 ] as const;

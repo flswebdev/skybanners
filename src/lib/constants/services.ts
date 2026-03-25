@@ -13,7 +13,7 @@ export const BILLBOARD_PAGE = {
 export const BILLBOARD_SPECS = [
   { label: "Banner Type", value: "Full-colour digital print" },
   { label: "Material", value: "Durable aviation-grade nylon" },
-  { label: "Accepted Formats", value: "PNG, JPG, PDF, AI, PSD" },
+  { label: "Accepted Formats", value: "PNG, JPG, PDF, AI, EPS" },
   { label: "Resolution", value: "Minimum 150 DPI at scale" },
   { label: "Lead Time", value: "2\u20133 weeks (design + production)" },
   { label: "Design Assistance", value: "Included at no extra cost" },
@@ -173,7 +173,7 @@ export const COMBO_PAGE = {
 
 export const COMBO_SPECS = [
   { label: "Banner Type", value: "Billboard graphic + letter text" },
-  { label: "Graphic Formats", value: "PNG, JPG, PDF, AI, PSD" },
+  { label: "Graphic Formats", value: "PNG, JPG, PDF, AI, EPS" },
   { label: "Text Characters", value: "Up to 30 characters alongside graphic" },
   { label: "Lead Time", value: "2\u20133 weeks (design + production)" },
   { label: "Design Assistance", value: "Included at no extra cost" },
@@ -243,13 +243,13 @@ export const SMOKE_PAGE = {
   headline: "Dramatic Colour in the Sky",
   headlineAccent: "in the Sky",
   description:
-    "Coloured smoke displays create breathtaking visual moments visible for miles. Available in 8 colours, perfect for gender reveals, celebrations, or as a dramatic add-on to any banner flight.",
+    "Coloured smoke displays create breathtaking visual moments visible for miles. Available in red and blue, perfect for gender reveals, celebrations, or as a dramatic add-on to any banner flight.",
   primaryCta: "Book a Smoke Display",
-  secondaryCta: "See Colour Options",
+  secondaryCta: "Learn More",
 } as const;
 
 export const SMOKE_SPECS = [
-  { label: "Available Colours", value: "8 colours (see below)" },
+  { label: "Available Colours", value: "Red & Blue" },
   { label: "Visibility", value: "Visible for miles in clear conditions" },
   { label: "Duration", value: "Varies by flight time" },
   { label: "Add-On Available", value: "Yes \u2014 combine with any banner type" },
@@ -266,12 +266,12 @@ export const SMOKE_BENEFITS = [
   {
     icon: "Baby" as const,
     title: "Perfect for Gender Reveals",
-    description: "Pink or blue smoke visible for miles makes the ultimate gender reveal. Surprise your entire neighbourhood with the news.",
+    description: "Blue smoke visible for miles makes the ultimate gender reveal. Surprise your entire neighbourhood with the news.",
   },
   {
     icon: "Palette" as const,
-    title: "8 Colour Options",
-    description: "Choose from white, red, blue, green, yellow, orange, purple, and pink. Match your event theme or team colours.",
+    title: "Red & Blue",
+    description: "Choose red or blue smoke to match your event. Perfect for gender reveals, team colours, or brand activations.",
   },
   {
     icon: "Layers" as const,
@@ -284,7 +284,7 @@ export const SMOKE_USE_CASES = [
   {
     icon: "Baby" as const,
     title: "Gender Reveals",
-    description: "The most popular smoke display\u2014pink or blue smoke announces your baby\u2019s gender in spectacular fashion.",
+    description: "The most popular smoke display\u2014blue smoke announces your baby\u2019s gender in spectacular fashion.",
   },
   {
     icon: "Heart" as const,

@@ -1,6 +1,6 @@
 // Barrel re-export — all existing imports from "@/lib/constants" continue to work
 
-export { SITE_NAME, SITE_DESCRIPTION, SITE_URL, CONTACT } from "./site";
+export { SITE_NAME, SITE_DESCRIPTION, SITE_URL, CONTACT, SOCIAL_LINKS } from "./site";
 
 export {
   NAV_ITEMS,
@@ -109,3 +109,6 @@ export {
   GALLERY_ITEMS,
   GALLERY_SUBMIT,
 } from "./gallery";
+
+export { BLOG_POSTS } from "./blog";
+export type { BlogPost, BlogSection } from "./blog";

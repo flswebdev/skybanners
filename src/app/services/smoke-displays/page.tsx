@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui";
 import { ServiceHero, SpecsTable, CrossPromoSection } from "@/components/sections";
+import { GenderRevealCallout } from "./GenderRevealCallout";
 import {
   SMOKE_PAGE,
   SMOKE_SPECS,
@@ -17,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: "Smoke Displays | Sky Banners",
   description:
-    "Coloured smoke displays in 8 colours for gender reveals, celebrations, and events. Standalone or as an add-on to any banner flight. Southern Ontario.",
+    "Coloured smoke displays in red or blue for gender reveals, celebrations, and events. Standalone or as an add-on to any banner flight. Southern Ontario.",
 };
 
 const benefitIcons = { Sparkles, Baby, Palette, Layers } as const;
@@ -44,13 +45,10 @@ export default function SmokeDisplaysPage() {
               </p>
               <p className="text-muted leading-relaxed mb-4">
                 Most popular for gender reveals, smoke displays are available in
-                8 colours and can be booked as a standalone service or added to
+                red or blue and can be booked as a standalone service or added to
                 any banner flight for extra drama.
               </p>
-              <p className="text-muted leading-relaxed">
-                Combine a &ldquo;It&apos;s a Boy!&rdquo; letter banner with blue
-                smoke for our most popular personal package.
-              </p>
+              <GenderRevealCallout />
             </div>
             <div className="space-y-8">
               <SpecsTable title="Smoke Display Specs" specs={SMOKE_SPECS} />

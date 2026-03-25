@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = {
   title: "Personal Aerial Banners & Celebrations",
   description:
-    "Make your proposal, gender reveal, birthday, or special moment unforgettable with a personal aerial banner. Smoke displays in 8 colours. Southern Ontario.",
+    "Make your proposal, gender reveal, birthday, or special moment unforgettable with a personal aerial banner. Smoke displays in red or blue. Southern Ontario.",
 };
 
 const occasionIcons = {

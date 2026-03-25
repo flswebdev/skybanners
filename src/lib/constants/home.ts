@@ -65,7 +65,7 @@ export const SERVICES = [
     icon: "Wind" as const,
     title: "Smoke Displays",
     href: "/services/smoke-displays",
-    description: "Coloured smoke trails in 8 colours for gender reveals, celebrations, and events.",
+    description: "Coloured smoke trails in red or blue for gender reveals, celebrations, and events.",
   },
 ] as const;
 
@@ -151,7 +151,7 @@ export const STEPS = [
     icon: "Palette" as const,
     title: "Design & Approval",
     description:
-      "Our team creates your custom banner design. You review and approve before production begins.",
+      "Have your own design? Send it over and we\u2019ll bring it to life. Prefer help? Our team will work with your branding and messaging to create something that stands out. You review and approve before production begins.",
   },
   {
     number: "03",

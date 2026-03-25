@@ -1,12 +1,61 @@
-import { Target, MapPin, Smartphone, Sparkles, ArrowRight } from "lucide-react";
-import { BENEFITS } from "@/lib/constants";
+import { Target, Smartphone, TrendingUp, Eye, Share2, ArrowRight } from "lucide-react";
+import { BentoGrid, type BentoItem } from "@/components/ui/bento-grid";
 
-const iconMap = {
-  Target,
-  MapPin,
-  Smartphone,
-  Sparkles,
-} as const;
+const bentoItems: BentoItem[] = [
+  {
+    title: "88% Recall Rate",
+    meta: "vs 14% digital display",
+    description:
+      "88% of people recall seeing an aerial advertisement — the highest recall rate of any advertising medium. No banner blindness. No scrolling past.",
+    icon: <Eye className="w-5 h-5 text-red-400" />,
+    status: "#1 Recall",
+    tags: ["Awareness", "Retention"],
+    cta: "See the data →",
+    colSpan: 2,
+    hasPersistentHover: true,
+  },
+  {
+    title: "Under $6 CPM",
+    meta: "Cost Per Thousand",
+    description:
+      "Reach thousands for less than the cost of TV ($28 CPM) or digital display ($11 CPM). Sky-high impact, ground-level price.",
+    icon: <TrendingUp className="w-5 h-5 text-blue-400" />,
+    status: "Best Value",
+    tags: ["ROI", "Efficiency"],
+    cta: "Get a quote →",
+  },
+  {
+    title: "Zero Ad Blockers",
+    meta: "100% share of voice",
+    description:
+      "No algorithms. No competing ads beside yours. No way to skip or block it. For the duration of the flight, you own the sky.",
+    icon: <Target className="w-5 h-5 text-red-400" />,
+    status: "Guaranteed",
+    tags: ["Exclusivity", "Attention"],
+    cta: "Learn more →",
+  },
+  {
+    title: "Social Media Multiplier",
+    meta: "4 in 10 viewers photograph it",
+    description:
+      "People pull out their phones when a banner flies over. 3 in 10 share it online — generating 1,200+ impressions per post at zero extra cost.",
+    icon: <Share2 className="w-5 h-5 text-blue-400" />,
+    status: "Organic Reach",
+    tags: ["Social", "Viral", "UGC"],
+    cta: "See examples →",
+    colSpan: 2,
+  },
+  {
+    title: "Targeted to Your Crowd",
+    meta: "Events, beaches, stadiums",
+    description:
+      "Fly over exactly where your audience already is — festivals, shorelines, sporting events, and urban flyovers reaching 30,000–100,000+ people.",
+    icon: <Smartphone className="w-5 h-5 text-red-400" />,
+    status: "Precise",
+    tags: ["Geo-Targeting", "Events"],
+    cta: "View coverage →",
+  },
+];
 
 export function WhyAerial() {
   return (
@@ -23,24 +72,9 @@ export function WhyAerial() {
             Cut through the noise with sky-high visibility
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {BENEFITS.map((benefit) => {
-            const Icon = iconMap[benefit.icon];
-            return (
-              <div key={benefit.title} className="rounded-xl border border-white/10 bg-white/5 p-6 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-200">
-                <div className="h-12 w-12 rounded-lg bg-blue/20 flex items-center justify-center mb-4">
-                  <Icon className="h-6 w-6 text-blue-light" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-sm text-white/60 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+
+        <BentoGrid items={bentoItems} />
+
         <div className="text-center mt-8">
           <a
             href="/why-aerial"

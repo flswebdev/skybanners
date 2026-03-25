@@ -12,7 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-red text-white hover:bg-red/90 shadow-sm hover:shadow-md active:scale-[0.98] transition-all",
+    "bg-red text-white hover:bg-red/90 shadow-sm hover:shadow-md active:scale-[0.98] transition-all relative overflow-hidden before:absolute before:inset-0 before:rounded-[inherit] before:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.5)_50%,transparent_75%,transparent_100%)] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat before:transition-[background-position] before:duration-700 hover:before:bg-[position:-100%_0,0_0]",
   secondary:
     "border border-blue/40 text-blue hover:bg-blue/5 hover:border-blue/60 transition-all",
   outline:

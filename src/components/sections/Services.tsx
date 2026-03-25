@@ -10,16 +10,16 @@ const iconMap = {
 
 export function Services() {
   return (
-    <section id="services" className="py-20 bg-charcoal">
+    <section id="services" className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-red/30 bg-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red mb-5">
             What We Offer
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
             Our Services
           </h2>
-          <p className="text-white/50 max-w-2xl mx-auto">
+          <p className="text-muted max-w-2xl mx-auto">
             Custom aerial advertising solutions for every occasion
           </p>
         </div>
@@ -28,7 +28,7 @@ export function Services() {
             const Icon = iconMap[service.icon];
             const hasBadge = "badge" in service && service.badge;
             return (
-              <div key={service.title} className="group relative rounded-xl border border-white/10 bg-white/5 p-6 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-200">
+              <div key={service.title} className="group relative rounded-xl border border-card-border bg-background-alt p-6 hover:-translate-y-0.5 hover:border-muted/30 hover:shadow-md transition-all duration-200">
                 {hasBadge && (
                   <div className="absolute -top-2.5 left-4">
                     <span className="inline-flex items-center rounded-full bg-red px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
@@ -39,10 +39,10 @@ export function Services() {
                 <div className="h-12 w-12 rounded-lg bg-red/20 flex items-center justify-center mb-4">
                   <Icon className="h-6 w-6 text-red" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-heading mb-2">
                   {service.title}
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed mb-3">
+                <p className="text-sm text-muted leading-relaxed mb-3">
                   {service.description}
                 </p>
                 {"href" in service && (

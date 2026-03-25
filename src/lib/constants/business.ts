@@ -20,7 +20,7 @@ export const B2B_BANNER_OPTIONS = [
     features: [
       "Full-colour printed graphics",
       "Custom dimensions for maximum visibility",
-      "Upload your own design (PNG, JPG, PDF, AI, PSD)",
+      "Upload your own design (PNG, JPG, PDF, AI, EPS)",
       "Professional design assistance available",
     ],
   },

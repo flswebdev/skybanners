@@ -9,7 +9,6 @@ import { ServiceHero, SpecsTable, CrossPromoSection } from "@/components/section
 import {
   LETTER_PAGE,
   LETTER_SPECS,
-  LETTER_SIZE_LIMITS,
   LETTER_BENEFITS,
   LETTER_USE_CASES,
 } from "@/lib/constants";
@@ -55,22 +54,6 @@ export default function LetterBannersPage() {
             </div>
             <div className="space-y-8">
               <SpecsTable title="Letter Banner Specs" specs={LETTER_SPECS} />
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted mb-3">
-                  Character Limits by Size
-                </h3>
-                <dl className="divide-y divide-card-border">
-                  {LETTER_SIZE_LIMITS.map((size) => (
-                    <div key={size.height} className="flex items-center justify-between gap-4 py-3">
-                      <div>
-                        <span className="text-sm font-semibold text-heading">{size.height} letters</span>
-                        <span className="block text-xs text-muted">{size.description}</span>
-                      </div>
-                      <span className="text-lg font-extrabold text-blue">{size.maxChars}</span>
-                    </div>
-                  ))}
-                </dl>
-              </div>
             </div>
           </div>
         </div>

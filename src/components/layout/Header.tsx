@@ -126,11 +126,13 @@ export function Header() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-[4.5rem] items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5 group">
-            <div className="h-7 w-7 rounded-lg bg-red flex items-center justify-center flex-shrink-0">
-              <span className="text-white text-xs font-black leading-none">SB</span>
-            </div>
-            <span className="text-lg font-bold text-heading tracking-tight">{SITE_NAME}</span>
+          <a href="/" className="flex items-center group">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logos/sky-banners-logo.png"
+              alt={SITE_NAME}
+              className="h-12 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop nav */}

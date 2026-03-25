@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  MessageSquare, Palette, Printer, Plane, Camera,
   Zap, ClipboardList, Wind,
   CheckCircle, ArrowRight,
 } from "lucide-react";
@@ -8,12 +7,12 @@ import { Button, Card, AccordionItem } from "@/components/ui";
 import { ServiceHero } from "@/components/sections";
 import {
   HOW_IT_WORKS_PAGE,
-  EXPANDED_STEPS,
   FILE_FORMATS,
   LEAD_TIMES,
   DELIVERABLES,
   PROCESS_FAQS,
 } from "@/lib/constants";
+import { StepsSection } from "./StepsSection";
 
 export const metadata: Metadata = {
   title: "How It Works | Sky Banners",
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
     "From consultation to sky-high impact in 5 simple steps. Learn our process, file requirements, lead times, and what you receive after your aerial campaign.",
 };
 
-const stepIcons = { MessageSquare, Palette, Printer, Plane, Camera } as const;
 const leadIcons = { Zap, ClipboardList, Wind } as const;
 
 export default function HowItWorksPage() {
@@ -32,51 +30,7 @@ export default function HowItWorksPage() {
       {/* 5-Step Expanded Process */}
       <section id="details" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-              Your Campaign, Step by Step
-            </h2>
-            <p className="text-muted max-w-2xl mx-auto">
-              We handle everything from start to finish. Here&apos;s exactly
-              what happens when you book with Sky Banners.
-            </p>
-          </div>
-          <div className="space-y-6">
-            {EXPANDED_STEPS.map((step) => {
-              const Icon = stepIcons[step.icon as keyof typeof stepIcons];
-              return (
-                <div
-                  key={step.number}
-                  className="relative rounded-xl border border-card-border bg-card p-8 shadow-sm"
-                >
-                  <div className="text-6xl font-extrabold text-card-border/40 absolute top-6 right-6">
-                    {step.number}
-                  </div>
-                  <div className="flex items-start gap-6">
-                    <div className="h-14 w-14 rounded-lg bg-red/10 flex items-center justify-center shrink-0">
-                      <Icon className="h-7 w-7 text-red" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-heading mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="text-muted leading-relaxed mb-4">
-                        {step.description}
-                      </p>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {step.details.map((detail) => (
-                          <li key={detail} className="flex items-start gap-2 text-sm text-muted">
-                            <CheckCircle className="h-4 w-4 text-red mt-0.5 shrink-0" />
-                            {detail}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <StepsSection />
         </div>
       </section>
 

@@ -86,7 +86,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
     questions: [
       {
         question: "What file formats do you accept for banner designs?",
-        answer: "We accept PNG, JPG, PDF, AI (Adobe Illustrator), and PSD (Photoshop) files. For best results, provide files at 150 DPI minimum at the banner\u2019s print size. Vector formats (AI, PDF) are ideal for logos and text.",
+        answer: "We accept PNG, JPG, PDF, AI (Adobe Illustrator), and EPS files. For best results, provide files at 150 DPI minimum at the banner\u2019s print size. Vector formats (AI, PDF) are ideal for logos and text.",
       },
       {
         question: "How many characters can a letter banner have?",

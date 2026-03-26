@@ -1,7 +1,7 @@
 "use client";
 
 import { MessageSquare, Palette, Plane, BarChart3, ArrowRight } from "lucide-react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { STEPS } from "@/lib/constants";
 
@@ -30,15 +30,21 @@ export function HowItWorks() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [activeStep, setActiveStep] = useState(-1);
   const [borderStep, setBorderStep] = useState(-1);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!inView) return;
+    if (reducedMotion) {
+      setActiveStep(STEPS.length - 1);
+      setBorderStep(STEPS.length - 1);
+      return;
+    }
     const timers = [
       ...CIRCLE_DELAYS.map((delay, i) => setTimeout(() => setActiveStep(i), delay * 1000)),
       ...BORDER_DELAYS.map((delay, i) => setTimeout(() => setBorderStep(i), delay * 1000)),
     ];
     return () => timers.forEach(clearTimeout);
-  }, [inView]);
+  }, [inView, reducedMotion]);
 
   return (
     <section className="relative py-20 bg-background-alt overflow-hidden">

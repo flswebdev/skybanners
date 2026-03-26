@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Heart, Baby, Cake, GraduationCap, Star, PartyPopper, Mail,
   PenLine, ClipboardList, Palette, Wind,
-  CheckCircle, ArrowRight, Sparkles,
+  CheckCircle, ArrowRight, Sparkles, Camera,
 } from "lucide-react";
 import { Button } from "@/components/ui";
 import { Card } from "@/components/ui";
@@ -70,41 +71,84 @@ export default function PersonalPage() {
       {/* Occasions */}
       <section id="occasions" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
+          {/* Left-aligned header */}
+          <div className="mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-3">
               Every Occasion Deserves the Sky
             </h2>
-            <p className="text-muted max-w-2xl mx-auto">
+            <p className="text-muted max-w-xl">
               From proposals to retirements, we&apos;ve flown banners for every
-              kind of celebration. Here&apos;s what we can do for you.
+              kind of celebration.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PERSONAL_OCCASIONS.map((occasion) => {
-              const Icon =
-                occasionIcons[occasion.icon as keyof typeof occasionIcons];
+
+          {/* Featured — popular occasions */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            {PERSONAL_OCCASIONS.filter((o) => o.popular).map((occasion) => {
+              const Icon = occasionIcons[occasion.icon as keyof typeof occasionIcons];
+              const image = "image" in occasion ? occasion.image : null;
               return (
                 <div
                   key={occasion.title}
-                  className="relative rounded-xl border border-card-border bg-card p-6 shadow-sm hover:border-red/30 hover:shadow-md transition-all duration-300"
+                  className="border border-card-border overflow-hidden shadow-sm hover:shadow-md hover:border-red/30 transition-all duration-300 group"
                 >
-                  {occasion.popular && (
-                    <span className="absolute top-3 right-3 text-[10px] font-bold uppercase tracking-wider text-red bg-red/10 px-2 py-0.5 rounded-full">
-                      Popular
-                    </span>
-                  )}
-                  <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-red" />
+                  {/* Card header — photo or placeholder */}
+                  <div className="relative h-48 overflow-hidden">
+                    {image ? (
+                      <Image
+                        src={image}
+                        alt={occasion.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="h-full bg-background-alt border-b border-dashed border-card-border flex flex-col items-center justify-center gap-2 text-muted">
+                        <Camera className="h-7 w-7 opacity-30" />
+                        <span className="text-xs font-medium opacity-40">Add photo</span>
+                      </div>
+                    )}
                   </div>
-                  <h3 className="text-lg font-semibold text-heading mb-2">
-                    {occasion.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {occasion.description}
-                  </p>
+                  <div className="p-6 bg-card">
+                    <span className="inline-flex text-[10px] font-bold uppercase tracking-wider text-red bg-red/10 px-2 py-0.5 rounded-full mb-3">
+                      Most Popular
+                    </span>
+                    <h3 className="text-lg font-semibold text-heading mb-2">
+                      {occasion.title}
+                    </h3>
+                    <p className="text-sm text-muted leading-relaxed">
+                      {occasion.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* Supporting — remaining occasions */}
+          <div className="border border-card-border bg-background-alt p-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted mb-5">
+              More Occasions We Fly For
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-x-6 gap-y-5">
+              {PERSONAL_OCCASIONS.filter((o) => !o.popular).map((occasion) => {
+                const Icon = occasionIcons[occasion.icon as keyof typeof occasionIcons];
+                return (
+                  <div key={occasion.title} className="flex items-start gap-3">
+                    <div className="h-8 w-8 bg-white border border-card-border flex items-center justify-center shrink-0">
+                      <Icon className="h-4 w-4 text-muted" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-heading leading-tight">
+                        {occasion.title}
+                      </p>
+                      <p className="text-xs text-muted leading-snug mt-0.5 line-clamp-2">
+                        {occasion.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

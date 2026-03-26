@@ -14,6 +14,7 @@ import {
   motion,
   MotionProps,
   Transition,
+  useReducedMotion,
 } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -75,6 +76,7 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
     ref
   ) => {
     const [currentTextIndex, setCurrentTextIndex] = useState(0)
+    const reducedMotion = useReducedMotion()
 
     const splitIntoCharacters = (text: string): string[] => {
       if (typeof Intl !== "undefined" && "Segmenter" in Intl) {
@@ -149,10 +151,10 @@ const TextRotate = forwardRef<TextRotateRef, TextRotateProps>(
     useImperativeHandle(ref, () => ({ next, previous, jumpTo, reset }), [next, previous, jumpTo, reset])
 
     useEffect(() => {
-      if (!auto) return
+      if (!auto || reducedMotion) return
       const intervalId = setInterval(next, rotationInterval)
       return () => clearInterval(intervalId)
-    }, [next, rotationInterval, auto])
+    }, [next, rotationInterval, auto, reducedMotion])
 
     return (
       <motion.span

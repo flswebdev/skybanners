@@ -4,6 +4,7 @@ export const PERSONAL_OCCASIONS = [
     title: "Marriage Proposals",
     description: "Pop the question in the most unforgettable way. Imagine their face when they look up and see your message in the sky. We coordinate timing perfectly with your plan.",
     popular: true,
+    image: null as string | null, // e.g. "/images/occasions/proposals.jpg"
   },
   {
     icon: "Rings" as const,
@@ -16,6 +17,7 @@ export const PERSONAL_OCCASIONS = [
     title: "Gender Reveals",
     description: "Announce your baby\u2019s gender with coloured smoke displays visible for miles. Choose pink or blue smoke for the ultimate reveal moment. Banner + smoke combos available.",
     popular: true,
+    image: null as string | null, // e.g. "/images/occasions/gender-reveal.jpg"
   },
   {
     icon: "Cake" as const,
@@ -46,6 +48,7 @@ export const PERSONAL_OCCASIONS = [
     title: "Custom Messages",
     description: "Apologies, thank-yous, promposals, \"I love you\"\u2014if you can say it in 40 characters, we can fly it. Any message, any occasion.",
     popular: true,
+    image: null as string | null, // e.g. "/images/occasions/custom-message.jpg"
   },
 ] as const;
 

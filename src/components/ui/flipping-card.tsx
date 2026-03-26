@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, useAnimation, AnimatePresence } from "motion/react";
+import { motion, useAnimation, AnimatePresence, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface FlippingCardProps {
@@ -22,8 +22,11 @@ export function FlippingCard({
   const [flipped, setFlipped] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const controls = useAnimation();
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     // Teaser: partial spin after 1.5s to hint the card is flippable
     const teaserTimer = setTimeout(async () => {
       await controls.start({ rotateY: 28, transition: { duration: 0.35, ease: "easeOut" } });
@@ -39,7 +42,7 @@ export function FlippingCard({
       clearTimeout(teaserTimer);
       clearTimeout(hintTimer);
     };
-  }, [controls]);
+  }, [controls, reducedMotion]);
 
   const handleClick = () => {
     const next = !flipped;

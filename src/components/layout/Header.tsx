@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui";
 import { SITE_NAME, NAV_ITEMS } from "@/lib/constants";
 import type { NavItem } from "@/lib/constants";
@@ -22,11 +23,15 @@ export function Header() {
     if (item.type === "dropdown") {
       return (
         <div key={item.label} className="relative group">
-          <button className="flex items-center gap-1 text-sm text-muted hover:text-heading transition-colors cursor-pointer">
+          <button
+            className="flex items-center gap-1 text-sm text-muted hover:text-heading transition-colors cursor-pointer"
+            aria-haspopup="true"
+            onKeyDown={(e) => { if (e.key === "Escape") (e.currentTarget as HTMLElement).blur(); }}
+          >
             {item.label}
             <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
           </button>
-          <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200 z-50">
+          <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 focus-within:visible focus-within:opacity-100 absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-200 z-50">
             <div className="w-64 rounded-xl border border-card-border bg-white shadow-lg p-2">
               {item.items.map((sub) => (
                 <a
@@ -127,11 +132,13 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-[4.5rem] items-center justify-between">
           <a href="/" className="flex items-center group">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="/logos/sky-banners-logo.png"
               alt={SITE_NAME}
+              width={200}
+              height={48}
               className="h-12 w-auto object-contain"
+              priority
             />
           </a>
 

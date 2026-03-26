@@ -1,6 +1,6 @@
-import { Heart, Baby, Cake, Mail, Target, Trophy, PartyPopper, Share2, ArrowRight } from "lucide-react";
+import { Heart, Baby, Cake, Mail, Target, Trophy, PartyPopper, Share2, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui";
-import { CELEBRATIONS, BUSINESS_SOLUTIONS } from "@/lib/constants";
+import { CELEBRATIONS, BUSINESS_SOLUTIONS, FLIGHT_DURATIONS } from "@/lib/constants";
 
 const personalIcons = { Heart, Baby, Cake, Mail } as const;
 const businessIcons = { Target, Trophy, PartyPopper, Share2 } as const;
@@ -39,6 +39,27 @@ export function AudienceSplit() {
                   </div>
                 );
               })}
+            </div>
+
+            {/* Flight durations */}
+            <div className="mb-10">
+              <div className="flex items-center gap-2 mb-4">
+                <Clock className="h-4 w-4 text-blue-light shrink-0" />
+                <span className="text-sm font-semibold text-white/80">Flight Duration Options</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {FLIGHT_DURATIONS.filter((d) => d.value !== "custom").map((dur) => (
+                  <div
+                    key={dur.value}
+                    className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-center"
+                  >
+                    <span className="text-white/70 font-medium text-xs">{dur.label}</span>
+                  </div>
+                ))}
+                <div className="rounded-lg border border-blue/20 bg-blue/10 px-3 py-2 text-center">
+                  <span className="text-blue-light font-medium text-xs">Custom</span>
+                </div>
+              </div>
             </div>
 
             <Button href="/personal" variant="primary" size="large">

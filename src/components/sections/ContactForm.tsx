@@ -11,7 +11,6 @@ export function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
     setErrorMsg("");
 
     const form = e.currentTarget;
@@ -22,6 +21,14 @@ export function ContactForm() {
       campaignType: (form.elements.namedItem("campaignType") as HTMLSelectElement).value,
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
     };
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!data.name.trim()) { setErrorMsg("Please enter your name."); return; }
+    if (!emailRegex.test(data.email.trim())) { setErrorMsg("Please enter a valid email address."); return; }
+    if (!data.campaignType) { setErrorMsg("Please select a campaign type."); return; }
+    if (data.message.trim().length < 10) { setErrorMsg("Please tell us a bit more about your campaign."); return; }
+
+    setStatus("sending");
 
     try {
       const res = await fetch("/api/contact", {
@@ -145,8 +152,17 @@ export function ContactForm() {
                 )}
 
                 <Button type="submit" size="large" disabled={status === "sending"}>
-                  {status === "sending" ? "Sending..." : "Request Quote"}
-                  <Send className="ml-2 h-4 w-4" />
+                  {status === "sending" ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4 mr-2 shrink-0" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>Request Quote <Send className="ml-2 h-4 w-4" /></>
+                  )}
                 </Button>
               </form>
             )}

@@ -1,4 +1,5 @@
 export { Hero } from "./Hero";
+export { SocialProof } from "./SocialProof";
 export { Stats } from "./Stats";
 export { Services } from "./Services";
 export { AudienceSplit } from "./AudienceSplit";

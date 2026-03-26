@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import Image from "next/image";
 import {
   SITE_NAME,
   CONTACT,
@@ -49,10 +50,11 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/logos/sky-banners-logo.png"
                 alt={SITE_NAME}
+                width={200}
+                height={48}
                 className="h-12 w-auto object-contain brightness-0 invert"
               />
             </div>

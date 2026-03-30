@@ -1,16 +1,16 @@
 import Image from "next/image";
 
 const CLIENTS = [
-  { name: "McDonald's", src: "/logos/clients/mcdonalds.svg", width: 40, height: 40 },
-  { name: "Sony", src: "/logos/clients/sony.svg", width: 80, height: 24 },
-  { name: "Subway", src: "/logos/clients/subway.svg", width: 100, height: 30 },
-  { name: "Shell", src: "/logos/clients/shell.svg", width: 48, height: 48 },
-  { name: "Wealthsimple", src: "/logos/clients/wealthsimple.svg", width: 130, height: 24 },
-  { name: "MGM", src: "/logos/clients/mgm.png", width: 70, height: 40 },
+  { name: "Wealthsimple", src: "/logos/clients/wealthsimple.svg", width: 168, height: 24 },
+  { name: "Sony",         src: "/logos/clients/sony.svg",         width: 137, height: 24 },
+  { name: "Subway",       src: "/logos/clients/subway.svg",       width: 150, height: 30 },
+  { name: "Shell",        src: "/logos/clients/shell.svg",        width: 75,  height: 30 },
+  { name: "McDonald's",   src: "/logos/clients/mcdonalds.svg",    width: 46,  height: 40 },
+  { name: "MGM",          src: "/logos/clients/mgm.png",          width: 70,  height: 40 },
   { name: "Halifax Mooseheads", src: "/logos/clients/mooseheads.png", width: 48, height: 48 },
-  { name: "Jet Auto Wash", src: "/logos/clients/jetautowash.png", width: 90, height: 40 },
-  { name: "East Park", src: "/logos/clients/eastpark.svg", width: 110, height: 30 },
-  { name: "McCain Foods", src: "/logos/clients/mccain.svg", width: 90, height: 30 },
+  { name: "Jet Auto Wash",src: "/logos/clients/jetautowash.png",  width: 90,  height: 40 },
+  { name: "East Park",    src: "/logos/clients/eastpark.svg",     width: 53,  height: 30 },
+  { name: "McCain Foods", src: "/logos/clients/mccain.svg",       width: 60,  height: 30 },
 ] as const;
 
 export function SocialProof() {
@@ -20,7 +20,7 @@ export function SocialProof() {
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted mb-8">
           Trusted by leading brands &amp; organizations
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-6 items-center justify-items-center lg:grid-cols-5 lg:gap-x-12 lg:gap-y-8">
           {CLIENTS.map((client) => (
             <div key={client.name} className="flex items-center justify-center">
               <Image
@@ -28,8 +28,8 @@ export function SocialProof() {
                 alt={client.name}
                 width={client.width}
                 height={client.height}
-                className="object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-                style={{ maxHeight: "40px", width: "auto" }}
+                className="grayscale-0 opacity-100 lg:grayscale lg:opacity-50 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-300"
+                style={{ height: "28px", width: "auto", objectFit: "contain" }}
               />
             </div>
           ))}

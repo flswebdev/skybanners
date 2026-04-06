@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui";
@@ -12,6 +13,7 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -21,10 +23,14 @@ export function Header() {
 
   function renderDesktopItem(item: NavItem) {
     if (item.type === "dropdown") {
+      const isActive = item.items.some((sub) => pathname === sub.href || pathname.startsWith(sub.href + "/"));
       return (
         <div key={item.label} className="relative group">
           <button
-            className="flex items-center gap-1 text-sm text-muted hover:text-heading transition-colors cursor-pointer"
+            className={cn(
+              "flex items-center gap-1 text-sm transition-colors cursor-pointer",
+              isActive ? "text-heading font-medium" : "text-muted hover:text-heading"
+            )}
             aria-haspopup="true"
             onKeyDown={(e) => { if (e.key === "Escape") (e.currentTarget as HTMLElement).blur(); }}
           >
@@ -53,11 +59,15 @@ export function Header() {
       );
     }
 
+    const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
     return (
       <a
         key={item.href}
         href={item.href}
-        className="text-sm text-muted hover:text-heading transition-colors"
+        className={cn(
+          "text-sm transition-colors",
+          isActive ? "text-heading font-medium" : "text-muted hover:text-heading"
+        )}
       >
         {item.label}
       </a>
@@ -67,13 +77,17 @@ export function Header() {
   function renderMobileItem(item: NavItem) {
     if (item.type === "dropdown") {
       const isExpanded = mobileDropdown === item.label;
+      const isActive = item.items.some((sub) => pathname === sub.href || pathname.startsWith(sub.href + "/"));
       return (
         <div key={item.label}>
           <button
             onClick={() =>
               setMobileDropdown(isExpanded ? null : item.label)
             }
-            className="flex items-center justify-between w-full text-muted hover:text-heading transition-colors cursor-pointer"
+            className={cn(
+              "flex items-center justify-between w-full transition-colors cursor-pointer",
+              isActive ? "text-heading font-medium" : "text-muted hover:text-heading"
+            )}
           >
             {item.label}
             <ChevronDown
@@ -108,12 +122,16 @@ export function Header() {
       );
     }
 
+    const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
     return (
       <a
         key={item.href}
         href={item.href}
         onClick={() => setIsOpen(false)}
-        className="text-muted hover:text-heading transition-colors"
+        className={cn(
+          "transition-colors",
+          isActive ? "text-heading font-medium" : "text-muted hover:text-heading"
+        )}
       >
         {item.label}
       </a>

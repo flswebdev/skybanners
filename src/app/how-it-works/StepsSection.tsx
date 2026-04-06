@@ -7,15 +7,26 @@ import { EXPANDED_STEPS } from "@/lib/constants";
 
 const stepIcons = { MessageSquare, Palette, Printer, Plane, Camera } as const;
 
-// Border fires when the snake line arrives at each card
 const ANIMATION_DELAY = 2;
-const BORDER_DELAYS = [0, 3.5, 7.0, 10.5, 14.0].map((d) => d + ANIMATION_DELAY) as unknown as readonly number[];
 const TOTAL_DURATION = 16;
 
 // How far the bezier arc bulges outside the container edge (px)
 const ARC_OVERHANG = 96;
 // How far from the top of each card the line travels (px) — roughly icon centre
 const LINE_Y_OFFSET = 60;
+
+function measureSubPathLength(d: string): number {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  svg.style.position = "absolute";
+  svg.style.visibility = "hidden";
+  document.body.appendChild(svg);
+  svg.appendChild(path);
+  const length = path.getTotalLength();
+  document.body.removeChild(svg);
+  return length;
+}
 
 export function StepsSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,6 +35,7 @@ export function StepsSection() {
   const inView = useInView(containerRef, { once: true, margin: "-100px" });
   const [borderStep, setBorderStep] = useState(-1);
   const [pathD, setPathD] = useState("");
+  const [borderDelays, setBorderDelays] = useState<number[]>([]);
 
   const computePath = useCallback(() => {
     if (!containerRef.current) return;
@@ -52,16 +64,17 @@ export function StepsSection() {
     for (let i = 0; i < ys.length; i++) {
       const y = ys[i];
       const isEven = i % 2 === 0;
+      const isLast = i === ys.length - 1;
       if (isEven) {
         // right → left, arc bulges left
-        d += ` L 0 ${y}`;
+        if (!isLast) d += ` L 0 ${y}`;
         if (i < ys.length - 1) {
           const y2 = ys[i + 1];
           d += ` C ${-R} ${y} ${-R} ${y2} 0 ${y2}`;
         }
       } else {
         // left → right, arc bulges right
-        d += ` L ${W} ${y}`;
+        if (!isLast) d += ` L ${W} ${y}`;
         if (i < ys.length - 1) {
           const y2 = ys[i + 1];
           d += ` C ${W + R} ${y} ${W + R} ${y2} ${W} ${y2}`;
@@ -70,6 +83,31 @@ export function StepsSection() {
     }
 
     setPathD(d);
+
+    // Measure sub-path lengths to find when the line first touches each card
+    const totalLength = measureSubPathLength(d);
+
+    // Build sub-paths up to the point the line first enters each card
+    const subPaths: string[] = [];
+    // Card 0: line enters from right after entry horizontal + right arc
+    subPaths.push(`M 0 ${entryY} L ${W} ${entryY} C ${W + R} ${entryY} ${W + R} ${ys[0]} ${W} ${ys[0]}`);
+    for (let i = 0; i < ys.length - 1; i++) {
+      const isEven = i % 2 === 0;
+      let sub = subPaths[i];
+      if (isEven) {
+        sub += ` L 0 ${ys[i]} C ${-R} ${ys[i]} ${-R} ${ys[i + 1]} 0 ${ys[i + 1]}`;
+      } else {
+        sub += ` L ${W} ${ys[i]} C ${W + R} ${ys[i]} ${W + R} ${ys[i + 1]} ${W} ${ys[i + 1]}`;
+      }
+      subPaths.push(sub);
+    }
+
+    const delays = subPaths.map((sub) => {
+      const len = measureSubPathLength(sub);
+      return ANIMATION_DELAY + (len / totalLength) * TOTAL_DURATION;
+    });
+
+    setBorderDelays(delays);
   }, []);
 
   // Compute after first render and on resize
@@ -80,14 +118,14 @@ export function StepsSection() {
     return () => ro.disconnect();
   }, [computePath]);
 
-  // Card border / greyscale activation
+  // Card border / greyscale activation — fires when line actually reaches each card
   useEffect(() => {
-    if (!inView) return;
-    const timers = BORDER_DELAYS.map((delay, i) =>
+    if (!inView || borderDelays.length === 0) return;
+    const timers = borderDelays.map((delay, i) =>
       setTimeout(() => setBorderStep(i), delay * 1000)
     );
     return () => timers.forEach(clearTimeout);
-  }, [inView]);
+  }, [inView, borderDelays]);
 
   return (
     <div ref={containerRef} className="relative">

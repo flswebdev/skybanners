@@ -10,9 +10,6 @@ export function GenderRevealCallout() {
 
   return (
     <div className="mt-6 rounded-2xl bg-background-alt border border-card-border p-6">
-      <p className="text-sm font-semibold uppercase tracking-widest text-muted mb-3">
-        Our most popular package
-      </p>
       <div className="text-2xl sm:text-3xl font-extrabold text-heading leading-snug flex flex-wrap items-center gap-x-2 gap-y-1">
         <span>Combine a</span>
         <LayoutGroup>

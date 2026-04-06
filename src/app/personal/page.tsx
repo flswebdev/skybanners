@@ -60,9 +60,6 @@ export default function PersonalPage() {
               <Button href="/#contact" variant="primary" size="large">
                 Plan Your Moment
               </Button>
-              <Button href="#occasions" variant="secondary" size="large">
-                See Occasions
-              </Button>
             </div>
           </div>
         </div>
@@ -134,11 +131,11 @@ export default function PersonalPage() {
                 const Icon = occasionIcons[occasion.icon as keyof typeof occasionIcons];
                 return (
                   <div key={occasion.title} className="flex items-start gap-3">
-                    <div className="h-8 w-8 bg-white border border-card-border flex items-center justify-center shrink-0">
-                      <Icon className="h-4 w-4 text-muted" />
+                    <div className="h-8 w-8 bg-red/10 border border-red/20 flex items-center justify-center shrink-0">
+                      <Icon className="h-4 w-4 text-red" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-heading leading-tight">
+                      <p className="text-sm font-semibold text-red leading-tight">
                         {occasion.title}
                       </p>
                       <p className="text-xs text-muted leading-snug mt-0.5 line-clamp-2">

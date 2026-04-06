@@ -5,6 +5,7 @@ import {
   ClipboardList, PenLine, Palette,
   CheckCircle, ArrowRight, Users,
 } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui";
 import { Card } from "@/components/ui";
 import {
@@ -52,9 +53,6 @@ export default function BusinessPage() {
               <Button href="#quote" variant="primary" size="large">
                 Get a Business Quote
               </Button>
-              <Button href="#clients" variant="secondary" size="large">
-                See Our Clients
-              </Button>
             </div>
           </div>
         </div>
@@ -89,20 +87,17 @@ export default function BusinessPage() {
               advertising delivers results.
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-6 items-center justify-items-center sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-12 lg:gap-y-8">
             {FEATURED_CLIENTS.map((client) => (
-              <div
-                key={client.name}
-                className="rounded-xl border border-card-border bg-card p-5 text-center shadow-sm hover:border-red/30 hover:shadow-md transition-all duration-300"
-              >
-                <span className="text-lg font-bold text-heading">
-                  {client.name}
-                </span>
-                {"note" in client && client.note && (
-                  <span className="block text-xs text-red mt-1">
-                    {client.note}
-                  </span>
-                )}
+              <div key={client.name} className="flex items-center justify-center">
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={160}
+                  height={48}
+                  className="opacity-100"
+                  style={{ height: "32px", width: "auto", objectFit: "contain" }}
+                />
               </div>
             ))}
           </div>
@@ -120,6 +115,14 @@ export default function BusinessPage() {
               Compared to digital, print, TV, and traditional outdoor media,
               aerial banners deliver unmatched recall and cost efficiency.
             </p>
+          </div>
+          <div className="relative w-full h-72 mb-12 overflow-hidden rounded-lg">
+            <Image
+              src="/business-gaslight.jpg"
+              alt="Gaslight District combo banner flying in the sky"
+              fill
+              className="object-cover object-center"
+            />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {B2B_WHY_AERIAL.map((item) => {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Sparkles, Baby, Palette, Layers,
   Heart, Trophy, PartyPopper, Building2, GraduationCap,
@@ -27,12 +28,12 @@ const useCaseIcons = { Baby, Heart, Trophy, PartyPopper, Building2, GraduationCa
 export default function SmokeDisplaysPage() {
   return (
     <main>
-      <ServiceHero {...SMOKE_PAGE} />
+      <ServiceHero {...SMOKE_PAGE} video="/videos/smoke-hero.mp4" />
 
-      {/* What It Is + Specs */}
+      {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
                 What Are Smoke Displays?
@@ -50,13 +51,35 @@ export default function SmokeDisplaysPage() {
               </p>
               <GenderRevealCallout />
             </div>
-            <div className="space-y-8">
+            <div className="overflow-hidden shadow-lg">
+              <Image
+                src="/smoke-display-1.jpg"
+                alt="Coloured smoke display from aircraft"
+                width={1920}
+                height={900}
+                className="w-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Specs + Colours below */}
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="overflow-hidden shadow-lg h-full order-last lg:order-first">
+              <Image
+                src="/smoke-display-2.jpg"
+                alt="Smoke display aerial view"
+                width={1920}
+                height={900}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div>
               <SpecsTable title="Smoke Display Specs" specs={SMOKE_SPECS} />
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted mb-4">
+              <div className="mt-8">
+                <h3 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
                   Available Colours
                 </h3>
-                <div className="grid grid-cols-4 gap-x-4 gap-y-5">
+                <div className="flex gap-6">
                   {SMOKE_COLORS.map((smoke) => (
                     <div key={smoke.color} className="text-center">
                       <div

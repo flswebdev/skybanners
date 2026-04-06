@@ -11,7 +11,7 @@ interface SpecsTableProps {
 export function SpecsTable({ title, specs }: SpecsTableProps) {
   return (
     <div>
-      <h3 className="text-sm font-semibold uppercase tracking-widest text-muted mb-3">{title}</h3>
+      <h3 className="text-3xl sm:text-4xl font-bold text-heading mb-4">{title}</h3>
       <dl className="divide-y divide-card-border">
         {specs.map((spec) => (
           <div key={spec.label} className="flex justify-between gap-4 py-3">

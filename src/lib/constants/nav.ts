@@ -37,11 +37,48 @@ export const NAV_ITEMS: NavItem[] = [
       },
     ],
   },
-  { label: "Why Aerial", href: "/why-aerial", type: "link" },
-  { label: "How It Works", href: "/how-it-works", type: "link" },
-  { label: "For Business", href: "/business", type: "link" },
-  { label: "For You", href: "/personal", type: "link" },
-  { label: "About", href: "/about", type: "link" },
+  {
+    label: "Explore",
+    type: "dropdown",
+    items: [
+      {
+        label: "Why Aerial",
+        href: "/why-aerial",
+        description: "Why aerial advertising works",
+      },
+      {
+        label: "How It Works",
+        href: "/how-it-works",
+        description: "From booking to flight — the full process",
+      },
+      {
+        label: "Gallery",
+        href: "/gallery",
+        description: "See our banners in the sky",
+      },
+      {
+        label: "Locations",
+        href: "/locations",
+        description: "Areas we fly across Ontario",
+      },
+    ],
+  },
+  {
+    label: "Who It's For",
+    type: "dropdown",
+    items: [
+      {
+        label: "For Business",
+        href: "/business",
+        description: "Brand campaigns, events, and grand openings",
+      },
+      {
+        label: "For You",
+        href: "/personal",
+        description: "Proposals, gender reveals, and celebrations",
+      },
+    ],
+  },
 ] as const;
 
 // Back-compat: flat array used by old code that hasn't been updated yet
@@ -70,7 +107,6 @@ export const FOOTER_EXPLORE = [
 ] as const;
 
 export const FOOTER_ABOUT = [
-  { label: "Our Story", href: "/about" },
   { label: "For Business", href: "/business" },
   { label: "For You", href: "/personal" },
 ] as const;

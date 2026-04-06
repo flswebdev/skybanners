@@ -4,10 +4,8 @@ export const BILLBOARD_PAGE = {
   badge: "Billboard Banners",
   headline: "Full-Colour Banners That Command Attention",
   headlineAccent: "Command Attention",
-  description:
-    "Large-format printed banners with your full branding\u2014logos, colours, imagery, and custom designs. Billboard banners deliver the highest visual impact for brand recognition from the sky.",
+  description: "",
   primaryCta: "Get a Billboard Quote",
-  secondaryCta: "See Our Work",
 } as const;
 
 export const BILLBOARD_SPECS = [
@@ -81,19 +79,18 @@ export const LETTER_PAGE = {
   badge: "Letter Banners",
   headline: "Bold Text Messages in the Sky",
   headlineAccent: "in the Sky",
-  description:
-    "Individual character banners spell out your message in bold, high-contrast letters visible from the ground. No production cost, quick turnaround\u2014perfect for promotions, proposals, and time-sensitive campaigns.",
+  description: "",
   primaryCta: "Get a Letter Banner Quote",
-  secondaryCta: "View Character Limits",
 } as const;
 
 export const LETTER_SPECS = [
   { label: "Banner Type", value: "Individual character letters" },
+  { label: "Max Characters", value: "40 including spaces" },
   { label: "Production Cost", value: "None \u2014 letters are reusable" },
   { label: "Turnaround", value: "As fast as 24\u201348 hours" },
-  { label: "Colours", value: "High-contrast black on white" },
+  { label: "Colours", value: "Black or red characters on white" },
   { label: "Visibility", value: "Readable from 1+ km away" },
-  { label: "Best For", value: "Short, punchy text messages" },
+  { label: "Best For", value: "Proposals, celebrations, grand openings, event promos" },
 ] as const;
 
 export const LETTER_SIZE_LIMITS = [
@@ -165,10 +162,8 @@ export const COMBO_PAGE = {
   badge: "Combo Banners",
   headline: "The Best of Both Worlds",
   headlineAccent: "Both Worlds",
-  description:
-    "Combine a full-colour printed billboard graphic with bold letter text for maximum impact. Your logo and branding plus a custom text message\u2014the highest-engagement aerial format available.",
+  description: "",
   primaryCta: "Get a Combo Banner Quote",
-  secondaryCta: "See Banner Options",
 } as const;
 
 export const COMBO_SPECS = [
@@ -242,10 +237,8 @@ export const SMOKE_PAGE = {
   badge: "Smoke Displays",
   headline: "Dramatic Colour in the Sky",
   headlineAccent: "in the Sky",
-  description:
-    "Coloured smoke displays create breathtaking visual moments visible for miles. Available in red and blue, perfect for gender reveals, celebrations, or as a dramatic add-on to any banner flight.",
+  description: "",
   primaryCta: "Book a Smoke Display",
-  secondaryCta: "Learn More",
 } as const;
 
 export const SMOKE_SPECS = [

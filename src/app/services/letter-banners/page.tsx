@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Zap, DollarSign, Type, Repeat,
   Heart, Megaphone, PartyPopper, Store, TrendingUp, Calendar,
@@ -25,12 +26,15 @@ const useCaseIcons = { Heart, Megaphone, PartyPopper, Store, TrendingUp, Calenda
 export default function LetterBannersPage() {
   return (
     <main>
-      <ServiceHero {...LETTER_PAGE} />
+      <ServiceHero
+        {...LETTER_PAGE}
+        image={{ src: "/letter-banners-hangar.jpg", alt: "Letter banner segments laid out in the hangar ready for flight" }}
+      />
 
-      {/* What It Is + Specs */}
+      {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
                 What Are Letter Banners?
@@ -48,13 +52,33 @@ export default function LetterBannersPage() {
                 affordable and fastest aerial option.
               </p>
               <p className="text-muted leading-relaxed">
-                Character limits depend on letter height. Larger letters mean
-                fewer characters but greater visibility.
+                Maximum 40 characters including spaces. Keep your message short
+                and punchy — the best aerial messages are read in seconds.
               </p>
             </div>
-            <div className="space-y-8">
-              <SpecsTable title="Letter Banner Specs" specs={LETTER_SPECS} />
+            <div className="overflow-hidden shadow-lg">
+              <Image
+                src="/marry-me-wide.jpg"
+                alt="Letter banner in the sky — MY JAAN WILL YOU MARRY ME?"
+                width={1920}
+                height={900}
+                className="w-full object-cover"
+              />
             </div>
+          </div>
+
+          {/* Specs below */}
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="overflow-hidden shadow-lg h-full order-last lg:order-first">
+              <Image
+                src="/letter-banner-field2.jpg"
+                alt="Letter banner segments laid out in a field before flight"
+                width={1260}
+                height={945}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <SpecsTable title="Letter Banner Specs" specs={LETTER_SPECS} />
           </div>
         </div>
       </section>

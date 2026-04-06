@@ -1,9 +1,8 @@
 export const HOW_IT_WORKS_PAGE = {
   badge: "How It Works",
-  headline: "From Concept to Sky in 5 Simple Steps",
-  headlineAccent: "5 Simple Steps",
-  description:
-    "We handle everything from initial consultation to post-flight documentation. Here\u2019s exactly what to expect when you book an aerial campaign with Sky Banners.",
+  headline: "From Concept to Sky in 4 Simple Steps",
+  headlineAccent: "4 Simple Steps",
+  description: "",
   primaryCta: "Start Your Campaign",
   secondaryCta: "Contact Us",
 } as const;
@@ -55,18 +54,6 @@ export const EXPANDED_STEPS = [
       "GPS-tracked flight routes",
       "Real-time coordination for events",
       "Weather monitoring with free rescheduling",
-    ],
-  },
-  {
-    number: "05",
-    icon: "Camera" as const,
-    title: "Documentation & Delivery",
-    description: "After the flight, you receive professional photos, video footage, flight data, and a campaign summary. Everything you need to measure impact and share on social media.",
-    details: [
-      "Professional aerial photos & video",
-      "Social media-ready content package",
-      "Flight route & duration data",
-      "Estimated impressions report",
     ],
   },
 ] as const;

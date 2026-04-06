@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Palette, Eye, Camera, Award,
   Building2, Megaphone, Store, Clapperboard, Heart, Trophy,
@@ -25,12 +26,12 @@ const useCaseIcons = { Building2, Megaphone, Store, Clapperboard, Heart, Trophy 
 export default function BillboardBannersPage() {
   return (
     <main>
-      <ServiceHero {...BILLBOARD_PAGE} />
+      <ServiceHero {...BILLBOARD_PAGE} video="/videos/billboard-hero.mov" />
 
-      {/* What It Is + Specs */}
+      {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
                 What Are Billboard Banners?
@@ -52,6 +53,28 @@ export default function BillboardBannersPage() {
                 We handle everything: design assistance, production, flight
                 planning, and professional documentation of your banner in action.
               </p>
+            </div>
+            <div className="overflow-hidden shadow-lg">
+              <Image
+                src="/billboard-banner.jpg"
+                alt="Full-colour billboard banner towed behind aircraft"
+                width={1920}
+                height={900}
+                className="w-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Specs below */}
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="overflow-hidden shadow-lg h-full order-last lg:order-first">
+              <Image
+                src="/billboard-banner.jpg"
+                alt="Billboard banner aerial view"
+                width={1920}
+                height={900}
+                className="w-full h-full object-cover"
+              />
             </div>
             <SpecsTable title="Billboard Banner Specs" specs={BILLBOARD_SPECS} />
           </div>

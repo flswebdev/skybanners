@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Layers, TrendingUp, Share2, Award,
   Building2, Megaphone, Trophy, Heart, Store, Calendar,
@@ -25,12 +26,12 @@ const useCaseIcons = { Building2, Megaphone, Trophy, Heart, Store, Calendar } as
 export default function ComboBannersPage() {
   return (
     <main>
-      <ServiceHero {...COMBO_PAGE} />
+      <ServiceHero {...COMBO_PAGE} video="/videos/gender-reveal-hero.mp4#t=36" />
 
-      {/* What It Is + Specs */}
+      {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
                 What Are Combo Banners?
@@ -49,9 +50,31 @@ export default function ComboBannersPage() {
                 shares.
               </p>
               <p className="text-muted leading-relaxed">
-                Combo banners are our premium format&mdash;perfect for campaigns
+                Combo banners are our most popular format&mdash;perfect for campaigns
                 where you need both branding and messaging in a single pass.
               </p>
+            </div>
+            <div className="overflow-hidden shadow-lg">
+              <Image
+                src="/combo-banner-1.jpg"
+                alt="Combo banner aerial advertising"
+                width={1920}
+                height={900}
+                className="w-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Specs below */}
+          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="overflow-hidden shadow-lg h-full order-last lg:order-first">
+              <Image
+                src="/combo-banner-2.jpg"
+                alt="Combo banner in flight"
+                width={1920}
+                height={900}
+                className="w-full h-full object-cover"
+              />
             </div>
             <SpecsTable title="Combo Banner Specs" specs={COMBO_SPECS} />
           </div>

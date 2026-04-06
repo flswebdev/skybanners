@@ -23,7 +23,7 @@ export function Stats() {
   const active = STATS.find((s) => s.id === activeStat);
 
   return (
-    <section className="py-8 bg-black/60">
+    <section className="py-8 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
           {STATS.map((stat, i) => {
@@ -31,11 +31,11 @@ export function Stats() {
             return (
               <div
                 key={stat.id}
-                className="relative cursor-pointer rounded-xl overflow-hidden hover:bg-white/10 transition-colors flex flex-col"
+                className="relative cursor-pointer rounded-xl overflow-hidden hover:bg-gray-100 transition-colors flex flex-col"
                 onClick={() => setActiveStat(stat.id)}
               >
                 {/* ── Content ── */}
-                <div className="relative z-10 p-3 text-center group flex flex-col items-center h-full">
+                <div className="relative z-10 p-4 lg:p-6 text-center group flex flex-col items-center h-full">
                   <motion.div
                     animate={
                       isWave
@@ -43,13 +43,13 @@ export function Stats() {
                         : { color: i % 2 === 0 ? "#E81C1C" : "#3388FF", scale: 1 }
                     }
                     transition={{ duration: 1, ease: "easeInOut" }}
-                    className="text-2xl font-extrabold mb-1 tabular-nums"
+                    className="text-3xl lg:text-5xl font-extrabold mb-2 tabular-nums"
                   >
                     {stat.number}
                   </motion.div>
-                  <div className="text-xs font-medium text-white/80 flex-1">{stat.label}</div>
-                  <div className="text-[10px] text-white/30 flex items-center justify-center gap-1 group-hover:text-white/50 transition-colors whitespace-nowrap mt-2">
-                    View source <ArrowRight className="h-2.5 w-2.5 shrink-0" />
+                  <div className="text-xs lg:text-sm font-medium text-gray-700 flex-1">{stat.label}</div>
+                  <div className="text-[10px] text-gray-400 flex items-center justify-center gap-1 group-hover:text-gray-600 transition-colors whitespace-nowrap mt-2">
+                    {["Why it works", "See the impact", "Get a quote", "See why"][i]} <ArrowRight className="h-2.5 w-2.5 shrink-0" />
                   </div>
                 </div>
               </div>

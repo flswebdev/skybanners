@@ -1,15 +1,14 @@
 export const FEATURED_CLIENTS = [
-  { name: "McDonald's", highlight: true },
-  { name: "Mooseheads", highlight: false },
-  { name: "Shell Gas", highlight: false },
-  { name: "Subway", highlight: true },
-  { name: "East Park", highlight: false },
-  { name: "GTA Exotics", highlight: false },
-  { name: "McCain's", highlight: true },
-  { name: "Jet Auto Wash", highlight: true, note: "Repeat client" },
-  { name: "Sony", highlight: true },
-  { name: "Wealthsimple", highlight: true },
-  { name: "MGM", highlight: true },
+  { name: "McDonald's",    highlight: true,  logo: "/logos/clients/mcdonalds.svg" },
+  { name: "Mooseheads",   highlight: false, logo: "/logos/clients/mooseheads.png" },
+  { name: "Shell",        highlight: false, logo: "/logos/clients/shell.svg" },
+  { name: "Subway",       highlight: true,  logo: "/logos/clients/subway.svg" },
+  { name: "East Park",    highlight: false, logo: "/logos/clients/eastpark.svg" },
+  { name: "McCain's",     highlight: true,  logo: "/logos/clients/mccain.svg" },
+  { name: "Jet Auto Wash",highlight: true,  logo: "/logos/clients/jetautowash.png", note: "Repeat client" },
+  { name: "Sony",         highlight: true,  logo: "/logos/clients/sony.svg" },
+  { name: "Wealthsimple", highlight: true,  logo: "/logos/clients/wealthsimple.svg" },
+  { name: "MGM",          highlight: true,  logo: "/logos/clients/mgm.png" },
 ] as const;
 
 export const B2B_BANNER_OPTIONS = [

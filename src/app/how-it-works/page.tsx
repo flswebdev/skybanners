@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {
   Zap, ClipboardList, Wind,
-  CheckCircle, ArrowRight,
+  ArrowRight,
 } from "lucide-react";
 import { Button, Card, AccordionItem } from "@/components/ui";
 import { ServiceHero } from "@/components/sections";
@@ -9,7 +9,6 @@ import {
   HOW_IT_WORKS_PAGE,
   FILE_FORMATS,
   LEAD_TIMES,
-  DELIVERABLES,
   PROCESS_FAQS,
 } from "@/lib/constants";
 import { StepsSection } from "./StepsSection";
@@ -25,12 +24,28 @@ const leadIcons = { Zap, ClipboardList, Wind } as const;
 export default function HowItWorksPage() {
   return (
     <main>
-      <ServiceHero {...HOW_IT_WORKS_PAGE} />
+      <ServiceHero {...HOW_IT_WORKS_PAGE} video="/videos/how-it-works-hero.mp4" secondaryCtaClassName="bg-blue text-white border-blue hover:bg-blue/90" />
 
       {/* 5-Step Expanded Process */}
       <section id="details" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <StepsSection />
+        </div>
+      </section>
+
+      {/* Banner Pickup Video */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-6 text-center">A Letter Banner Pickup in Action</h2>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full shadow-lg"
+          >
+            <source src="/videos/banner-pickup.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
 
@@ -97,28 +112,6 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* What You Receive */}
-      <section className="py-20 bg-background-alt">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-              What You Receive
-            </h2>
-            <p className="text-muted leading-relaxed mb-8">
-              Every campaign includes professional documentation and reporting.
-              Here&apos;s what you get after your flight.
-            </p>
-            <ul className="space-y-3">
-              {DELIVERABLES.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-red mt-0.5 shrink-0" />
-                  <span className="text-foreground">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
 
       {/* Process FAQs */}
       <section className="py-20 bg-background">

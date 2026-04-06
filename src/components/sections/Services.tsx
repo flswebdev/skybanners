@@ -28,7 +28,7 @@ export function Services() {
             const Icon = iconMap[service.icon];
             const hasBadge = "badge" in service && service.badge;
             return (
-              <div key={service.title} className="group relative rounded-xl border border-card-border bg-background-alt p-6 hover:-translate-y-0.5 hover:border-muted/30 hover:shadow-md transition-all duration-200">
+              <div key={service.title} className="group relative border border-card-border bg-background-alt p-6 hover:-translate-y-0.5 hover:border-muted/30 hover:shadow-md transition-all duration-200">
                 {hasBadge && (
                   <div className="absolute -top-2.5 left-4">
                     <span className="inline-flex items-center rounded-full bg-red px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">

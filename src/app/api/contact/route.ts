@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { name, email, phone, campaignType, message } = body;
+    const { name, email, phone, campaignType, message, fileUrls } = body;
 
     // Validation
     if (!name || !email || !campaignType || !message) {
@@ -64,6 +64,7 @@ export async function POST(request: Request) {
       phone: sanitize(phone || ""),
       campaignType: sanitize(campaignType),
       message: sanitize(message),
+      fileUrls: Array.isArray(fileUrls) ? (fileUrls as string[]).filter((u) => typeof u === "string") : [],
     };
 
     // Check for Resend API key
@@ -84,6 +85,10 @@ export async function POST(request: Request) {
           <p><strong>Campaign Type:</strong> ${sanitizedData.campaignType}</p>
           <p><strong>Message:</strong></p>
           <p>${sanitizedData.message}</p>
+          ${sanitizedData.fileUrls.length > 0 ? `
+          <p><strong>Attached Files:</strong></p>
+          <ul>${sanitizedData.fileUrls.map((url) => `<li><a href="${url}">${url.split("/").pop()}</a></li>`).join("")}</ul>
+          ` : ""}
         `,
       });
     } else {

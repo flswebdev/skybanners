@@ -24,7 +24,7 @@ const leadIcons = { Zap, ClipboardList, Wind } as const;
 export default function HowItWorksPage() {
   return (
     <main>
-      <ServiceHero {...HOW_IT_WORKS_PAGE} video="/videos/how-it-works-hero.mp4" secondaryCtaClassName="bg-blue text-white border-blue hover:bg-blue/90" />
+      <ServiceHero {...HOW_IT_WORKS_PAGE} video="https://media.skybanners.ca/how-it-works-hero.mp4" videoPoster="https://media.skybanners.ca/how-it-works-hero-poster.jpg" secondaryCtaClassName="bg-blue text-white border-blue hover:bg-blue/90" />
 
       {/* 5-Step Expanded Process */}
       <section id="details" className="py-20 bg-background">
@@ -42,9 +42,10 @@ export default function HowItWorksPage() {
             muted
             loop
             playsInline
+            poster="https://media.skybanners.ca/banner-pickup-poster.jpg"
             className="w-full shadow-lg"
           >
-            <source src="/videos/banner-pickup.mp4" type="video/mp4" />
+            <source src="https://media.skybanners.ca/banner-pickup.mp4" type="video/mp4" />
           </video>
         </div>
       </section>

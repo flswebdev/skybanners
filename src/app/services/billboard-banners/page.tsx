@@ -26,7 +26,7 @@ const useCaseIcons = { Building2, Megaphone, Store, Clapperboard, Heart, Trophy 
 export default function BillboardBannersPage() {
   return (
     <main>
-      <ServiceHero {...BILLBOARD_PAGE} video="/videos/billboard-hero.mov" />
+      <ServiceHero {...BILLBOARD_PAGE} video="https://media.skybanners.ca/billboard-hero.mp4" videoPoster="https://media.skybanners.ca/billboard-hero-poster.jpg" />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">

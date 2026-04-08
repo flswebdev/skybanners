@@ -14,6 +14,7 @@ interface ServiceHeroProps {
   secondaryCtaClassName?: string;
   image?: { src: string; alt: string };
   video?: string;
+  videoPoster?: string;
 }
 
 export function ServiceHero({
@@ -29,6 +30,7 @@ export function ServiceHero({
   secondaryCtaClassName,
   image,
   video,
+  videoPoster,
 }: ServiceHeroProps) {
   const parts = headline.split(headlineAccent);
 
@@ -41,10 +43,10 @@ export function ServiceHero({
             muted
             loop
             playsInline
+            poster={videoPoster}
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={video} type="video/mp4" />
-            <source src={video} type="video/quicktime" />
           </video>
           <div className="absolute inset-0 bg-white/60" />
         </>

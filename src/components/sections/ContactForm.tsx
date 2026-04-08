@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { useState, useRef } from "react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Paperclip } from "lucide-react";
+import { upload } from "@vercel/blob/client";
 import { Button } from "@/components/ui";
 import { CONTACT, CAMPAIGN_TYPES } from "@/lib/constants";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,10 +34,20 @@ export function ContactForm() {
     setStatus("sending");
 
     try {
+      // Upload any attached files to Vercel Blob
+      const fileUrls: string[] = [];
+      for (const file of selectedFiles) {
+        const blob = await upload(file.name, file, {
+          access: "public",
+          handleUploadUrl: "/api/upload",
+        });
+        fileUrls.push(blob.url);
+      }
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, fileUrls }),
       });
 
       if (!res.ok) {
@@ -43,6 +56,7 @@ export function ContactForm() {
       }
 
       setStatus("success");
+      setSelectedFiles([]);
       form.reset();
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
@@ -145,6 +159,39 @@ export function ContactForm() {
                     placeholder="What's your message? Where and when would you like to fly? Any specific requirements?"
                     className={`${inputClass} resize-none`}
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-white mb-1.5">
+                    Attach Files <span className="text-white/40 font-normal">(logos, photos, design briefs — optional)</span>
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/60 hover:border-blue hover:text-white transition-colors cursor-pointer"
+                  >
+                    <Paperclip className="h-4 w-4" />
+                    {selectedFiles.length === 0
+                      ? "Choose files…"
+                      : `${selectedFiles.length} file${selectedFiles.length > 1 ? "s" : ""} selected`}
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    accept=".jpg,.jpeg,.png,.gif,.webp,.pdf,.eps,.ai,.svg,.doc,.docx,.ppt,.pptx"
+                    className="sr-only"
+                    onChange={(e) => setSelectedFiles(Array.from(e.target.files ?? []))}
+                  />
+                  {selectedFiles.length > 0 && (
+                    <ul className="mt-2 space-y-1">
+                      {selectedFiles.map((f) => (
+                        <li key={f.name} className="text-xs text-white/50 truncate">
+                          {f.name} ({(f.size / 1024 / 1024).toFixed(1)} MB)
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 {status === "error" && (

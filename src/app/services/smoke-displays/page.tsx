@@ -28,7 +28,7 @@ const useCaseIcons = { Baby, Heart, Trophy, PartyPopper, Building2, GraduationCa
 export default function SmokeDisplaysPage() {
   return (
     <main>
-      <ServiceHero {...SMOKE_PAGE} video="/videos/smoke-hero.mp4" />
+      <ServiceHero {...SMOKE_PAGE} video="https://media.skybanners.ca/smoke-hero.mp4" videoPoster="https://media.skybanners.ca/smoke-hero-poster.jpg" />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">

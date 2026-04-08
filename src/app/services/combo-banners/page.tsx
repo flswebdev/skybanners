@@ -26,7 +26,7 @@ const useCaseIcons = { Building2, Megaphone, Trophy, Heart, Store, Calendar } as
 export default function ComboBannersPage() {
   return (
     <main>
-      <ServiceHero {...COMBO_PAGE} video="/videos/gender-reveal-hero.mp4#t=36" />
+      <ServiceHero {...COMBO_PAGE} video="https://media.skybanners.ca/gender-reveal-hero.mp4" videoPoster="https://media.skybanners.ca/gender-reveal-hero-poster.jpg" />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">

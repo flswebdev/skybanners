@@ -10,10 +10,12 @@ export const BILLBOARD_PAGE = {
 
 export const BILLBOARD_SPECS = [
   { label: "Banner Type", value: "Full-colour digital print" },
+  { label: "Max Size", value: "2,500 sq ft" },
+  { label: "Production Cost", value: "From $2.35/sq ft" },
   { label: "Material", value: "Durable aviation-grade nylon" },
   { label: "Accepted Formats", value: "PNG, JPG, PDF, AI, EPS" },
   { label: "Resolution", value: "Minimum 150 DPI at scale" },
-  { label: "Lead Time", value: "2\u20133 weeks (design + production)" },
+  { label: "Lead Time", value: "2–3 weeks (design + production)" },
   { label: "Design Assistance", value: "Included at no extra cost" },
 ] as const;
 
@@ -21,7 +23,7 @@ export const BILLBOARD_BENEFITS = [
   {
     icon: "Palette" as const,
     title: "Full Branding Control",
-    description: "Your logo, brand colours, product imagery, and custom design\u2014exactly as you envision it, printed at banner scale.",
+    description: "Your logo, brand colours, product imagery, and custom design—exactly as you envision it, printed at banner scale.",
   },
   {
     icon: "Eye" as const,
@@ -86,8 +88,8 @@ export const LETTER_PAGE = {
 export const LETTER_SPECS = [
   { label: "Banner Type", value: "Individual character letters" },
   { label: "Max Characters", value: "40 including spaces" },
-  { label: "Production Cost", value: "None \u2014 letters are reusable" },
-  { label: "Turnaround", value: "As fast as 24\u201348 hours" },
+  { label: "Production Cost", value: "None — letters are reusable" },
+  { label: "Turnaround", value: "As fast as 24–48 hours" },
   { label: "Colours", value: "Black or red characters on white" },
   { label: "Visibility", value: "Readable from 1+ km away" },
   { label: "Best For", value: "Proposals, celebrations, grand openings, event promos" },
@@ -97,24 +99,24 @@ export const LETTER_SIZE_LIMITS = [
   { height: "5 ft", maxChars: 50, description: "Maximum characters for compact banners" },
   { height: "7 ft", maxChars: 40, description: "Standard size, best balance of visibility and length" },
   { height: "10 ft", maxChars: 30, description: "Large letters, great for stadiums and beaches" },
-  { height: "12 ft", maxChars: 25, description: "Extra large \u2014 maximum visibility from the ground" },
+  { height: "12 ft", maxChars: 25, description: "Extra large — maximum visibility from the ground" },
 ] as const;
 
 export const LETTER_BENEFITS = [
   {
     icon: "Zap" as const,
     title: "Quick Turnaround",
-    description: "No printing or production needed. Letter banners can be ready in as little as 24\u201348 hours for last-minute campaigns.",
+    description: "No printing or production needed. Letter banners can be ready in as little as 24–48 hours for last-minute campaigns.",
   },
   {
     icon: "DollarSign" as const,
     title: "No Production Cost",
-    description: "Letters are reusable inventory\u2014you only pay for the flight. This makes letter banners the most cost-effective option.",
+    description: "Letters are reusable inventory—you only pay for the flight. This makes letter banners the most cost-effective option.",
   },
   {
     icon: "Type" as const,
     title: "Bold & Readable",
-    description: "High-contrast characters are designed to be clearly readable from the ground. No squinting\u2014your message is instantly clear.",
+    description: "High-contrast characters are designed to be clearly readable from the ground. No squinting—your message is instantly clear.",
   },
   {
     icon: "Repeat" as const,
@@ -137,7 +139,7 @@ export const LETTER_USE_CASES = [
   {
     icon: "PartyPopper" as const,
     title: "Birthday & Celebration Messages",
-    description: "\"Happy 30th Sarah!\" or \"Congrats Class of 2026!\"\u2014personal messages that become lifelong memories.",
+    description: "\"Happy 30th Sarah!\" or \"Congrats Class of 2026!\"—personal messages that become lifelong memories.",
   },
   {
     icon: "Store" as const,
@@ -170,7 +172,7 @@ export const COMBO_SPECS = [
   { label: "Banner Type", value: "Billboard graphic + letter text" },
   { label: "Graphic Formats", value: "PNG, JPG, PDF, AI, EPS" },
   { label: "Text Characters", value: "Up to 30 characters alongside graphic" },
-  { label: "Lead Time", value: "2\u20133 weeks (design + production)" },
+  { label: "Lead Time", value: "2–3 weeks (design + production)" },
   { label: "Design Assistance", value: "Included at no extra cost" },
   { label: "Best For", value: "Brand logo + promotional message" },
 ] as const;
@@ -194,7 +196,7 @@ export const COMBO_BENEFITS = [
   {
     icon: "Award" as const,
     title: "Complete Brand Message",
-    description: "Deliver your complete brand story in a single pass\u2014no compromise between visuals and messaging.",
+    description: "Deliver your complete brand story in a single pass—no compromise between visuals and messaging.",
   },
 ] as const;
 
@@ -207,7 +209,7 @@ export const COMBO_USE_CASES = [
   {
     icon: "Megaphone" as const,
     title: "Product Launch + Call to Action",
-    description: "Show your new product and tell people where to get it\u2014all in one banner pass.",
+    description: "Show your new product and tell people where to get it—all in one banner pass.",
   },
   {
     icon: "Trophy" as const,
@@ -242,10 +244,10 @@ export const SMOKE_PAGE = {
 } as const;
 
 export const SMOKE_SPECS = [
-  { label: "Available Colours", value: "Red & Blue" },
+  { label: "Available Colours", value: "Pink & Blue" },
   { label: "Visibility", value: "Visible for miles in clear conditions" },
   { label: "Duration", value: "Varies by flight time" },
-  { label: "Add-On Available", value: "Yes \u2014 combine with any banner type" },
+  { label: "Add-On Available", value: "Yes — combine with any banner type" },
   { label: "Lead Time", value: "As fast as 48 hours" },
   { label: "Best For", value: "Gender reveals, celebrations, events" },
 ] as const;
@@ -254,7 +256,7 @@ export const SMOKE_BENEFITS = [
   {
     icon: "Sparkles" as const,
     title: "Dramatic Visual Impact",
-    description: "Nothing matches the spectacle of coloured smoke trails across the sky. It\u2019s a show-stopping moment everyone remembers.",
+    description: "Nothing matches the spectacle of coloured smoke trails across the sky. It’s a show-stopping moment everyone remembers.",
   },
   {
     icon: "Baby" as const,
@@ -263,8 +265,8 @@ export const SMOKE_BENEFITS = [
   },
   {
     icon: "Palette" as const,
-    title: "Red & Blue",
-    description: "Choose red or blue smoke to match your event. Perfect for gender reveals, team colours, or brand activations.",
+    title: "Pink & Blue",
+    description: "Choose pink or blue smoke to match your event. Perfect for gender reveals, team colours, or brand activations.",
   },
   {
     icon: "Layers" as const,
@@ -277,7 +279,7 @@ export const SMOKE_USE_CASES = [
   {
     icon: "Baby" as const,
     title: "Gender Reveals",
-    description: "The most popular smoke display\u2014blue smoke announces your baby\u2019s gender in spectacular fashion.",
+    description: "The most popular smoke display—pink or blue smoke announces your baby’s gender in spectacular fashion.",
   },
   {
     icon: "Heart" as const,

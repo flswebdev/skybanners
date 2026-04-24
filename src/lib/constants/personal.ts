@@ -15,26 +15,26 @@ export const PERSONAL_OCCASIONS = [
   {
     icon: "Baby" as const,
     title: "Gender Reveals",
-    description: "Announce your baby\u2019s gender with coloured smoke displays visible for miles. Choose pink or blue smoke for the ultimate reveal moment. Banner + smoke combos available.",
+    description: "Announce your baby's gender with coloured smoke displays visible for miles. Choose pink or blue smoke for the ultimate reveal moment. Banner + smoke combos available.",
     popular: true,
     image: "/personal-gender-reveal.jpg",
   },
   {
     icon: "Cake" as const,
     title: "Birthdays & Milestones",
-    description: "Make their birthday legendary. Whether it\u2019s a Sweet 16, 30th, 50th, or 100th\u2014a sky banner turns any birthday into front-page news.",
+    description: "Make their birthday legendary. Whether it's a Sweet 16, 30th, 50th, or 100th—a sky banner turns any birthday into front-page news.",
     popular: false,
   },
   {
     icon: "GraduationCap" as const,
     title: "Graduations",
-    description: "Celebrate their achievement with a message they\u2019ll never forget. Fly a congratulations banner over the ceremony or grad party.",
+    description: "Celebrate their achievement with a message they'll never forget. Fly a congratulations banner over the ceremony or grad party.",
     popular: false,
   },
   {
     icon: "Star" as const,
     title: "Anniversaries",
-    description: "Mark your milestone with a grand romantic gesture. Whether it\u2019s your 1st or 50th anniversary, put your love story in the sky.",
+    description: "Mark your milestone with a grand romantic gesture. Whether it's your 1st or 50th anniversary, put your love story in the sky.",
     popular: false,
   },
   {
@@ -46,23 +46,22 @@ export const PERSONAL_OCCASIONS = [
   {
     icon: "Mail" as const,
     title: "Custom Messages",
-    description: "Apologies, thank-yous, promposals, \"I love you\"\u2014if you can say it in 40 characters, we can fly it. Any message, any occasion.",
+    description: "Apologies, thank-yous, promposals, \"I love you\"—if you can say it in 40 characters, we can fly it. Any message, any occasion.",
     popular: true,
     image: "/personal-custom.jpg",
   },
 ] as const;
 
 export const SMOKE_COLORS = [
-  { color: "Red", hex: "#EF4444" },
-  { color: "Blue", hex: "#3B82F6" },
   { color: "Pink", hex: "#F43F5E" },
+  { color: "Blue", hex: "#3B82F6" },
 ] as const;
 
 export const PERSONAL_BANNER_OPTIONS = [
   {
     icon: "PenLine" as const,
     title: "Letter Banner",
-    description: "Your custom message in bold, individual characters. Up to 40 characters\u2014perfect for proposals, birthday wishes, and congratulations.",
+    description: "Your custom message in bold, individual characters. Up to 40 characters—perfect for proposals, birthday wishes, and congratulations.",
     bestFor: "Short, punchy messages",
   },
   {
@@ -74,13 +73,13 @@ export const PERSONAL_BANNER_OPTIONS = [
   {
     icon: "Palette" as const,
     title: "Combo Banner",
-    description: "Printed graphic plus text\u2014combine a photo or design with your personal message for maximum emotional impact.",
+    description: "Printed graphic plus text—combine a photo or design with your personal message for maximum emotional impact.",
     bestFor: "Photo + message combinations",
   },
   {
     icon: "Wind" as const,
     title: "Smoke Display",
-    description: "Coloured smoke trails in the sky. Available in red or blue. Perfect for gender reveals or adding dramatic flair to any celebration.",
+    description: "Coloured smoke trails in the sky. Available in pink or blue. Perfect for gender reveals or adding dramatic flair to any celebration.",
     bestFor: "Gender reveals & dramatic reveals",
   },
 ] as const;
@@ -97,7 +96,7 @@ export const PERSONAL_INCLUSIONS = [
 export const PERSONAL_FAQS = [
   {
     question: "How far in advance do I need to book?",
-    answer: "We recommend 2\u20133 weeks for custom billboard banners. Letter banners and smoke displays can sometimes be arranged with shorter notice. For proposals and events with specific dates, book as early as possible to guarantee your slot.",
+    answer: "We recommend 2–3 weeks for custom billboard banners. Letter banners and smoke displays can sometimes be arranged with shorter notice. For proposals and events with specific dates, book as early as possible to guarantee your slot.",
   },
   {
     question: "Can you guarantee the exact time of the flyover?",
@@ -105,7 +104,7 @@ export const PERSONAL_FAQS = [
   },
   {
     question: "What if my proposal / event is a surprise?",
-    answer: "We specialize in surprise flyovers! We\u2019ll work discreetly with you on timing and positioning. Just make sure your person is looking up when the banner appears\u2014we can help coordinate that too.",
+    answer: "We specialize in surprise flyovers! We'll work discreetly with you on timing and positioning. Just make sure your person is looking up when the banner appears—we can help coordinate that too.",
   },
   {
     question: "How visible is the banner from the ground?",
@@ -113,7 +112,7 @@ export const PERSONAL_FAQS = [
   },
   {
     question: "What smoke colours are available for gender reveals?",
-    answer: "We offer 8 smoke colours: white, red, blue, green, yellow, orange, purple, and pink. For gender reveals, most people choose pink (girl) or blue (boy). You can also combine banner + smoke for a full reveal experience.",
+    answer: "We offer pink and blue smoke. For gender reveals, most people choose pink (girl) or blue (boy). You can also combine banner + smoke for a full reveal experience.",
   },
   {
     question: "Can I get photos and video of the flight?",

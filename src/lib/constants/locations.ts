@@ -1,9 +1,9 @@
 export const LOCATIONS_PAGE = {
   badge: "Coverage Area",
-  headline: "Serving Southern Ontario from Coast to Coast",
-  headlineAccent: "Southern Ontario",
+  headline: "Serving Southern Ontario & Quebec",
+  headlineAccent: "Southern Ontario & Quebec",
   description:
-    "We fly aerial banners across the most populated and event-rich regions of Southern Ontario. From Toronto to London, Niagara to Barrie\u2014if there\u2019s an audience, we can reach them.",
+    "We fly aerial banners across Southern Ontario and into Quebec. From Toronto to London, Niagara to Barrie—if there’s an audience, we can reach them.",
   primaryCta: "Book Your Location",
   secondaryCta: "See City Details",
 } as const;
@@ -11,13 +11,13 @@ export const LOCATIONS_PAGE = {
 export const COVERAGE_CITIES = [
   {
     city: "Toronto & GTA",
-    description: "Canada\u2019s largest metro. Beaches, stadiums, festivals, and millions of potential viewers throughout the Greater Toronto Area.",
+    description: "Canada’s largest metro. Beaches, stadiums, festivals, and millions of potential viewers throughout the Greater Toronto Area.",
     highlights: ["CNE", "Woodbine Beach", "Rogers Centre", "Ontario Place"],
     icon: "Building2" as const,
   },
   {
     city: "Hamilton",
-    description: "Steel City\u2019s waterfront, stadiums, and vibrant event scene make it a prime aerial advertising market.",
+    description: "Steel City’s waterfront, stadiums, and vibrant event scene make it a prime aerial advertising market.",
     highlights: ["Tim Hortons Field", "Bayfront Park", "Dundurn Castle", "Gage Park"],
     icon: "Building2" as const,
   },
@@ -51,12 +51,12 @@ export const VENUE_TYPES = [
   {
     icon: "Waves" as const,
     title: "Beaches & Waterfronts",
-    description: "Lake Ontario, Lake Huron, Georgian Bay\u2014summer crowds look up when a banner passes over the water.",
+    description: "Lake Ontario, Lake Huron, Georgian Bay—summer crowds look up when a banner passes over the water.",
   },
   {
     icon: "Trophy" as const,
     title: "Stadiums & Arenas",
-    description: "Pre-game and halftime flyovers reach captive audiences of 10,000\u201360,000+ fans.",
+    description: "Pre-game and halftime flyovers reach captive audiences of 10,000–60,000+ fans.",
   },
   {
     icon: "Tent" as const,
@@ -81,17 +81,16 @@ export const VENUE_TYPES = [
 ] as const;
 
 export const OPERATING_SEASON = {
-  title: "Operating Season",
-  season: "May through October",
+  title: "Year-Round Operations",
+  season: "Year-round",
   description:
-    "Our flying season runs from May through October, weather permitting. This coincides with Southern Ontario\u2019s peak outdoor event season\u2014beaches, festivals, sporting events, and celebrations.",
+    "We fly year-round, weather permitting. Southern Ontario and Quebec offer aerial advertising opportunities across all seasons—from summer beaches and festivals to fall events, winter celebrations, and spring openings.",
   details: [
-    { label: "Season Start", value: "Early May (Victoria Day weekend)" },
-    { label: "Season End", value: "Late October (weather permitting)" },
+    { label: "Operations", value: "Year-round (weather permitting)" },
     { label: "Peak Months", value: "June, July, August" },
     { label: "Flight Hours", value: "Daylight hours, optimal visibility" },
     { label: "Weather Policy", value: "Free rescheduling for weather delays" },
-    { label: "Booking Advice", value: "Book 2\u20134 weeks ahead for peak dates" },
+    { label: "Booking Advice", value: "Book 2–4 weeks ahead for peak dates" },
   ],
 } as const;
 

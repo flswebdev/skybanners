@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = {
   title: "Smoke Displays | Sky Banners",
   description:
-    "Coloured smoke displays in red or blue for gender reveals, celebrations, and events. Standalone or as an add-on to any banner flight. Southern Ontario.",
+    "Coloured smoke displays in pink or blue for gender reveals, celebrations, and events. Standalone or as an add-on to any banner flight. Southern Ontario.",
 };
 
 const benefitIcons = { Sparkles, Baby, Palette, Layers } as const;
@@ -28,7 +28,7 @@ const useCaseIcons = { Baby, Heart, Trophy, PartyPopper, Building2, GraduationCa
 export default function SmokeDisplaysPage() {
   return (
     <main>
-      <ServiceHero {...SMOKE_PAGE} video="https://media.skybanners.ca/smoke-hero.mp4" videoPoster="https://media.skybanners.ca/smoke-hero-poster.jpg" />
+      <ServiceHero {...SMOKE_PAGE} video="/videos/smoke-hero.mp4" />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">
@@ -46,7 +46,7 @@ export default function SmokeDisplaysPage() {
               </p>
               <p className="text-muted leading-relaxed mb-4">
                 Most popular for gender reveals, smoke displays are available in
-                red or blue and can be booked as a standalone service or added to
+                pink or blue and can be booked as a standalone service or added to
                 any banner flight for extra drama.
               </p>
               <GenderRevealCallout />

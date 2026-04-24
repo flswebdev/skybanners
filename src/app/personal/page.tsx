@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "Personal Aerial Banners & Celebrations",
   description:
-    "Make your proposal, gender reveal, birthday, or special moment unforgettable with a personal aerial banner. Smoke displays in red or blue. Southern Ontario.",
+    "Make your proposal, gender reveal, birthday, or special moment unforgettable with a personal aerial banner. Smoke displays in pink or blue. Southern Ontario.",
 };
 
 const occasionIcons = {
@@ -198,8 +198,7 @@ export default function PersonalPage() {
               <p className="text-muted leading-relaxed mb-4">
                 Add dramatic flair to your celebration with coloured smoke
                 trails visible for miles. Perfect for gender reveals&mdash;choose
-                pink for a girl or blue for a boy. Or pick any colour to match
-                your event theme.
+                pink for a girl or blue for a boy.
               </p>
               <p className="text-muted leading-relaxed mb-6">
                 Smoke displays can be booked on their own or combined with a

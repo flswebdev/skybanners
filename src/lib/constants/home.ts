@@ -65,7 +65,7 @@ export const SERVICES = [
     icon: "Wind" as const,
     title: "Smoke Displays",
     href: "/services/smoke-displays",
-    description: "Coloured smoke trails in red or blue for gender reveals, celebrations, and events.",
+    description: "Coloured smoke trails in pink or blue for gender reveals, celebrations, and events.",
   },
 ] as const;
 
@@ -193,7 +193,7 @@ export const COVERAGE_AREAS = [
 ] as const;
 
 export const FLIGHT_INFO = [
-  { label: "Operating Season", value: "May through October (weather permitting)" },
+  { label: "Operations", value: "Year-round (weather permitting)" },
   { label: "Flight Times", value: "Daylight hours, optimal visibility conditions" },
   { label: "Lead Time", value: "2-3 weeks recommended for custom banners" },
   { label: "Weather Policy", value: "Flights rescheduled at no charge for weather delays" },

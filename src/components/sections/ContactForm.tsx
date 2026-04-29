@@ -76,10 +76,7 @@ export function ContactForm() {
     <section id="contact" className="py-20 bg-charcoal">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-red/30 bg-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red mb-5">
-            Limited Availability
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+<h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Ready to Take Your Message to the{" "}
             <span className="text-red">Sky?</span>
           </h2>

@@ -50,8 +50,8 @@ export const EXPANDED_STEPS = [
     title: "Flight Execution",
     description: "Your banner takes to the sky. Our experienced pilots fly optimized routes over your target area at peak visibility times. We coordinate timing with your event.",
     details: [
-      "FAA/Transport Canada certified pilots",
-      "GPS-tracked flight routes",
+      "Transport Canada certified pilots",
+      "Pilot calls ahead so you know when to look up",
       "Real-time coordination for events",
       "Weather monitoring with free rescheduling",
     ],
@@ -93,12 +93,8 @@ export const LEAD_TIMES = [
 ] as const;
 
 export const DELIVERABLES = [
-  "High-resolution aerial photographs of your banner in flight",
-  "Professional video footage (drone and/or ground-level)",
-  "Social media content package (cropped and optimized for Instagram, Facebook, etc.)",
-  "GPS flight route map showing your banner\u2019s path",
-  "Flight duration and timing report",
-  "Estimated audience impressions based on location and event data",
+  "Pilot calls ahead so you know when to look up",
+  "Flexible rescheduling if weather doesn't cooperate",
 ] as const;
 
 export const PROCESS_FAQS = [
@@ -112,7 +108,7 @@ export const PROCESS_FAQS = [
   },
   {
     question: "How do you determine the flight route?",
-    answer: "We plan routes based on your target audience, venue location, wind patterns, and air traffic. Our pilots use GPS tracking to follow optimized paths that maximize visibility over your target area.",
+    answer: "We plan routes based on your target audience, venue location, wind patterns, and air traffic conditions. Our pilots follow optimized paths that maximize visibility over your target area.",
   },
   {
     question: "What happens if weather cancels my flight?",

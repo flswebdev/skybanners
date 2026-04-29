@@ -15,7 +15,7 @@ const CLIENTS = [
 
 export function SocialProof() {
   return (
-    <section className="py-12 bg-background border-y border-card-border">
+    <section className="pt-0 pb-12 bg-background border-b border-card-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted mb-8">
           Trusted by leading brands &amp; organizations
@@ -28,7 +28,7 @@ export function SocialProof() {
                 alt={client.name}
                 width={client.width}
                 height={client.height}
-                className="grayscale-0 opacity-100 lg:grayscale lg:opacity-50 lg:hover:grayscale-0 lg:hover:opacity-100 transition-all duration-300"
+                className="opacity-100"
                 style={{ height: "28px", width: "auto", objectFit: "contain" }}
               />
             </div>

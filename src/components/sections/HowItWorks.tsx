@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageSquare, Palette, Plane, BarChart3, ArrowRight } from "lucide-react";
+import { MessageSquare, Palette, Plane, ArrowRight } from "lucide-react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { STEPS } from "@/lib/constants";
@@ -9,11 +9,10 @@ const iconMap = {
   MessageSquare,
   Palette,
   Plane,
-  BarChart3,
 } as const;
 
-const CIRCLE_DELAYS        = [0, 1.6, 3.2, 4.8];
-const LINE_DELAYS          = [0.5, 2.1, 3.7];   // absolute — desktop horizontal lines
+const CIRCLE_DELAYS        = [0, 1.6, 3.2];
+const LINE_DELAYS          = [0.5, 2.1];        // absolute — desktop horizontal lines
 const LINE_DURATION        = 0.9;
 const CONNECTOR_DELAY      = 0.5;               // relative delay after card activates — mobile vertical lines
 const CONNECTOR_DURATION   = 0.54;              // LINE_DURATION * 0.6
@@ -22,7 +21,6 @@ const BORDER_DELAYS = [
   0,
   CIRCLE_DELAYS[1] + CONNECTOR_DELAY + CONNECTOR_DURATION,
   CIRCLE_DELAYS[2] + CONNECTOR_DELAY + CONNECTOR_DURATION,
-  CIRCLE_DELAYS[3] + CONNECTOR_DELAY + CONNECTOR_DURATION,
 ];
 
 export function HowItWorks() {
@@ -59,24 +57,21 @@ export function HowItWorks() {
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-red/30 bg-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red mb-5">
-            Simple Process
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">How It Works</h2>
+<h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">How It Works</h2>
           <p className="text-muted max-w-2xl mx-auto">
-            From concept to sky-high impact in four simple steps
+            From concept to sky-high impact in three simple steps
           </p>
         </div>
 
         <div ref={ref}>
           {/* ── Desktop: horizontal circles + line track ── */}
-          <div className="hidden lg:grid grid-cols-4 gap-6 relative mb-6">
-            <div className="absolute top-[18px] h-0.5 bg-gray-200" style={{ left: "12.5%", right: "12.5%" }} />
+          <div className="hidden lg:grid grid-cols-3 gap-6 relative mb-6">
+            <div className="absolute top-[18px] h-0.5 bg-gray-200" style={{ left: "16.67%", right: "16.67%" }} />
             {LINE_DELAYS.map((lineDelay, i) => (
               <motion.div
                 key={i}
                 className="absolute top-[18px] h-0.5 bg-red origin-left"
-                style={{ left: `${12.5 + i * 25}%`, width: "25%" }}
+                style={{ left: `${16.67 + i * 33.33}%`, width: "33.33%" }}
                 initial={{ scaleX: 0 }}
                 animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ duration: LINE_DURATION, delay: lineDelay, ease: "easeInOut" }}
@@ -147,7 +142,7 @@ export function HowItWorks() {
           </div>
 
           {/* ── Desktop: 4-col cards ── */}
-          <div className="hidden lg:grid grid-cols-4 gap-6">
+          <div className="hidden lg:grid grid-cols-3 gap-6">
             {STEPS.map((step, i) => {
               const Icon = iconMap[step.icon];
               const active = activeStep >= i;

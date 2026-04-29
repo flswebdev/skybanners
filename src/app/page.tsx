@@ -15,10 +15,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <SocialProof />
       <Stats />
-      <AudienceSplit />
+      <SocialProof />
       <Services />
+      <AudienceSplit />
       <HowItWorks />
       <WhyAerial />
       <CoverageArea />

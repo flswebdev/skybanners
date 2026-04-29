@@ -230,38 +230,14 @@ export default function PersonalPage() {
       {/* Flight Duration & Inclusions */}
       <section className="py-20 bg-background-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Flight Duration */}
-            <div className="rounded-xl border border-card-border bg-card p-8 shadow-sm">
-              <h3 className="text-2xl font-bold text-heading mb-2">
-                Flight Duration Options
-              </h3>
-              <p className="text-muted text-sm mb-6">
-                Choose how long your banner flies. For proposals and events
-                with a specific moment, shorter flights work great. For
-                festivals and parties, longer flights maximize the wow factor.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {FLIGHT_DURATIONS.map((dur) => (
-                  <div
-                    key={dur.value}
-                    className="rounded-lg border border-card-border bg-background-alt px-4 py-3 text-center"
-                  >
-                    <span className="text-heading font-medium text-sm">
-                      {dur.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+          <div className="max-w-2xl mx-auto">
             {/* What's Included */}
             <div className="rounded-xl border border-card-border bg-card p-8 shadow-sm">
               <h3 className="text-2xl font-bold text-heading mb-2">
                 Every Celebration Includes
               </h3>
               <p className="text-muted text-sm mb-6">
-                We handle everything from design to documentation. You just
+                We handle everything from design to flight. You just
                 show up and enjoy the moment.
               </p>
               <ul className="space-y-3">

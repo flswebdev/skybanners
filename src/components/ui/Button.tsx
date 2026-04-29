@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { type ButtonHTMLAttributes } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "light";
+type ButtonVariant = "primary" | "secondary" | "outline" | "light" | "blue";
 type ButtonSize = "default" | "large";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,6 +19,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     "border border-card-border text-charcoal hover:bg-background-alt hover:border-muted/40 transition-all",
   light:
     "bg-white text-heading shadow-sm border border-card-border hover:shadow-md hover:border-muted/40 transition-all",
+  blue:
+    "bg-blue text-white hover:bg-blue/90 shadow-sm hover:shadow-md active:scale-[0.98] transition-all",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

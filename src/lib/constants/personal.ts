@@ -122,7 +122,7 @@ export const PERSONAL_FAQS = [
     answer: "We offer pink and blue smoke. For gender reveals, most people choose pink (girl) or blue (boy). You can also combine banner + smoke for a full reveal experience.",
   },
   {
-    question: "Can I get photos and video of the flight?",
-    answer: "Absolutely. Every flight includes professional photo and video documentation of your banner in the sky. We provide high-quality files you can share on social media, frame, or keep as a memory.",
+    question: "Will I know when the banner is flying over?",
+    answer: "Absolutely. Your pilot will reach out before the flyover so you know exactly when to look up. We recommend having someone ready with their phone to capture the moment.",
   },
 ] as const;

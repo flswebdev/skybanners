@@ -15,10 +15,7 @@ export function CTASection() {
         }}
       />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-red/30 bg-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red mb-6">
-          Limited Availability
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+<h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           Ready to Take Your Message to the <span className="text-red">Sky</span>?
         </h2>
         <p className="text-white/50 max-w-xl mx-auto mb-10 text-lg">

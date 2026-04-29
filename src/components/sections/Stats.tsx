@@ -23,7 +23,7 @@ export function Stats() {
   const active = STATS.find((s) => s.id === activeStat);
 
   return (
-    <section className="py-8 bg-white">
+    <section className="pt-8 pb-0 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
           {STATS.map((stat, i) => {

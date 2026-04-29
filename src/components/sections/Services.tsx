@@ -1,5 +1,4 @@
 import { ClipboardList, PenLine, Palette, Wind, ArrowRight } from "lucide-react";
-import Image from "next/image";
 import { SERVICES } from "@/lib/constants";
 
 const iconMap = {
@@ -14,10 +13,7 @@ export function Services() {
     <section id="services" className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 rounded-full border border-red/30 bg-red/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-red mb-5">
-            What We Offer
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
+<h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
             Our Services
           </h2>
           <p className="text-muted max-w-2xl mx-auto">
@@ -29,8 +25,9 @@ export function Services() {
             const Icon = iconMap[service.icon];
             const hasBadge = "badge" in service && service.badge;
             const customIcon = (service as { customIcon?: string }).customIcon;
+            const largeIcon = (service as { largeIcon?: boolean }).largeIcon;
             return (
-              <div key={service.title} className="group relative border border-card-border bg-background-alt p-6 hover:-translate-y-0.5 hover:border-muted/30 hover:shadow-md transition-all duration-200">
+              <div key={service.title} className="group relative border border-card-border bg-white p-6 hover:-translate-y-0.5 hover:border-muted/30 hover:shadow-md transition-all duration-200">
                 {hasBadge && (
                   <div className="absolute -top-2.5 left-4">
                     <span className="inline-flex items-center rounded-full bg-red px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
@@ -39,13 +36,11 @@ export function Services() {
                   </div>
                 )}
                 {customIcon ? (
-                  <div className="h-12 w-full mb-4">
-                    <Image
+                  <div className={`${largeIcon ? "h-16" : "h-12"} w-full mb-4`}>
+                    <img
                       src={customIcon}
                       alt={service.title}
-                      width={240}
-                      height={48}
-                      className="h-full w-auto object-contain object-left"
+                      className="h-full w-auto object-contain mx-auto"
                     />
                   </div>
                 ) : (

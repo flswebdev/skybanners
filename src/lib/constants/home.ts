@@ -42,31 +42,34 @@ export const STATS = [
 
 export const SERVICES = [
   {
-    icon: "ClipboardList" as const,
-    title: "Billboard Banners",
-    href: "/services/billboard-banners",
-    description: "Large banners with printed designs, perfect for visual impact and brand imagery.",
-  },
-  {
     icon: "PenLine" as const,
-    customIcon: "/icons/letter-banners-icon.png",
+    customIcon: "/icons/letter-banners-icon.svg",
     title: "Letter Banners",
     href: "/services/letter-banners",
     description: "Custom text messages up to 40 characters. No production cost — ready in as little as 24 hrs.",
     badge: "Fastest Turnaround" as const,
   },
   {
-    icon: "Palette" as const,
-    title: "Combo Banners",
-    href: "/services/combo-banners",
-    description: "Billboard graphic paired with bold text. Our highest-engagement format for brands and events.",
-    badge: "Most Popular" as const,
-  },
-  {
     icon: "Wind" as const,
+    customIcon: "/icons/smoke-displays-icon.svg",
     title: "Smoke Displays",
     href: "/services/smoke-displays",
     description: "Coloured smoke trails in pink or blue for gender reveals, celebrations, and events.",
+  },
+  {
+    icon: "ClipboardList" as const,
+    customIcon: "/icons/billboard-banners-icon.svg",
+    largeIcon: true,
+    title: "Billboard Banners",
+    href: "/services/billboard-banners",
+    description: "Large banners with printed designs, perfect for visual impact and brand imagery.",
+  },
+  {
+    icon: "Palette" as const,
+    customIcon: "/icons/combo-banners-icon.svg",
+    title: "Combo Banners",
+    href: "/services/combo-banners",
+    description: "Billboard graphic paired with bold text. Our highest-engagement format for brands and events.",
   },
 ] as const;
 
@@ -159,14 +162,7 @@ export const STEPS = [
     icon: "Plane" as const,
     title: "Flight Execution",
     description:
-      "We fly your banner over your target area at optimal times. Professional photo and video documentation included.",
-  },
-  {
-    number: "04",
-    icon: "BarChart3" as const,
-    title: "Results Delivered",
-    description:
-      "Receive high-quality photos, videos, flight data, and campaign analytics to measure your impact.",
+      "We fly your banner over your target area at optimal times. Your pilot will reach out before the flyover so you know exactly when to look up.",
   },
 ] as const;
 

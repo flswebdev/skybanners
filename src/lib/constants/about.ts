@@ -39,7 +39,7 @@ export const DIFFERENTIATORS = [
   {
     icon: "Handshake" as const,
     title: "Full-Service Provider",
-    description: "Design, production, flight, and documentation—all in-house. One point of contact, no subcontracting, no surprises.",
+    description: "Design, production, and flight—all in-house. One point of contact, no subcontracting, no surprises.",
   },
   {
     icon: "Shield" as const,
@@ -47,9 +47,9 @@ export const DIFFERENTIATORS = [
     description: "If weather grounds your flight, we reschedule at no charge. You never pay for a flight that doesn't happen.",
   },
   {
-    icon: "Camera" as const,
-    title: "Professional Documentation",
-    description: "Every flight includes high-quality photos, video, and a campaign report. You get content to share and data to measure.",
+    icon: "MapPin" as const,
+    title: "Southern Ontario Coverage",
+    description: "We fly across Southern Ontario and Quebec — from Toronto and the GTA to London, Barrie, Niagara, and beyond.",
   },
 ] as const;
 

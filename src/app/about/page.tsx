@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import {
   MapPin, Handshake, Shield, Camera,
   ArrowRight,
@@ -139,7 +139,7 @@ export default function AboutPage() {
             no-obligation consultation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/#contact" variant="primary" size="large">
+            <Button href="/contact" variant="primary" size="large">
               Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button href="tel:1-877-759-2266" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">

@@ -51,9 +51,6 @@ export function Footer() {
                 className="h-40 sm:h-44 w-auto object-contain"
               />
             </div>
-            <p className="text-white font-bold text-sm leading-relaxed text-center sm:hidden">
-              Aerial advertising in Southern Ontario
-            </p>
           </div>
 
           {/* Services */}
@@ -94,10 +91,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* About */}
+          {/* Who It's For */}
           <div>
             <h4 className="text-base sm:text-sm font-semibold uppercase tracking-wider mb-3">
-              About
+              Who It&apos;s For
             </h4>
             <ul className="space-y-1">
               {FOOTER_ABOUT.map((item) => (

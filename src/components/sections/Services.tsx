@@ -36,7 +36,7 @@ export function Services() {
                   </div>
                 )}
                 {customIcon ? (
-                  <div className={`${largeIcon ? "h-16" : "h-12"} w-full mb-4`}>
+                  <div className="h-12 w-full mb-4">
                     <img
                       src={customIcon}
                       alt={service.title}

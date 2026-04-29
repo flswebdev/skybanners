@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Layers, TrendingUp, Share2, Award,
@@ -26,15 +26,15 @@ const useCaseIcons = { Building2, Megaphone, Trophy, Heart, Store, Calendar } as
 export default function ComboBannersPage() {
   return (
     <main>
-      <ServiceHero {...COMBO_PAGE} video="/videos/gender-reveal-hero.mp4#t=36" />
+      <ServiceHero {...COMBO_PAGE} image={{ src: "/images/combo-hero.jpg", alt: "Combo banner towed by aircraft over Southern Ontario" }} />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="text-center lg:text-left">
               <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
-                What Are Combo Banners?
+                Your Brand. Your Message. One Banner.
               </h2>
               <p className="text-muted leading-relaxed mb-4">
                 Combo banners combine a full-colour printed billboard graphic
@@ -50,8 +50,7 @@ export default function ComboBannersPage() {
                 shares.
               </p>
               <p className="text-muted leading-relaxed">
-                Combo banners are our most popular format&mdash;perfect for campaigns
-                where you need both branding and messaging in a single pass.
+                Combo banners are our most popular format for brands.
               </p>
             </div>
             <div className="overflow-hidden shadow-lg">
@@ -66,13 +65,13 @@ export default function ComboBannersPage() {
           </div>
 
           {/* Specs below */}
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="overflow-hidden shadow-lg h-full order-last lg:order-first">
+          <div className="mt-16">
+            <div className="overflow-hidden shadow-lg w-full mb-10 aspect-[21/6]">
               <Image
-                src="/combo-banner-2.jpg"
-                alt="Combo banner in flight"
+                src="/images/combo-specs.png"
+                alt="Veritas Charities combo banner in flight"
                 width={1920}
-                height={900}
+                height={540}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -85,40 +84,29 @@ export default function ComboBannersPage() {
       <section className="py-20 bg-background-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-14">
-            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">
-              Why Choose Combo Banners?
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8 text-center sm:text-left">
+              Two Formats. One Banner.
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
-              {COMBO_BENEFITS.map((item) => {
-                const Icon = benefitIcons[item.icon as keyof typeof benefitIcons];
-                return (
-                  <div key={item.title}>
-                    <div className="h-10 w-10 rounded-lg bg-red/10 flex items-center justify-center mb-3">
-                      <Icon className="h-5 w-5 text-red" />
-                    </div>
-                    <h3 className="text-base font-semibold text-heading mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted leading-relaxed">{item.description}</p>
-                  </div>
-                );
-              })}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0">
+              {COMBO_BENEFITS.map((item, i) => (
+                <div key={item.title} className="border-t border-card-border py-6 text-center sm:text-left">
+                  <span className="text-xs font-bold text-red tracking-widest">0{i + 1}</span>
+                  <h3 className="text-base font-semibold text-heading mt-1 mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="border-t border-card-border pt-14">
-            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8">Ideal For</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-heading mb-8 text-center sm:text-left">Best For</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-              {COMBO_USE_CASES.map((item) => {
-                const Icon = useCaseIcons[item.icon as keyof typeof useCaseIcons];
-                return (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <Icon className="h-5 w-5 text-blue mt-0.5 shrink-0" />
-                    <div>
-                      <h3 className="text-base font-semibold text-heading mb-0.5">{item.title}</h3>
-                      <p className="text-sm text-muted leading-relaxed">{item.description}</p>
-                    </div>
-                  </div>
-                );
-              })}
+              {COMBO_USE_CASES.map((item) => (
+                <div key={item.title} className="text-center sm:text-left">
+                  <h3 className="text-sm font-semibold text-heading mb-1">{item.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed">{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -138,7 +126,7 @@ export default function ComboBannersPage() {
             letter combo banner.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/#contact" variant="primary" size="large">
+            <Button href="/contact" variant="primary" size="large">
               Get a Combo Quote <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button href="tel:1-877-759-2266" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">

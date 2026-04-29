@@ -1,11 +1,11 @@
 import {
   Hero,
   SocialProof,
-  Stats,
   AudienceSplit,
   Services,
   HowItWorks,
   WhyAerial,
+  Gallery,
   CoverageArea,
   FAQ,
   ContactForm,
@@ -15,12 +15,12 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Stats />
-      <SocialProof />
       <Services />
       <AudienceSplit />
+      <SocialProof />
       <HowItWorks />
       <WhyAerial />
+      <Gallery />
       <CoverageArea />
       <FAQ />
       <ContactForm />

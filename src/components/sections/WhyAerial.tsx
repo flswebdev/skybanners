@@ -1,4 +1,6 @@
 import { BentoGrid, type BentoItem } from "@/components/ui/bento-grid";
+import { STATS } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 const bentoItems: BentoItem[] = [
   {
@@ -29,21 +31,12 @@ const bentoItems: BentoItem[] = [
   },
   {
     title: "Social Media Multiplier",
-    meta: "4 in 10 viewers photograph it",
+    meta: "3 in 10 viewers share it online",
     description:
       "People pull out their phones when a banner flies over. 3 in 10 share it online — generating 1,200+ impressions per post at zero extra cost.",
     status: "Organic Reach",
     tags: ["Social", "Viral", "UGC"],
     colSpan: 2,
-  },
-  {
-    title: "Targeted to Your Crowd",
-    meta: "Events, beaches, stadiums",
-    description:
-      "Fly over exactly where your audience already is — festivals, shorelines, sporting events, and urban flyovers reaching 30,000–100,000+ people.",
-    status: "Precise",
-    tags: ["Geo-Targeting", "Events"],
-    colSpan: 3,
   },
 ];
 
@@ -52,12 +45,31 @@ export function WhyAerial() {
     <section id="why-aerial" className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-<h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
             Why Aerial Advertising Works
           </h2>
           <p className="text-muted max-w-2xl mx-auto">
             Cut through the noise with sky-high visibility
           </p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-10">
+          {STATS.map((stat, i) => (
+            <div
+              key={stat.id}
+              className="flex flex-col items-center text-center p-4 lg:p-6 border border-card-border"
+            >
+              <div
+                className={cn(
+                  "text-3xl lg:text-5xl font-extrabold mb-2 tabular-nums",
+                  i % 2 === 0 ? "text-red" : "text-blue"
+                )}
+              >
+                {stat.number}
+              </div>
+              <div className="text-xs lg:text-sm font-medium text-heading">{stat.label}</div>
+            </div>
+          ))}
         </div>
 
         <BentoGrid items={bentoItems} />

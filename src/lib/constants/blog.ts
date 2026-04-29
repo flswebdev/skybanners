@@ -135,12 +135,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "p",
         content:
-          "Every Sky Banners flight includes professional aerial documentation — photos and video of the banner in flight over your location. You'll receive your footage after the flight, ready to share. This is the content that lives forever: the screenshot of the plane overhead, the moment of the read, the reaction.",
-      },
-      {
-        type: "p",
-        content:
-          "We also handle the routing and timing logistics, so you just need to be in the right place at the right time. We'll confirm the details with you in the days leading up to the flight.",
+          "We handle the routing and timing logistics, so you just need to be in the right place at the right time. We'll confirm the details with you in the days leading up to the flight.",
       },
       {
         type: "h2",

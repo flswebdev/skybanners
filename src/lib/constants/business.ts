@@ -107,7 +107,5 @@ export const B2B_INCLUSIONS = [
   "Custom banner design & production",
   "Strategic flight route planning",
   "Event-specific targeting & timing",
-  "Professional photo & video documentation",
-  "Social media content package",
-  "Post-campaign analytics & impressions report",
+  "Weather guarantee & free rescheduling",
 ] as const;

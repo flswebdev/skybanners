@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import {
-  Target, TrendingUp, DollarSign, Share2, Eye,
-  Megaphone, Trophy, Store, Repeat,
-  ClipboardList, PenLine, Palette,
-  CheckCircle, ArrowRight, Users,
-} from "lucide-react";
+import { CheckCircle, ArrowRight, Users } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui";
-import { Card } from "@/components/ui";
 import {
   FEATURED_CLIENTS,
   B2B_BANNER_OPTIONS,
@@ -24,19 +18,15 @@ export const metadata: Metadata = {
     "Amplify your brand with aerial banner advertising across Southern Ontario. Trusted by McDonald's, Sony, Subway, Shell, and more. 88% recall rate, CPM under $6.",
 };
 
-const whyIcons = { TrendingUp, DollarSign, Share2, Eye } as const;
-const useCaseIcons = { Megaphone, Trophy, Store, Repeat } as const;
-const bannerIcons = { ClipboardList, PenLine, Palette } as const;
-
 export default function BusinessPage() {
   return (
     <main>
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-background-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-red font-semibold mb-3 flex items-center gap-2">
-              <Users className="h-5 w-5" /> For Business
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-red font-semibold mb-3 flex items-center justify-center gap-2">
+              <Users className="h-5 w-5" /> Business
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
               <span className="text-heading">Put Your Brand </span>
@@ -49,9 +39,9 @@ export default function BusinessPage() {
               brand. No ad blockers. No scrolling past. Just pure, unmissable
               visibility.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button href="#quote" variant="primary" size="large">
-                Get a Business Quote
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button href="/contact" variant="primary" size="large">
+                Let's Discuss Your Campaign
               </Button>
             </div>
           </div>
@@ -116,7 +106,7 @@ export default function BusinessPage() {
               aerial banners deliver unmatched recall and cost efficiency.
             </p>
           </div>
-          <div className="relative w-full h-72 mb-12 overflow-hidden rounded-lg">
+          <div className="relative w-full h-72 mb-12 overflow-hidden">
             <Image
               src="/business-gaslight.jpg"
               alt="Gaslight District combo banner flying in the sky"
@@ -124,23 +114,14 @@ export default function BusinessPage() {
               className="object-cover object-center"
             />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {B2B_WHY_AERIAL.map((item) => {
-              const Icon = whyIcons[item.icon as keyof typeof whyIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-red" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-heading mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted leading-relaxed">
-                    {item.description}
-                  </p>
-                </Card>
-              );
-            })}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0">
+            {B2B_WHY_AERIAL.map((item, i) => (
+              <div key={item.title} className="border-t border-card-border py-6">
+                <span className="text-xs font-bold text-red tracking-widest">0{i + 1}</span>
+                <h3 className="text-base font-semibold text-heading mt-1 mb-2">{item.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -154,41 +135,25 @@ export default function BusinessPage() {
             </h2>
             <p className="text-muted max-w-2xl mx-auto">
               Choose the format that best fits your brand and campaign goals.
-              All banners include custom design, production, and professional
-              documentation.
+              All banners include custom design, production, and a dedicated
+              flight crew.
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {B2B_BANNER_OPTIONS.map((option) => {
-              const Icon = bannerIcons[option.icon as keyof typeof bannerIcons];
-              return (
-                <div
-                  key={option.title}
-                  className="rounded-xl border border-card-border bg-card p-6 shadow-sm hover:border-blue/30 transition-colors"
-                >
-                  <div className="h-12 w-12 rounded-lg bg-blue/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-blue" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-heading mb-2">
-                    {option.title}
-                  </h3>
-                  <p className="text-muted text-sm leading-relaxed mb-4">
-                    {option.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {option.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-2 text-sm text-muted"
-                      >
-                        <CheckCircle className="h-4 w-4 text-red mt-0.5 shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-0">
+            {B2B_BANNER_OPTIONS.map((option) => (
+              <div key={option.title} className="border-t border-card-border py-8">
+                <h3 className="text-xl font-semibold text-heading mb-3">{option.title}</h3>
+                <p className="text-muted text-sm leading-relaxed mb-4">{option.description}</p>
+                <ul className="space-y-2">
+                  {option.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-sm text-muted">
+                      <CheckCircle className="h-4 w-4 text-red mt-0.5 shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -205,28 +170,13 @@ export default function BusinessPage() {
               aerial banners fit into any marketing strategy.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {B2B_USE_CASES.map((item) => {
-              const Icon =
-                useCaseIcons[item.icon as keyof typeof useCaseIcons];
-              return (
-                <Card key={item.title} glow>
-                  <div className="flex items-start gap-4">
-                    <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center shrink-0">
-                      <Icon className="h-6 w-6 text-red" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-heading mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              );
-            })}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-0">
+            {B2B_USE_CASES.map((item) => (
+              <div key={item.title} className="border-t border-card-border py-6">
+                <h3 className="text-base font-semibold text-heading mb-2">{item.title}</h3>
+                <p className="text-sm text-muted leading-relaxed">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -234,9 +184,9 @@ export default function BusinessPage() {
       {/* Flight Duration & What's Included */}
       <section className="py-20 bg-background-alt">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Flight Durations */}
-            <div className="rounded-xl border border-card-border bg-card p-8 shadow-sm">
+            <div className="border-t border-card-border pt-8">
               <h3 className="text-2xl font-bold text-heading mb-2">
                 Flight Duration Options
               </h3>
@@ -244,22 +194,17 @@ export default function BusinessPage() {
                 Choose the flight time that fits your campaign. Longer flights
                 mean more passes over your target area and more impressions.
               </p>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 border-t border-l border-card-border">
                 {FLIGHT_DURATIONS.map((dur) => (
-                  <div
-                    key={dur.value}
-                    className="rounded-lg border border-card-border bg-background-alt px-4 py-3 text-center"
-                  >
-                    <span className="text-heading font-medium text-sm">
-                      {dur.label}
-                    </span>
+                  <div key={dur.value} className="border-b border-r border-card-border px-4 py-3">
+                    <span className="text-heading font-medium text-sm">{dur.label}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* What's Included */}
-            <div className="rounded-xl border border-card-border bg-card p-8 shadow-sm">
+            <div className="border-t border-card-border pt-8">
               <h3 className="text-2xl font-bold text-heading mb-2">
                 Every Campaign Includes
               </h3>
@@ -292,7 +237,7 @@ export default function BusinessPage() {
             quote for your campaign.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/#contact" variant="primary" size="large">
+            <Button href="/contact" variant="primary" size="large">
               Request a Campaign Quote <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button href="tel:1-877-759-2266" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">

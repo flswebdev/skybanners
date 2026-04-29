@@ -1,8 +1,5 @@
-import type { Metadata } from "next";
-import {
-  HelpCircle, Briefcase, Heart, Settings, DollarSign,
-  ArrowRight,
-} from "lucide-react";
+﻿import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
 import { Button, AccordionItem } from "@/components/ui";
 import { ServiceHero } from "@/components/sections";
 import { FAQ_CATEGORIES } from "@/lib/constants";
@@ -12,8 +9,6 @@ export const metadata: Metadata = {
   description:
     "Frequently asked questions about aerial advertising. Pricing, process, banner types, file formats, weather policy, and more.",
 };
-
-const categoryIcons = { HelpCircle, Briefcase, Heart, Settings, DollarSign } as const;
 
 export default function FAQPage() {
   return (
@@ -32,30 +27,22 @@ export default function FAQPage() {
       <section id="questions" className="py-20 bg-background">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto space-y-16">
-            {FAQ_CATEGORIES.map((cat) => {
-              const Icon = categoryIcons[cat.icon as keyof typeof categoryIcons] || HelpCircle;
-              return (
-                <div key={cat.category}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="h-10 w-10 rounded-lg bg-red/10 flex items-center justify-center">
-                      <Icon className="h-5 w-5 text-red" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-heading">
-                      {cat.category}
-                    </h2>
-                  </div>
-                  <div className="space-y-4">
-                    {cat.questions.map((faq) => (
-                      <AccordionItem
-                        key={faq.question}
-                        question={faq.question}
-                        answer={faq.answer}
-                      />
-                    ))}
-                  </div>
+            {FAQ_CATEGORIES.map((cat) => (
+              <div key={cat.category}>
+                <h2 className="text-2xl font-bold text-heading mb-6">
+                  {cat.category}
+                </h2>
+                <div className="space-y-4">
+                  {cat.questions.map((faq) => (
+                    <AccordionItem
+                      key={faq.question}
+                      question={faq.question}
+                      answer={faq.answer}
+                    />
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -72,7 +59,7 @@ export default function FAQPage() {
             within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/#contact" variant="primary" size="large">
+            <Button href="/contact" variant="primary" size="large">
               Ask Us Anything
             </Button>
             <Button href="tel:1-877-759-2266" variant="secondary" size="large">
@@ -93,7 +80,7 @@ export default function FAQPage() {
             sky.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href="/#contact" variant="primary" size="large">
+            <Button href="/contact" variant="primary" size="large">
               Start Your Campaign <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

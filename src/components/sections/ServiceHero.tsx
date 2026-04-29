@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { Button } from "@/components/ui";
+﻿import { Button } from "@/components/ui";
 
 interface ServiceHeroProps {
   badge: string;
@@ -12,7 +11,7 @@ interface ServiceHeroProps {
   secondaryCta?: string;
   secondaryCtaHref?: string;
   secondaryCtaClassName?: string;
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; className?: string };
   video?: string;
   videoPoster?: string;
 }
@@ -23,7 +22,7 @@ export function ServiceHero({
   headlineAccent,
   description,
   primaryCta,
-  primaryCtaHref = "/#contact",
+  primaryCtaHref = "/contact",
   primaryCtaClassName,
   secondaryCta,
   secondaryCtaHref = "#details",
@@ -53,12 +52,10 @@ export function ServiceHero({
       )}
       {!video && image && (
         <>
-          <Image
+          <img
             src={image.src}
             alt={image.alt}
-            fill
-            className="object-cover"
-            priority
+            className={image.className ?? "absolute inset-0 w-full h-full object-cover object-[80%_bottom] sm:object-center"}
           />
           <div className="absolute inset-0 bg-white/60" />
         </>

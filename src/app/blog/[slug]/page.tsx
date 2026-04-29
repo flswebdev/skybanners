@@ -163,7 +163,7 @@ export default async function BlogPostPage({
             Custom quotes are free. We respond within one business day.
           </p>
           <a
-            href="/#contact"
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-xl bg-red px-6 py-3 text-sm font-semibold text-white hover:bg-red-light transition-colors"
           >
             Get a Free Quote →

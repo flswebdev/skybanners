@@ -12,31 +12,21 @@ export const STATS = [
     id: "recall",
     number: "88%",
     label: "Recall Rate",
-    detail:
-      "Audiences remember aerial banners. Studies show 88% of people recall seeing an aerial advertisement, making it one of the most memorable forms of advertising available.",
-    extra:
-      "Unlike digital ads that are quickly scrolled past or banner ads that blend into the background, aerial advertising creates a lasting impression. The unique nature of seeing a message in the sky triggers stronger memory formation and brand recall.",
-  },
-  {
-    id: "recognition",
-    number: "79%",
-    label: "Brand Recognition",
-    detail:
-      "79% of audiences recall the exact brand advertised on aerial banners. This high brand recognition rate means your message doesn\u2019t just get seen \u2014 it gets remembered and associated with your brand.",
   },
   {
     id: "cpm",
     number: "<$6",
     label: "CPM Cost",
-    detail:
-      "With a cost per thousand impressions under $6, aerial advertising delivers one of the lowest CPMs in outdoor advertising. Reach massive audiences at sporting events, beaches, and festivals for a fraction of traditional media costs.",
   },
   {
-    id: "highest",
-    number: "#1",
-    label: "Highest Recall in Advertising",
-    detail:
-      "Out-of-home media, including aerial banners, produces stronger recall than TV, radio, print, and digital advertising. When people look up and see your message in the sky, they remember it.",
+    id: "blockers",
+    number: "Zero",
+    label: "Ad Blockers",
+  },
+  {
+    id: "social",
+    number: "3 in 10",
+    label: "Share It Online",
   },
 ] as const;
 
@@ -105,7 +95,7 @@ export const BUSINESS_SOLUTIONS = [
   {
     icon: "Trophy" as const,
     title: "Event Marketing",
-    description: "Own the skies at sporting events, concerts, and festivals with targeted aerial presence",
+    description: "Own the skies at sporting events, concerts, and festivals with targeted presence",
   },
   {
     icon: "PartyPopper" as const,
@@ -192,7 +182,7 @@ export const COVERAGE_AREAS = [
 export const FLIGHT_INFO = [
   { label: "Operations", value: "Year-round (weather permitting)" },
   { label: "Flight Times", value: "Daylight hours, optimal visibility conditions" },
-  { label: "Lead Time", value: "2-3 weeks recommended for custom banners" },
+  { label: "Lead Time", value: "3-4 weeks recommended for custom banners" },
   { label: "Weather Policy", value: "Flights rescheduled at no charge for weather delays" },
 ] as const;
 
@@ -208,21 +198,6 @@ export const INCLUSIONS = [
     description: "Optimized flight paths targeting your ideal audience at peak visibility times and locations.",
   },
   {
-    icon: "Camera" as const,
-    title: "Photo & Video Documentation",
-    description: "High-quality aerial photography and video footage of your banner in flight, perfect for social media.",
-  },
-  {
-    icon: "Smartphone" as const,
-    title: "Social Media Content Package",
-    description: "Ready-to-post photos and videos optimized for Instagram, Facebook, Twitter, and other platforms.",
-  },
-  {
-    icon: "BarChart3" as const,
-    title: "Campaign Analytics",
-    description: "Detailed flight reports including duration, route data, estimated impressions, and reach metrics.",
-  },
-  {
     icon: "Target" as const,
     title: "Event Targeting",
     description: "Precision timing to maximize exposure at concerts, games, festivals, and special events.",
@@ -233,12 +208,12 @@ export const FAQS = [
   {
     question: "How much does aerial advertising cost?",
     answer:
-      "Letter banners are the most affordable option — no production cost, you only pay for the flight. Billboard and combo banners include custom design and printing. Every campaign includes photo & video documentation and a social media content package. Contact us for a custom quote — consultations are free.",
+      "Every campaign is quoted individually — pricing depends on your flight route, setup time, fuel, and how long your banner will be in the air over your target area. Letter banners are our most accessible format, while billboard and combo banners include custom design and printing. Reach out for a free quote and we'll put together a number based on exactly what you need.",
   },
   {
     question: "How long does it take to create a banner?",
     answer:
-      "Custom banners typically require 2-3 weeks for design, approval, and production. Letter banners can be ready faster. Rush service may be available for urgent campaigns.",
+      "Custom banners typically take 3–4 weeks from design through approval and production. Letter banners can be turned around much faster. If you have a specific date in mind, let us know early and we'll work backwards from there.",
   },
   {
     question: "What happens if the weather is bad?",
@@ -258,7 +233,7 @@ export const FAQS = [
   {
     question: "What size can the banners be?",
     answer:
-      "Billboard banners can be quite large for maximum visual impact. Letter banners are limited to 40 characters. Combo banners combine both. We\u2019ll help you choose the right size for your message and budget.",
+      "Billboard banners can be printed up to 2,500 sq ft for maximum visual impact. Letter banners are limited to 40 characters. Combo banners pair a printed graphic with bold letter text. We’ll help you choose the right format for your message and audience.",
   },
 ] as const;
 

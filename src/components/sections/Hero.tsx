@@ -1,7 +1,6 @@
 "use client";
 
 import { LayoutGroup, motion } from "motion/react";
-import { Button } from "@/components/ui";
 import { TextRotate } from "@/components/ui/text-rotate";
 import { HERO } from "@/lib/constants";
 
@@ -61,24 +60,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bubble card — pinned to bottom of hero */}
-      <div className="absolute z-20 bottom-8 inset-x-0 px-4 sm:px-6 lg:px-8 lg:static lg:pb-16 lg:pt-0">
-        <div className="mx-auto max-w-7xl">
-        <div className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-6 lg:p-8 text-center lg:text-left lg:max-w-[50%]">
-          <p className="text-lg text-white leading-relaxed mb-6">
-            {HERO.subtitle}
-          </p>
-          <div className="flex flex-row items-center justify-center lg:justify-start gap-4">
-            <Button href="#contact" variant="primary" size="large" className="text-sm px-5 sm:text-base sm:px-8">
-              {HERO.primaryCta}
-            </Button>
-            <Button href="#services" variant="secondary" size="large" className="text-sm px-5 sm:text-base sm:px-8 !bg-blue !text-white !border-blue hover:!bg-blue/90">
-              {HERO.secondaryCta}
-            </Button>
-          </div>
-        </div>
-        </div>
-      </div>
     </section>
   );
 }

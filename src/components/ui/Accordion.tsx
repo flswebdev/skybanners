@@ -15,7 +15,7 @@ export function AccordionItem({ question, answer, dark }: AccordionItemProps) {
 
   return (
     <div className={cn(
-      "rounded-xl overflow-hidden transition-colors",
+      "overflow-hidden transition-colors",
       dark
         ? "border border-white/10 bg-white/5 hover:border-white/20"
         : "border border-card-border bg-card shadow-sm"

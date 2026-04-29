@@ -32,8 +32,8 @@ export const BILLBOARD_BENEFITS = [
   },
   {
     icon: "Camera" as const,
-    title: "Photo-Ready Quality",
-    description: "High-resolution prints look stunning in the documentation photos and videos included with every flight.",
+    title: "High-Resolution Printing",
+    description: "Aviation-grade nylon printed at high resolution — sharp, vibrant, and readable from the ground up.",
   },
   {
     icon: "Award" as const,
@@ -121,7 +121,7 @@ export const LETTER_BENEFITS = [
   {
     icon: "Repeat" as const,
     title: "Easy to Change",
-    description: "Flying a different message next week? Just change the letters. Perfect for recurring or multi-message campaigns.",
+    description: "Flying a different message next week? We can just change the letters. Perfect for recurring or multi-message campaigns.",
   },
 ] as const;
 
@@ -316,23 +316,27 @@ export const ALL_SERVICES = [
     title: "Billboard Banners",
     description: "Full-colour printed banners with logos and imagery",
     icon: "ClipboardList" as const,
+    customIcon: "/icons/billboard-banners-icon.svg",
   },
   {
     slug: "letter-banners",
     title: "Letter Banners",
     description: "Bold character banners for text messages",
     icon: "PenLine" as const,
+    customIcon: "/icons/letter-banners-icon.svg",
   },
   {
     slug: "combo-banners",
     title: "Combo Banners",
     description: "Billboard + letter banner combined",
     icon: "Palette" as const,
+    customIcon: "/icons/combo-banners-icon.svg",
   },
   {
     slug: "smoke-displays",
     title: "Smoke Displays",
     description: "Coloured smoke for reveals and celebrations",
     icon: "Wind" as const,
+    customIcon: "/icons/smoke-displays-icon.svg",
   },
 ] as const;

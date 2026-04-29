@@ -93,17 +93,15 @@ export const WHY_AERIAL_SOCIAL_EFFECT = {
   stats: [
     { number: "4 in 10", label: "viewers photograph aerial banners" },
     { number: "3 in 10", label: "share the photo on social media" },
-    { number: "1,200+", label: "average social media impressions per share" },
     { number: "Free", label: "cost of organic social amplification" },
   ],
 } as const;
 
 export const WHY_AERIAL_AUDIENCE_REACH = [
   { venue: "Stadium / Arena", reach: "20,000\u201360,000+", icon: "Trophy" as const },
-  { venue: "Beach / Waterfront", reach: "10,000\u201350,000+", icon: "Waves" as const },
+  { venue: "Beach / Waterfront", reach: "10,000+", icon: "Waves" as const },
   { venue: "Festival / Fair", reach: "15,000\u201380,000+", icon: "Tent" as const },
   { venue: "Urban Flyover", reach: "30,000\u2013100,000+", icon: "Building2" as const },
-  { venue: "Golf Course", reach: "2,000\u201310,000+", icon: "Flag" as const },
   { venue: "Concert Venue", reach: "5,000\u201350,000+", icon: "Music" as const },
 ] as const;
 

@@ -50,7 +50,7 @@ export const PERSONAL_OCCASIONS = [
     title: "Custom Messages",
     description: "Apologies, thank-yous, promposals, \"I love you\"—if you can say it in 40 characters, we can fly it. Any message, any occasion.",
     popular: true,
-    image: "/personal-custom.jpg",
+    image: "/images/gallery/gallery-9.jpg",
   },
 
 ] as const;
@@ -95,7 +95,7 @@ export const PERSONAL_INCLUSIONS = [
   "Custom message or banner design",
   "Professional flight crew",
   "Coordinated timing for your event",
-  "Photo & video of your banner in flight",
+  "Pilot coordination so you know exactly when to look up",
   "Flexible location options across Southern Ontario",
   "Weather guarantee & free rescheduling",
 ] as const;
@@ -103,7 +103,7 @@ export const PERSONAL_INCLUSIONS = [
 export const PERSONAL_FAQS = [
   {
     question: "How far in advance do I need to book?",
-    answer: "We recommend 2–3 weeks for custom billboard banners. Letter banners and smoke displays can sometimes be arranged with shorter notice. For proposals and events with specific dates, book as early as possible to guarantee your slot.",
+    answer: "We recommend 3–4 weeks for custom billboard banners. Letter banners and smoke displays can sometimes be arranged with shorter notice. For proposals and events with specific dates, book as early as possible to guarantee your slot.",
   },
   {
     question: "Can you guarantee the exact time of the flyover?",

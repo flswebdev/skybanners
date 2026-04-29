@@ -56,11 +56,6 @@ export const NAV_ITEMS: NavItem[] = [
         href: "/gallery",
         description: "See our banners in the sky",
       },
-      {
-        label: "Locations",
-        href: "/locations",
-        description: "Areas we fly across Ontario",
-      },
     ],
   },
   {
@@ -68,16 +63,21 @@ export const NAV_ITEMS: NavItem[] = [
     type: "dropdown",
     items: [
       {
-        label: "For Business",
+        label: "Business",
         href: "/business",
         description: "Brand campaigns, events, and grand openings",
       },
       {
-        label: "For You",
+        label: "Personal",
         href: "/personal",
         description: "Proposals, gender reveals, and celebrations",
       },
     ],
+  },
+  {
+    label: "Contact",
+    type: "link",
+    href: "/contact",
   },
 ] as const;
 
@@ -85,8 +85,8 @@ export const NAV_ITEMS: NavItem[] = [
 export const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Why Aerial", href: "#why-aerial" },
-  { label: "For Business", href: "/business" },
-  { label: "For You", href: "/personal" },
+  { label: "Business", href: "/business" },
+  { label: "Personal", href: "/personal" },
 ] as const;
 
 // ── Footer Navigation ───────────────────────────────────────────────
@@ -101,14 +101,14 @@ export const FOOTER_SERVICES = [
 export const FOOTER_EXPLORE = [
   { label: "Why Aerial", href: "/why-aerial" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Locations", href: "/locations" },
   { label: "Gallery", href: "/gallery" },
   { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const FOOTER_ABOUT = [
-  { label: "For Business", href: "/business" },
-  { label: "For You", href: "/personal" },
+  { label: "Business", href: "/business" },
+  { label: "Personal", href: "/personal" },
 ] as const;
 
 // Deprecated — kept for back-compat until Footer is updated

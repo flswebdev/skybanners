@@ -112,11 +112,11 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
       },
       {
         question: "What's included in the price?",
-        answer: "Every campaign includes: custom banner design (for billboard/combo), strategic route planning, the flight itself, professional photo & video documentation, a social media content package, and a post-campaign analytics report.",
+        answer: "Every campaign includes: custom banner design (for billboard/combo banners), strategic route planning, the flight itself, and weather guarantee with free rescheduling.",
       },
       {
         question: "Are there any hidden fees?",
-        answer: "None. Your quote covers everything: design, production (if applicable), flight, documentation, and content delivery. Weather rescheduling is free. The only additional cost would be if you request a significantly longer flight or additional services after booking.",
+        answer: "None. Your quote covers everything: design, production (if applicable), and the flight. Weather rescheduling is free. The only additional cost would be if you request a significantly longer flight or additional services after booking.",
       },
       {
         question: "Do you offer payment plans or deposits?",

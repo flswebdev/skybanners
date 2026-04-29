@@ -1,75 +1,73 @@
-import { Waves, Trophy, Tent, Building2, Info, ArrowRight } from "lucide-react";
+import { Info } from "lucide-react";
 import { COVERAGE_AREAS, FLIGHT_INFO } from "@/lib/constants";
 
-const iconMap = {
-  Waves,
-  Trophy,
-  Tent,
-  Building2,
-} as const;
 
 export function CoverageArea() {
   return (
-    <section className="py-20 bg-charcoal">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-background-alt relative overflow-hidden">
+
+      {/* Grid texture */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(#111827 1px, transparent 1px), linear-gradient(to right, #111827 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-<h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-heading mb-4">
             We Serve Southern Ontario
           </h2>
-          <p className="text-white/50 max-w-2xl mx-auto">
+          <p className="text-muted max-w-2xl mx-auto">
             Strategic coverage across beaches, festivals, stadiums, and
             high-traffic urban areas
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Coverage grid */}
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {COVERAGE_AREAS.map((area) => {
-              const Icon = iconMap[area.icon];
-              return (
-                <div key={area.title} className="rounded-xl border border-white/10 bg-white/5 p-6 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[0.07] transition-all duration-200">
-                  <div className="h-12 w-12 rounded-lg bg-blue/20 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-blue-light" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    {area.title}
-                  </h3>
-                  <p className="text-sm text-white/60 leading-relaxed">
-                    {area.description}
-                  </p>
-                </div>
-              );
-            })}
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 items-stretch">
+          {/* Photo */}
+          <div className="rounded-none overflow-hidden relative bg-gray-100 border border-card-border flex items-center justify-center min-h-[320px]">
+            <img
+              src="/images/coverage-banner.jpg"
+              alt="Aerial banner over Southern Ontario"
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          {/* Flight info panel */}
-          <div className="rounded-xl border border-blue/20 bg-blue/5 p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <Info className="h-5 w-5 text-blue-light" />
-              <h3 className="text-lg font-semibold text-white">
-                Flight Information
-              </h3>
-            </div>
-            <ul className="space-y-4">
-              {FLIGHT_INFO.map((item) => (
-                <li key={item.label}>
-                  <span className="block text-sm font-semibold text-blue-light">
-                    {item.label}
-                  </span>
-                  <span className="text-sm text-white/60">{item.value}</span>
-                </li>
-              ))}
-            </ul>
+          {/* Coverage list */}
+          <div className="flex flex-col justify-center divide-y divide-card-border">
+            {COVERAGE_AREAS.map((area) => (
+              <div key={area.title} className="py-5 first:pt-0 last:pb-0">
+                <h3 className="text-base font-semibold text-heading mb-1">{area.title}</h3>
+                <p className="text-base text-muted leading-relaxed">{area.description}</p>
+              </div>
+            ))}
           </div>
         </div>
-        <div className="text-center mt-8">
-          <a
-            href="/locations"
-            className="inline-flex items-center gap-1 text-sm font-medium text-red hover:text-red/80 transition-colors"
-          >
-            See All Locations <ArrowRight className="h-3.5 w-3.5" />
-          </a>
+
+        {/* Flight info strip */}
+        <div className="rounded-none border border-card-border bg-white p-6">
+          <div className="flex items-center gap-2 mb-5">
+            <Info className="h-4 w-4 text-blue" />
+            <h3 className="text-sm font-semibold text-heading uppercase tracking-widest">
+              Flight Information
+            </h3>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {FLIGHT_INFO.map((item) => (
+              <div key={item.label}>
+                <span className="block text-xs font-semibold text-blue uppercase tracking-wide mb-1">
+                  {item.label}
+                </span>
+                <span className="text-sm text-muted leading-snug">{item.value}</span>
+              </div>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );

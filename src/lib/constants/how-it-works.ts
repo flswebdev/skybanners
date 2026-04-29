@@ -80,7 +80,7 @@ export const LEAD_TIMES = [
   },
   {
     type: "Billboard Banners",
-    time: "2\u20133 weeks",
+    time: "3–4 weeks",
     description: "Includes design, approval, and print production. Rush service may be available.",
     icon: "ClipboardList" as const,
   },
@@ -104,7 +104,7 @@ export const PROCESS_FAQS = [
   },
   {
     question: "Can I be present during the flight?",
-    answer: "Absolutely! We encourage it. We\u2019ll coordinate the flight timing so you can be at the target location to see your banner fly overhead. For proposals and events, we\u2019ll time the flyover to your exact moment.",
+    answer: "Yes — from the ground! We’ll coordinate the flight timing so you can be at the target location to watch your banner fly overhead. For proposals and events, we’ll time the flyover to your exact moment. Please note that passengers are not permitted in the aircraft during banner operations.",
   },
   {
     question: "How do you determine the flight route?",

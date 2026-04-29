@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
@@ -163,7 +163,7 @@ export function Header() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             {(NAV_ITEMS as readonly NavItem[]).map(renderDesktopItem)}
-            <Button href="/#contact" size="default">
+            <Button href="/contact" size="default">
               Get a Quote
             </Button>
           </nav>
@@ -187,7 +187,7 @@ export function Header() {
         >
           <nav className="flex flex-col gap-4 pt-4 border-t border-card-border">
             {(NAV_ITEMS as readonly NavItem[]).map(renderMobileItem)}
-            <Button href="/#contact" className="w-fit">
+            <Button href="/contact" className="w-fit">
               Get a Quote
             </Button>
           </nav>

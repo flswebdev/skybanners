@@ -4,6 +4,7 @@ export { Stats } from "./Stats";
 export { Services } from "./Services";
 export { AudienceSplit } from "./AudienceSplit";
 export { WhyAerial } from "./WhyAerial";
+export { Gallery } from "./Gallery";
 export { HowItWorks } from "./HowItWorks";
 export { CoverageArea } from "./CoverageArea";
 export { WhatsIncluded } from "./WhatsIncluded";

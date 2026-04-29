@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui";
+﻿import { Button } from "@/components/ui";
 
 export function CTASection() {
   return (
@@ -22,7 +22,7 @@ export function CTASection() {
           One of the only aerial advertising providers in Southern Ontario
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button href="#contact" variant="primary" size="large">
+          <Button href="/contact" variant="primary" size="large">
             Get a Quote
           </Button>
           <Button href="tel:1-877-759-2266" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10 hover:border-white/40">

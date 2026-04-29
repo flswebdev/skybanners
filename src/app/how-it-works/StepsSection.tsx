@@ -1,223 +1,173 @@
 "use client";
 
-import { MessageSquare, Palette, Printer, Plane, Camera, CheckCircle } from "lucide-react";
-import { motion, useInView } from "motion/react";
-import { useRef, useState, useEffect, useLayoutEffect, useCallback } from "react";
+import { MessageSquare, Palette, Printer, Plane, CheckCircle } from "lucide-react";
+import { motion, useInView, useReducedMotion } from "motion/react";
+import { useRef, useState, useEffect } from "react";
 import { EXPANDED_STEPS } from "@/lib/constants";
 
-const stepIcons = { MessageSquare, Palette, Printer, Plane, Camera } as const;
+const iconMap = { MessageSquare, Palette, Printer, Plane } as const;
 
-const ANIMATION_DELAY = 2;
-const TOTAL_DURATION = 16;
-
-// How far the bezier arc bulges outside the container edge (px)
-const ARC_OVERHANG = 96;
-// How far from the top of each card the line travels (px) — roughly icon centre
-const LINE_Y_OFFSET = 60;
-
-function measureSubPathLength(d: string): number {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", d);
-  svg.style.position = "absolute";
-  svg.style.visibility = "hidden";
-  document.body.appendChild(svg);
-  svg.appendChild(path);
-  const length = path.getTotalLength();
-  document.body.removeChild(svg);
-  return length;
-}
+const CIRCLE_DELAYS   = [0, 1.6, 3.2, 4.8];
+const LINE_DELAYS     = [0.5, 2.1, 3.7];
+const LINE_DURATION   = 0.9;
+const CONNECTOR_DELAY    = 0.5;
+const CONNECTOR_DURATION = 0.54;
+const BORDER_DELAYS = [
+  0,
+  CIRCLE_DELAYS[1] + CONNECTOR_DELAY + CONNECTOR_DURATION,
+  CIRCLE_DELAYS[2] + CONNECTOR_DELAY + CONNECTOR_DURATION,
+  CIRCLE_DELAYS[3] + CONNECTOR_DELAY + CONNECTOR_DURATION,
+];
 
 export function StepsSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const spacerRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const inView = useInView(containerRef, { once: true, margin: "-100px" });
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeStep, setActiveStep] = useState(-1);
   const [borderStep, setBorderStep] = useState(-1);
-  const [pathD, setPathD] = useState("");
-  const [borderDelays, setBorderDelays] = useState<number[]>([]);
+  const reducedMotion = useReducedMotion();
 
-  const computePath = useCallback(() => {
-    if (!containerRef.current) return;
-    const allReady = cardRefs.current.every((r) => r !== null);
-    if (!allReady) return;
-
-    const container = containerRef.current.getBoundingClientRect();
-    const W = container.width;
-    const R = ARC_OVERHANG;
-
-    const ys = cardRefs.current.map((card) => {
-      const rect = card!.getBoundingClientRect();
-      return rect.top - container.top + LINE_Y_OFFSET;
-    });
-
-    // Build serpentine path:
-    //  even steps  → line goes LEFT  to RIGHT, arc bulges right
-    //  odd  steps  → line goes RIGHT to LEFT,  arc bulges left
-    // Entry: horizontal line left→right under heading, then bezier arc looping into right side of card 01
-    // Measure the spacer div's vertical centre relative to the container
-    const spacerRect = spacerRef.current?.getBoundingClientRect();
-    const entryY = spacerRect
-      ? spacerRect.top - container.top + spacerRect.height / 2
-      : 88;
-    let d = `M 0 ${entryY} L ${W} ${entryY} C ${W + R} ${entryY} ${W + R} ${ys[0]} ${W} ${ys[0]}`;
-    for (let i = 0; i < ys.length; i++) {
-      const y = ys[i];
-      const isEven = i % 2 === 0;
-      const isLast = i === ys.length - 1;
-      if (isEven) {
-        // right → left, arc bulges left
-        if (!isLast) d += ` L 0 ${y}`;
-        if (i < ys.length - 1) {
-          const y2 = ys[i + 1];
-          d += ` C ${-R} ${y} ${-R} ${y2} 0 ${y2}`;
-        }
-      } else {
-        // left → right, arc bulges right
-        if (!isLast) d += ` L ${W} ${y}`;
-        if (i < ys.length - 1) {
-          const y2 = ys[i + 1];
-          d += ` C ${W + R} ${y} ${W + R} ${y2} ${W} ${y2}`;
-        }
-      }
-    }
-
-    setPathD(d);
-
-    // Measure sub-path lengths to find when the line first touches each card
-    const totalLength = measureSubPathLength(d);
-
-    // Build sub-paths up to the point the line first enters each card
-    const subPaths: string[] = [];
-    // Card 0: line enters from right after entry horizontal + right arc
-    subPaths.push(`M 0 ${entryY} L ${W} ${entryY} C ${W + R} ${entryY} ${W + R} ${ys[0]} ${W} ${ys[0]}`);
-    for (let i = 0; i < ys.length - 1; i++) {
-      const isEven = i % 2 === 0;
-      let sub = subPaths[i];
-      if (isEven) {
-        sub += ` L 0 ${ys[i]} C ${-R} ${ys[i]} ${-R} ${ys[i + 1]} 0 ${ys[i + 1]}`;
-      } else {
-        sub += ` L ${W} ${ys[i]} C ${W + R} ${ys[i]} ${W + R} ${ys[i + 1]} ${W} ${ys[i + 1]}`;
-      }
-      subPaths.push(sub);
-    }
-
-    const delays = subPaths.map((sub) => {
-      const len = measureSubPathLength(sub);
-      return ANIMATION_DELAY + (len / totalLength) * TOTAL_DURATION;
-    });
-
-    setBorderDelays(delays);
-  }, []);
-
-  // Compute after first render and on resize
-  useLayoutEffect(() => {
-    computePath();
-    const ro = new ResizeObserver(computePath);
-    if (containerRef.current) ro.observe(containerRef.current);
-    return () => ro.disconnect();
-  }, [computePath]);
-
-  // Card border / greyscale activation — fires when line actually reaches each card
   useEffect(() => {
-    if (!inView || borderDelays.length === 0) return;
-    const timers = borderDelays.map((delay, i) =>
-      setTimeout(() => setBorderStep(i), delay * 1000)
-    );
+    if (!inView) return;
+    if (reducedMotion) {
+      setActiveStep(EXPANDED_STEPS.length - 1);
+      setBorderStep(EXPANDED_STEPS.length - 1);
+      return;
+    }
+    const timers = [
+      ...CIRCLE_DELAYS.map((delay, i) => setTimeout(() => setActiveStep(i), delay * 1000)),
+      ...BORDER_DELAYS.map((delay, i) => setTimeout(() => setBorderStep(i), delay * 1000)),
+    ];
     return () => timers.forEach(clearTimeout);
-  }, [inView, borderDelays]);
+  }, [inView, reducedMotion]);
 
   return (
-    <div ref={containerRef} className="relative">
-      {/* Heading above the entry line */}
+    <div>
       <h2 className="text-3xl sm:text-4xl font-bold text-heading text-center mb-4">
         Your Campaign, Step by Step
       </h2>
-
-      {/* Entry line lives here — SVG drawn over this gap */}
-      <div ref={spacerRef} className="h-16" />
-
-      {/* Subheading below the entry line */}
       <p className="text-muted text-center max-w-2xl mx-auto mb-10">
         We handle everything from start to finish. Here&apos;s exactly what happens when you book with Sky Banners.
       </p>
-      {/* SVG snake path — sits behind cards */}
-      {pathD && (
-        <svg
-          className="absolute inset-0 pointer-events-none"
-          width="100%"
-          height="100%"
-          style={{ overflow: "visible", zIndex: 0 }}
-          aria-hidden
-        >
-          {/* Ghost grey path — always visible so you can see where the line will go */}
-          <path
-            d={pathD}
-            fill="none"
-            stroke="#E5E7EB"
-            strokeWidth={2}
-            strokeLinecap="round"
-          />
-          {/* Animated red path drawing over the grey one */}
-          <motion.path
-            d={pathD}
-            fill="none"
-            stroke="#E81C1C"
-            strokeWidth={2.5}
-            strokeLinecap="round"
-            initial={{ pathLength: 0 }}
-            animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-            transition={{ duration: TOTAL_DURATION, ease: "linear", delay: ANIMATION_DELAY }}
-          />
-        </svg>
-      )}
 
-      {/* Step cards */}
-      <div className="relative flex flex-col gap-6" style={{ zIndex: 10 }}>
-        {EXPANDED_STEPS.map((step, i) => {
-          const Icon = stepIcons[step.icon as keyof typeof stepIcons];
-          const bordered = borderStep >= i;
-          return (
-            <motion.div
-              key={step.number}
-              ref={(el) => { cardRefs.current[i] = el; }}
-              animate={{
-                borderColor: bordered ? "#E81C1C" : "#E5E7EB",
-                opacity: bordered ? 1 : 0.35,
-                filter: bordered ? "grayscale(0%)" : "grayscale(80%)",
-              }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="relative rounded-xl border-2 bg-card p-8 shadow-sm"
-            >
-              {/* Step number */}
+      <div ref={ref}>
+        {/* ── Desktop: circles + lines + cards ── */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-4 gap-6 relative mb-6">
+            {/* Background grey track */}
+            <div className="absolute top-[18px] h-0.5 bg-gray-200" style={{ left: "12.5%", right: "12.5%" }} />
+            {/* Animated red fill lines */}
+            {LINE_DELAYS.map((lineDelay, i) => (
               <motion.div
-                animate={{ color: bordered ? "#E81C1C" : "#D1D5DB" }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="text-6xl font-extrabold absolute top-6 right-6 leading-none select-none"
-              >
-                {step.number}
-              </motion.div>
+                key={i}
+                className="absolute top-[18px] h-0.5 bg-red origin-left"
+                style={{ left: `${12.5 + i * 25}%`, width: "25%" }}
+                initial={{ scaleX: 0 }}
+                animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+                transition={{ duration: LINE_DURATION, delay: lineDelay, ease: "easeInOut" }}
+              />
+            ))}
+            {/* Step number circles */}
+            {EXPANDED_STEPS.map((step, i) => (
+              <div key={step.number} className="flex justify-center z-10">
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, delay: CIRCLE_DELAYS[i], ease: "backOut" }}
+                  className="w-9 h-9 rounded-full bg-red text-white text-sm font-bold flex items-center justify-center shadow-md"
+                >
+                  {step.number}
+                </motion.div>
+              </div>
+            ))}
+          </div>
 
-              <div className="flex items-start gap-6">
-                <div className="h-14 w-14 rounded-lg bg-red/10 flex items-center justify-center shrink-0">
-                  <Icon className="h-7 w-7 text-red" />
-                </div>
-                <div className="flex-1 pr-16">
-                  <h3 className="text-xl font-bold text-heading mb-2">{step.title}</h3>
-                  <p className="text-muted leading-relaxed mb-4">{step.description}</p>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          {/* Desktop cards */}
+          <div className="grid grid-cols-4 gap-6">
+            {EXPANDED_STEPS.map((step, i) => {
+              const Icon = iconMap[step.icon as keyof typeof iconMap];
+              const active = activeStep >= i;
+              return (
+                <motion.div
+                  key={step.number}
+                  animate={{
+                    opacity: active ? 1 : 0.35,
+                    filter: active ? "grayscale(0%)" : "grayscale(100%)",
+                  }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="relative rounded-xl border border-card-border bg-white p-6"
+                >
+                  <div className="h-12 w-12 rounded-lg bg-red/10 flex items-center justify-center mb-4">
+                    <Icon className="h-6 w-6 text-red" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-heading mb-2">{step.title}</h3>
+                  <p className="text-sm text-muted leading-relaxed mb-4">{step.description}</p>
+                  <ul className="space-y-1.5">
                     {step.details.map((detail: string) => (
-                      <li key={detail} className="flex items-start gap-2 text-sm text-muted">
-                        <CheckCircle className="h-4 w-4 text-red mt-0.5 shrink-0" />
+                      <li key={detail} className="flex items-start gap-2 text-xs text-muted">
+                        <CheckCircle className="h-3.5 w-3.5 text-red mt-0.5 shrink-0" />
                         {detail}
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ── Mobile: stacked cards with vertical connectors ── */}
+        <div className="flex flex-col gap-0 lg:hidden">
+          {EXPANDED_STEPS.map((step, i) => {
+            const Icon = iconMap[step.icon as keyof typeof iconMap];
+            const bordered = borderStep >= i;
+            return (
+              <div key={step.number} className="flex flex-col items-center">
+                <motion.div
+                  animate={{
+                    borderColor: bordered ? "#E81C1C" : "#E5E7EB",
+                    opacity: bordered ? 1 : 0.35,
+                    filter: bordered ? "grayscale(0%)" : "grayscale(90%)",
+                  }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="w-full rounded-xl border-2 bg-white p-6 relative"
+                >
+                  <motion.span
+                    animate={{ color: bordered ? "#E81C1C" : "#D1D5DB" }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="absolute top-4 right-4 text-4xl font-extrabold select-none leading-none"
+                  >
+                    {step.number}
+                  </motion.span>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="h-10 w-10 rounded-lg bg-red/10 flex items-center justify-center shrink-0">
+                      <Icon className="h-5 w-5 text-red" />
+                    </div>
+                    <h3 className="text-base font-semibold text-heading">{step.title}</h3>
+                  </div>
+                  <p className="text-sm text-muted leading-relaxed mb-3">{step.description}</p>
+                  <ul className="space-y-1.5">
+                    {step.details.map((detail: string) => (
+                      <li key={detail} className="flex items-start gap-2 text-xs text-muted">
+                        <CheckCircle className="h-3.5 w-3.5 text-red mt-0.5 shrink-0" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+                {i < EXPANDED_STEPS.length - 1 && (
+                  <div className="w-0.5 h-8 bg-gray-200 relative overflow-hidden">
+                    <motion.div
+                      className="absolute inset-0 bg-red origin-top"
+                      initial={{ scaleY: 0 }}
+                      animate={bordered ? { scaleY: 1 } : { scaleY: 0 }}
+                      transition={{ duration: CONNECTOR_DURATION, delay: CONNECTOR_DELAY, ease: "easeInOut" }}
+                    />
+                  </div>
+                )}
               </div>
-            </motion.div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
@@ -85,7 +85,7 @@ export function Stats() {
             {"extra" in active && active.extra && (
               <p className="text-muted leading-relaxed mb-6">{active.extra}</p>
             )}
-            <Button href="#contact" onClick={() => setActiveStat(null)}>
+            <Button href="/contact" onClick={() => setActiveStat(null)}>
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

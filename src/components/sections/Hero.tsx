@@ -11,8 +11,7 @@ export function Hero() {
       {/* Hero video background */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="https://media.skybanners.ca/hero.mp4"
-        poster="https://media.skybanners.ca/hero-poster.jpg"
+        src="/videos/hero.mov"
         autoPlay
         loop
         muted

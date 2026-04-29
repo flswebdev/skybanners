@@ -151,7 +151,7 @@ export function Header() {
         <div className="flex h-[4.5rem] items-center justify-between">
           <a href="/" className="flex items-center group">
             <Image
-              src="/logos/sky-banners-logo.png"
+              src="/logos/sky-banners-logo-v2.png"
               alt={SITE_NAME}
               width={200}
               height={48}
@@ -164,7 +164,7 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-8">
             {(NAV_ITEMS as readonly NavItem[]).map(renderDesktopItem)}
             <Button href="/#contact" size="default">
-              Get Started
+              Get a Quote
             </Button>
           </nav>
 
@@ -188,7 +188,7 @@ export function Header() {
           <nav className="flex flex-col gap-4 pt-4 border-t border-card-border">
             {(NAV_ITEMS as readonly NavItem[]).map(renderMobileItem)}
             <Button href="/#contact" className="w-fit">
-              Get Started
+              Get a Quote
             </Button>
           </nav>
         </div>

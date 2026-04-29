@@ -28,8 +28,8 @@ export function CTASection() {
           <Button href="#contact" variant="primary" size="large">
             Get a Quote
           </Button>
-          <Button href="#contact" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10 hover:border-white/40">
-            Contact Us
+          <Button href="tel:1-877-759-2266" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10 hover:border-white/40">
+            Call 1-877-SKY-BANNER
           </Button>
         </div>
       </div>

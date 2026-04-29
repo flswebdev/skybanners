@@ -49,6 +49,7 @@ export const SERVICES = [
   },
   {
     icon: "PenLine" as const,
+    customIcon: "/icons/letter-banners-icon.png",
     title: "Letter Banners",
     href: "/services/letter-banners",
     description: "Custom text messages up to 40 characters. No production cost — ready in as little as 24 hrs.",

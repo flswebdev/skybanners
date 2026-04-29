@@ -11,6 +11,7 @@ export function ContactForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const formStartRef = useRef<number>(Date.now());
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -47,7 +48,12 @@ export function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, fileUrls }),
+        body: JSON.stringify({
+          ...data,
+          fileUrls,
+          _timing: Date.now() - formStartRef.current,
+          _hp: "",
+        }),
       });
 
       if (!res.ok) {
@@ -98,7 +104,7 @@ export function ContactForm() {
                 <Button
                   className="mt-6 border-white/20 text-white hover:bg-white/10 hover:border-white/40"
                   variant="outline"
-                  onClick={() => setStatus("idle")}
+                  onClick={() => { setStatus("idle"); formStartRef.current = Date.now(); }}
                 >
                   Send Another
                 </Button>
@@ -108,6 +114,8 @@ export function ContactForm() {
                 onSubmit={handleSubmit}
                 className="rounded-xl border border-white/10 bg-white/5 p-6 space-y-5"
               >
+                {/* Honeypot — hidden from real users, bots will fill it */}
+                <input type="text" name="_hp" aria-hidden="true" tabIndex={-1} className="sr-only" autoComplete="off" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-white mb-1.5">

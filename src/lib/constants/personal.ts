@@ -4,6 +4,7 @@ export const PERSONAL_OCCASIONS = [
     title: "Marriage Proposals",
     description: "Pop the question in the most unforgettable way. Imagine their face when they look up and see your message in the sky. We coordinate timing perfectly with your plan.",
     popular: true,
+    badge: "Fan Favourite",
     image: "/personal-proposals.jpg",
   },
   {
@@ -17,6 +18,7 @@ export const PERSONAL_OCCASIONS = [
     title: "Gender Reveals",
     description: "Announce your baby's gender with coloured smoke displays visible for miles. Choose pink or blue smoke for the ultimate reveal moment. Banner + smoke combos available.",
     popular: true,
+    badge: "Most Popular",
     image: "/personal-gender-reveal.jpg",
   },
   {
@@ -50,6 +52,7 @@ export const PERSONAL_OCCASIONS = [
     popular: true,
     image: "/personal-custom.jpg",
   },
+
 ] as const;
 
 export const SMOKE_COLORS = [
@@ -63,24 +66,28 @@ export const PERSONAL_BANNER_OPTIONS = [
     title: "Letter Banner",
     description: "Your custom message in bold, individual characters. Up to 40 characters—perfect for proposals, birthday wishes, and congratulations.",
     bestFor: "Short, punchy messages",
+    slug: "letter-banners",
   },
   {
     icon: "ClipboardList" as const,
     title: "Billboard Banner",
     description: "Full-colour printed banner with custom graphics, photos, or artwork. Go beyond text with imagery that captures your moment.",
     bestFor: "Visual messages with photos or artwork",
+    slug: "billboard-banners",
   },
   {
     icon: "Palette" as const,
     title: "Combo Banner",
     description: "Printed graphic plus text—combine a photo or design with your personal message for maximum emotional impact.",
     bestFor: "Photo + message combinations",
+    slug: "combo-banners",
   },
   {
     icon: "Wind" as const,
     title: "Smoke Display",
     description: "Coloured smoke trails in the sky. Available in pink or blue. Perfect for gender reveals or adding dramatic flair to any celebration.",
     bestFor: "Gender reveals & dramatic reveals",
+    slug: "smoke-displays",
   },
 ] as const;
 

@@ -51,10 +51,9 @@ export default function PersonalPage() {
               <span className="text-blue">Their Sky.</span>
             </h1>
             <p className="text-lg text-muted leading-relaxed mb-8">
-              Some moments deserve more than a text message. A proposal, a
-              gender reveal, a milestone birthday&mdash;when you put it in the
-              sky, it becomes a memory that lasts forever. We handle everything
-              so you can focus on the reaction.
+              A proposal. A gender reveal. A birthday they&apos;ll talk about
+              for years. We put your message in the sky&mdash;you just make sure
+              they&apos;re looking up.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button href="/#contact" variant="primary" size="large">
@@ -106,9 +105,11 @@ export default function PersonalPage() {
                     )}
                   </div>
                   <div className="p-6 bg-card">
-                    <span className="inline-flex text-[10px] font-bold uppercase tracking-wider text-red bg-red/10 px-2 py-0.5 rounded-full mb-3">
-                      Most Popular
-                    </span>
+                    {"badge" in occasion && occasion.badge && (
+                      <span className="inline-flex text-[10px] font-bold uppercase tracking-wider text-red bg-red/10 px-2 py-0.5 rounded-full mb-3">
+                        {occasion.badge}
+                      </span>
+                    )}
                     <h3 className="text-lg font-semibold text-heading mb-2">
                       {occasion.title}
                     </h3>
@@ -130,18 +131,13 @@ export default function PersonalPage() {
               {PERSONAL_OCCASIONS.filter((o) => !o.popular).map((occasion) => {
                 const Icon = occasionIcons[occasion.icon as keyof typeof occasionIcons];
                 return (
-                  <div key={occasion.title} className="flex items-start gap-3">
+                  <div key={occasion.title} className="flex items-center gap-3">
                     <div className="h-8 w-8 bg-red/10 border border-red/20 flex items-center justify-center shrink-0">
                       <Icon className="h-4 w-4 text-red" />
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-red leading-tight">
-                        {occasion.title}
-                      </p>
-                      <p className="text-xs text-muted leading-snug mt-0.5 line-clamp-2">
-                        {occasion.description}
-                      </p>
-                    </div>
+                    <p className="text-sm font-semibold text-red leading-tight">
+                      {occasion.title}
+                    </p>
                   </div>
                 );
               })}
@@ -177,9 +173,15 @@ export default function PersonalPage() {
                   <p className="text-sm text-muted leading-relaxed mb-3">
                     {option.description}
                   </p>
-                  <p className="text-xs text-red font-medium">
+                  <p className="text-xs text-red font-medium mb-4">
                     Best for: {option.bestFor}
                   </p>
+                  <a
+                    href={`/services/${option.slug}`}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-blue hover:text-red transition-colors"
+                  >
+                    Learn more <ArrowRight className="h-3 w-3" />
+                  </a>
                 </Card>
               );
             })}

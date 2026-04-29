@@ -26,7 +26,7 @@ const useCaseIcons = { Building2, Megaphone, Trophy, Heart, Store, Calendar } as
 export default function ComboBannersPage() {
   return (
     <main>
-      <ServiceHero {...COMBO_PAGE} video="https://media.skybanners.ca/gender-reveal-hero.mp4" videoPoster="https://media.skybanners.ca/gender-reveal-hero-poster.jpg" />
+      <ServiceHero {...COMBO_PAGE} video="/videos/gender-reveal-hero.mp4#t=36" />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">
@@ -139,7 +139,7 @@ export default function ComboBannersPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button href="/#contact" variant="primary" size="large">
-              Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
+              Get a Combo Quote <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button href="tel:1-877-759-2266" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">
               Call 1-877-SKY-BANNER

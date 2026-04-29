@@ -1,4 +1,5 @@
 import { ClipboardList, PenLine, Palette, Wind, ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { SERVICES } from "@/lib/constants";
 
 const iconMap = {
@@ -27,6 +28,7 @@ export function Services() {
           {SERVICES.map((service) => {
             const Icon = iconMap[service.icon];
             const hasBadge = "badge" in service && service.badge;
+            const customIcon = (service as { customIcon?: string }).customIcon;
             return (
               <div key={service.title} className="group relative border border-card-border bg-background-alt p-6 hover:-translate-y-0.5 hover:border-muted/30 hover:shadow-md transition-all duration-200">
                 {hasBadge && (
@@ -36,9 +38,21 @@ export function Services() {
                     </span>
                   </div>
                 )}
-                <div className="h-12 w-12 rounded-lg bg-red/20 flex items-center justify-center mb-4">
-                  <Icon className="h-6 w-6 text-red" />
-                </div>
+                {customIcon ? (
+                  <div className="h-12 w-full mb-4">
+                    <Image
+                      src={customIcon}
+                      alt={service.title}
+                      width={240}
+                      height={48}
+                      className="h-full w-auto object-contain object-left"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-12 w-12 rounded-lg bg-red/20 flex items-center justify-center mb-4">
+                    <Icon className="h-6 w-6 text-red" />
+                  </div>
+                )}
                 <h3 className="text-lg font-semibold text-heading mb-2">
                   {service.title}
                 </h3>

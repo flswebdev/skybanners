@@ -25,7 +25,7 @@ export function CrossPromoSection({ currentSlug }: CrossPromoSectionProps) {
                 <img
                   src={service.customIcon}
                   alt={service.title}
-                  className="h-8 w-auto object-contain shrink-0"
+                  className="h-7 w-28 object-contain shrink-0"
                 />
                 <div>
                   <span className="font-semibold text-heading group-hover:text-red transition-colors">

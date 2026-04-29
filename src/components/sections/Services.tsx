@@ -36,11 +36,11 @@ export function Services() {
                   </div>
                 )}
                 {customIcon ? (
-                  <div className="h-12 w-full mb-4">
+                  <div className="w-full h-10 mb-4 flex items-center justify-start">
                     <img
                       src={customIcon}
                       alt={service.title}
-                      className="h-full w-auto object-contain mx-auto"
+                      className="max-h-full max-w-full object-contain object-left"
                     />
                   </div>
                 ) : (

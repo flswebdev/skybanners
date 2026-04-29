@@ -81,9 +81,6 @@ export function Stats() {
             </button>
             <div className="text-5xl font-extrabold text-red mb-3">{active.number}</div>
             <h2 className="text-2xl font-bold text-heading mb-4">{active.label}</h2>
-            {"extra" in active && active.extra && (
-              <p className="text-muted leading-relaxed mb-6">{active.extra}</p>
-            )}
             <Button href="/contact" onClick={() => setActiveStat(null)}>
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

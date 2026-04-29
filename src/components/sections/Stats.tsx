@@ -81,9 +81,6 @@ export function Stats() {
             </button>
             <div className="text-5xl font-extrabold text-red mb-3">{active.number}</div>
             <h2 className="text-2xl font-bold text-heading mb-4">{active.label}</h2>
-            {"detail" in active && active.detail && (
-              <p className="text-muted leading-relaxed mb-3">{active.detail}</p>
-            )}
             {"extra" in active && active.extra && (
               <p className="text-muted leading-relaxed mb-6">{active.extra}</p>
             )}

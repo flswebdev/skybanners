@@ -33,7 +33,7 @@ export const STATS = [
 export const SERVICES = [
   {
     icon: "PenLine" as const,
-    customIcon: "/icons/letter-banners-icon.svg",
+    customIcon: "/icons/letter-banners-icon.png",
     title: "Letter Banners",
     href: "/services/letter-banners",
     description: "Custom text messages up to 40 characters. No production cost — ready in as little as 24 hrs.",
@@ -41,14 +41,14 @@ export const SERVICES = [
   },
   {
     icon: "Wind" as const,
-    customIcon: "/icons/smoke-displays-icon.svg",
+    customIcon: "/icons/smoke-displays-icon.png",
     title: "Smoke Displays",
     href: "/services/smoke-displays",
     description: "Coloured smoke trails in pink or blue for gender reveals, celebrations, and events.",
   },
   {
     icon: "ClipboardList" as const,
-    customIcon: "/icons/billboard-banners-icon.svg",
+    customIcon: "/icons/billboard-banners-icon.png",
     largeIcon: true,
     title: "Billboard Banners",
     href: "/services/billboard-banners",
@@ -56,7 +56,7 @@ export const SERVICES = [
   },
   {
     icon: "Palette" as const,
-    customIcon: "/icons/combo-banners-icon.svg",
+    customIcon: "/icons/combo-banners-icon.png",
     title: "Combo Banners",
     href: "/services/combo-banners",
     description: "Billboard graphic paired with bold text. Our highest-engagement format for brands and events.",

@@ -316,27 +316,28 @@ export const ALL_SERVICES = [
     title: "Billboard Banners",
     description: "Full-colour printed banners with logos and imagery",
     icon: "ClipboardList" as const,
-    customIcon: "/icons/billboard-banners-icon.svg",
+    customIcon: "/icons/billboard-banners-icon.png",
   },
   {
     slug: "letter-banners",
     title: "Letter Banners",
     description: "Bold character banners for text messages",
     icon: "PenLine" as const,
-    customIcon: "/icons/letter-banners-icon.svg",
+    customIcon: "/icons/letter-banners-icon.png",
   },
   {
     slug: "combo-banners",
     title: "Combo Banners",
     description: "Billboard + letter banner combined",
     icon: "Palette" as const,
-    customIcon: "/icons/combo-banners-icon.svg",
+    customIcon: "/icons/combo-banners-icon.png",
   },
   {
     slug: "smoke-displays",
     title: "Smoke Displays",
     description: "Coloured smoke for reveals and celebrations",
     icon: "Wind" as const,
-    customIcon: "/icons/smoke-displays-icon.svg",
+    customIcon: "/icons/smoke-displays-icon.png",
   },
 ] as const;
+

@@ -26,7 +26,7 @@ const useCaseIcons = { Building2, Megaphone, Store, Clapperboard, Heart, Trophy 
 export default function BillboardBannersPage() {
   return (
     <main>
-      <ServiceHero {...BILLBOARD_PAGE} video="/videos/billboard-hero.mov" />
+      <ServiceHero {...BILLBOARD_PAGE} image={{ src: "/images/billboard-hero.jpg", alt: "Plane towing a Jet Express Car Wash billboard banner in the sky", className: "absolute inset-0 w-full h-full object-cover object-center" }} />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">

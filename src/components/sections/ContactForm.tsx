@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Paperclip } from "lucide-react";
-import { upload } from "@vercel/blob/client";
 import { Button } from "@/components/ui";
 import { CONTACT, CAMPAIGN_TYPES } from "@/lib/constants";
 
@@ -32,28 +31,30 @@ export function ContactForm() {
     if (!data.campaignType) { setErrorMsg("Please select a campaign type."); return; }
     if (data.message.trim().length < 10) { setErrorMsg("Please tell us a bit more about your campaign."); return; }
 
+    const totalSize = selectedFiles.reduce((sum, f) => sum + f.size, 0);
+    if (totalSize > 8 * 1024 * 1024) {
+      setErrorMsg("Total attachment size must be under 8MB. Please reduce the number or size of files.");
+      return;
+    }
+
     setStatus("sending");
 
     try {
-      // Upload any attached files to Vercel Blob
-      const fileUrls: string[] = [];
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("campaignType", data.campaignType);
+      formData.append("message", data.message);
+      formData.append("_timing", String(Date.now() - formStartRef.current));
+      formData.append("_hp", "");
       for (const file of selectedFiles) {
-        const blob = await upload(file.name, file, {
-          access: "public",
-          handleUploadUrl: "/api/upload",
-        });
-        fileUrls.push(blob.url);
+        formData.append("files", file);
       }
 
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          fileUrls,
-          _timing: Date.now() - formStartRef.current,
-          _hp: "",
-        }),
+        body: formData,
       });
 
       if (!res.ok) {

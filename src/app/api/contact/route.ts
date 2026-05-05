@@ -44,8 +44,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = await request.json();
-    const { name, email, phone, campaignType, message, fileUrls, _hp, _timing } = body;
+    const formData = await request.formData();
+
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
+    const campaignType = formData.get('campaignType') as string;
+    const message = formData.get('message') as string;
+    const _hp = formData.get('_hp') as string;
+    const _timing = Number(formData.get('_timing'));
+    const files = formData.getAll('files') as File[];
 
     // Bot protection: honeypot
     if (isHoneypotFilled(_hp)) {
@@ -54,7 +62,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Bot protection: timing
-    if (isSubmittedTooQuickly(typeof _timing === 'number' ? _timing : undefined)) {
+    if (isSubmittedTooQuickly(isNaN(_timing) ? undefined : _timing)) {
       console.log('Bot detected: submitted too quickly', _timing, 'ms');
       return NextResponse.json({ success: true });
     }
@@ -87,10 +95,16 @@ export async function POST(request: NextRequest) {
       phone: phone ? sanitize(phone) : '',
       campaignType: sanitize(campaignType),
       message: sanitize(message),
-      fileUrls: Array.isArray(fileUrls)
-        ? (fileUrls as string[]).filter((u) => typeof u === 'string')
-        : [],
     };
+
+    // Build email attachments from uploaded files
+    const attachments: { filename: string; content: Buffer }[] = [];
+    for (const file of files) {
+      if (file.size > 0) {
+        const buffer = Buffer.from(await file.arrayBuffer());
+        attachments.push({ filename: file.name, content: buffer });
+      }
+    }
 
     const campaignLabel: Record<string, string> = {
       business: 'Business / Brand Campaign',
@@ -121,10 +135,11 @@ export async function POST(request: NextRequest) {
 
                 <!-- Header -->
                 <tr>
-                  <td style="background:linear-gradient(135deg,#0055DD 0%,#0044BB 100%);padding:28px 32px;border-bottom:4px solid #E81C1C;">
+                  <td style="background:#0D1117;padding:28px 32px;border-bottom:4px solid #e24740;">
+                    <img src="https://skybanners.ca/logos/sky-banners-logo-v2.png" alt="Sky Banners" width="160" style="display:block;margin:0 0 14px;height:auto;">
                     <h2 style="margin:0;font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.5px;">New Quote Request</h2>
                     <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.75);">Received: ${receivedAt}</p>
-                    <span style="display:inline-block;background-color:#E81C1C;color:#ffffff;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:10px;">New Lead</span>
+                    <span style="display:inline-block;background-color:#e24740;color:#ffffff;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:10px;">New Lead</span>
                   </td>
                 </tr>
 
@@ -133,7 +148,7 @@ export async function POST(request: NextRequest) {
                   <td style="padding:32px;">
 
                     <!-- Customer info -->
-                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#f7f9ff;border-left:4px solid #0055DD;border-radius:4px;margin-bottom:24px;">
+                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#F8F9FB;border-left:4px solid #2F6DC4;border-radius:4px;margin-bottom:24px;">
                       <tr><td>
                         <h3 style="margin:0 0 14px;color:#0D1117;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">Customer Information</h3>
                         <table width="100%" cellpadding="5" cellspacing="0">
@@ -143,12 +158,12 @@ export async function POST(request: NextRequest) {
                           </tr>
                           <tr>
                             <td style="font-weight:600;color:#4a5568;font-size:13px;">Email:</td>
-                            <td style="font-size:14px;"><a href="mailto:${sanitized.email}" style="color:#0055DD;text-decoration:none;font-weight:500;">${sanitized.email}</a></td>
+                            <td style="font-size:14px;"><a href="mailto:${sanitized.email}" style="color:#2F6DC4;text-decoration:none;font-weight:500;">${sanitized.email}</a></td>
                           </tr>
                           ${sanitized.phone ? `
                           <tr>
                             <td style="font-weight:600;color:#4a5568;font-size:13px;">Phone:</td>
-                            <td style="font-size:14px;"><a href="tel:${sanitized.phone}" style="color:#0055DD;text-decoration:none;font-weight:500;">${sanitized.phone}</a></td>
+                            <td style="font-size:14px;"><a href="tel:${sanitized.phone}" style="color:#2F6DC4;text-decoration:none;font-weight:500;">${sanitized.phone}</a></td>
                           </tr>` : ''}
                           <tr>
                             <td style="font-weight:600;color:#4a5568;font-size:13px;">Campaign Type:</td>
@@ -159,33 +174,31 @@ export async function POST(request: NextRequest) {
                     </table>
 
                     <!-- Message -->
-                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#f7f9ff;border:1px solid #e2e8f0;border-left:4px solid #E81C1C;border-radius:4px;margin-bottom:24px;">
+                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#F8F9FB;border:1px solid #e2e8f0;border-left:4px solid #e24740;border-radius:4px;margin-bottom:24px;">
                       <tr><td>
                         <h3 style="margin:0 0 10px;color:#0D1117;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">Campaign Details</h3>
                         <div style="color:#2d3748;line-height:1.7;font-size:14px;background:#ffffff;padding:14px;border-radius:4px;">${sanitized.message.replace(/\n/g, '<br>')}</div>
                       </td></tr>
                     </table>
 
-                    ${sanitized.fileUrls.length > 0 ? `
-                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#f7f9ff;border-left:4px solid #0055DD;border-radius:4px;margin-bottom:24px;">
+                    ${attachments.length > 0 ? `
+                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#F8F9FB;border-left:4px solid #2F6DC4;border-radius:4px;margin-bottom:24px;">
                       <tr><td>
-                        <h3 style="margin:0 0 10px;color:#0D1117;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">Attached Files (${sanitized.fileUrls.length})</h3>
-                        <ul style="margin:0;padding-left:18px;color:#2d3748;font-size:14px;">
-                          ${sanitized.fileUrls.map((url) => `<li style="margin-bottom:4px;"><a href="${url}" style="color:#0055DD;word-break:break-all;">${url.split('/').pop()}</a></li>`).join('')}
-                        </ul>
+                        <h3 style="margin:0 0 10px;color:#0D1117;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">Attached Files (${attachments.length})</h3>
+                        <p style="margin:0;color:#4a5568;font-size:13px;">${attachments.map(a => a.filename).join(', ')}</p>
                       </td></tr>
                     </table>` : ''}
 
                     <!-- Action buttons -->
-                    <table width="100%" cellpadding="14" cellspacing="0" style="background:#f7f9ff;border-radius:6px;margin-bottom:8px;">
+                    <table width="100%" cellpadding="14" cellspacing="0" style="background:#F8F9FB;border-radius:6px;margin-bottom:8px;">
                       <tr><td align="center">
                         <table cellpadding="0" cellspacing="0"><tr>
                           <td style="padding:0 6px;">
-                            <a href="mailto:${sanitized.email}" style="display:inline-block;padding:12px 22px;background:#0055DD;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Reply to Customer</a>
+                            <a href="mailto:${sanitized.email}" style="display:inline-block;padding:12px 22px;background:#2F6DC4;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Reply to Customer</a>
                           </td>
                           ${sanitized.phone ? `
                           <td style="padding:0 6px;">
-                            <a href="tel:${sanitized.phone}" style="display:inline-block;padding:12px 22px;background:#E81C1C;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Call Customer</a>
+                            <a href="tel:${sanitized.phone}" style="display:inline-block;padding:12px 22px;background:#e24740;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Call Customer</a>
                           </td>` : ''}
                         </tr></table>
                       </td></tr>
@@ -196,7 +209,7 @@ export async function POST(request: NextRequest) {
 
                 <!-- Footer -->
                 <tr>
-                  <td style="background:#f7f9ff;padding:18px 32px;border-top:1px solid #e2e8f0;">
+                  <td style="background:#F8F9FB;padding:18px 32px;border-top:1px solid #e2e8f0;">
                     <p style="margin:4px 0;font-size:12px;color:#718096;"><strong>Action Required:</strong> Respond to this inquiry within 24 hours.</p>
                     <p style="margin:4px 0;font-size:12px;color:#718096;">Submitted via the quote form on <strong>skybanners.ca</strong></p>
                   </td>
@@ -215,6 +228,7 @@ export async function POST(request: NextRequest) {
       replyTo: sanitized.email,
       subject: `New Quote Request: ${campaignDisplay} — ${sanitized.name}`,
       html: staffHtml,
+      ...(attachments.length > 0 && { attachments }),
     });
 
     // ── Customer confirmation email ────────────────────────────────────────────
@@ -228,23 +242,23 @@ export async function POST(request: NextRequest) {
             body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:#f0f2f5;}
             .wrap{background:#f0f2f5;padding:40px 20px;}
             .card{max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
-            .hdr{background:#0D1117;padding:36px 32px;text-align:center;border-bottom:4px solid #E81C1C;}
+            .hdr{background:#0D1117;padding:36px 32px;text-align:center;border-bottom:4px solid #e24740;}
             .hdr h1{margin:0;font-size:26px;font-weight:700;color:#ffffff;letter-spacing:1px;}
             .hdr p{margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.55);}
             .body{padding:36px 32px;}
             .body h2{text-align:center;color:#0D1117;font-size:22px;margin:0 0 22px;font-weight:600;}
             .body p{font-size:15px;line-height:1.8;color:#4a5568;margin:0 0 14px;}
-            .summary{background:#f7f9ff;border-left:4px solid #0055DD;border-radius:4px;padding:22px;margin:22px 0;}
+            .summary{background:#F8F9FB;border-left:4px solid #2F6DC4;border-radius:4px;padding:22px;margin:22px 0;}
             .summary h3{margin:0 0 12px;color:#0D1117;font-size:16px;}
             .summary p{margin:6px 0;color:#4a5568;font-size:14px;}
-            .info{background:#f7f9ff;border-radius:6px;padding:22px;margin:22px 0;}
+            .info{background:#F8F9FB;border-radius:6px;padding:22px;margin:22px 0;}
             .info p{margin:6px 0;color:#4a5568;font-size:14px;}
-            .info a{color:#0055DD;text-decoration:none;font-weight:600;}
+            .info a{color:#2F6DC4;text-decoration:none;font-weight:600;}
             .cta{text-align:center;margin:32px 0;}
-            .cta a{display:inline-block;background:#E81C1C;color:#ffffff;padding:14px 40px;text-decoration:none;border-radius:6px;font-weight:600;font-size:16px;}
+            .cta a{display:inline-block;background:#e24740;color:#ffffff;padding:14px 40px;text-decoration:none;border-radius:6px;font-weight:600;font-size:16px;}
             .ftr{background:#0D1117;color:#9ca3af;padding:28px 32px;text-align:center;}
             .ftr p{margin:5px 0;font-size:13px;}
-            .ftr a{color:#3388FF;text-decoration:none;}
+            .ftr a{color:#5B8FD4;text-decoration:none;}
             .ftr .disc{font-size:11px;color:#6b7280;margin-top:16px;line-height:1.5;}
           </style>
         </head>
@@ -252,7 +266,7 @@ export async function POST(request: NextRequest) {
           <div class="wrap">
             <div class="card">
               <div class="hdr">
-                <h1>SKY BANNERS</h1>
+                <img src="https://skybanners.ca/logos/sky-banners-logo-v2.png" alt="Sky Banners" width="220" style="display:block;margin:0 auto 12px;height:auto;">
                 <p>Aerial Advertising · Southern Ontario</p>
               </div>
               <div class="body">
@@ -275,6 +289,7 @@ export async function POST(request: NextRequest) {
                 </div>
               </div>
               <div class="ftr">
+                <img src="https://skybanners.ca/logos/sky-banners-logo-v2.png" alt="Sky Banners" width="160" style="display:block;margin:0 auto 12px;height:auto;opacity:0.85;">
                 <p style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">SKY BANNERS</p>
                 <p>1-877-SKY-BANNER &nbsp;·&nbsp; <a href="mailto:info@skybanners.ca">info@skybanners.ca</a></p>
                 <p>Southern Ontario Aerial Advertising</p>
@@ -294,7 +309,6 @@ export async function POST(request: NextRequest) {
         html: confirmHtml,
       });
     } catch (confirmError) {
-      // Don't fail the request if confirmation email errors — staff email already sent
       console.error('Error sending confirmation email:', confirmError);
     }
 

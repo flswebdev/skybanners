@@ -118,13 +118,13 @@ export function ContactForm() {
                     <label htmlFor="name" className="block text-sm font-medium text-white mb-1.5">
                       Name *
                     </label>
-                    <input type="text" id="name" name="name" required className={inputClass} />
+                    <input type="text" id="name" name="name" className={inputClass} />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-white mb-1.5">
                       Email *
                     </label>
-                    <input type="email" id="email" name="email" required className={inputClass} />
+                    <input type="email" id="email" name="email" className={inputClass} />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -141,7 +141,6 @@ export function ContactForm() {
                     <select
                       id="campaignType"
                       name="campaignType"
-                      required
                       className={inputClass}
                     >
                       {CAMPAIGN_TYPES.map((type) => (
@@ -160,7 +159,6 @@ export function ContactForm() {
                     id="message"
                     name="message"
                     rows={5}
-                    required
                     placeholder="What's your message? Where and when would you like to fly? Any specific requirements?"
                     className={`${inputClass} resize-none`}
                   />
@@ -199,7 +197,7 @@ export function ContactForm() {
                   )}
                 </div>
 
-                {status === "error" && (
+                {errorMsg && (
                   <p className="text-red text-sm">{errorMsg}</p>
                 )}
 

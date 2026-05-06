@@ -3,8 +3,8 @@ export const SITE_DESCRIPTION = "Aerial advertising across Southern Ontario and 
 export const SITE_URL = "https://skybanners.ca";
 
 export const CONTACT = {
-  phone: "1-877-SKY-BANNER",
-  phoneFormatted: "1-877-759-2266",
+  phone: "1-833-724-9559",
+  phoneFormatted: "1-833-724-9559",
   email: "info@skybanners.ca",
   serviceArea: "Southern Ontario & Quebec",
   cities: "Toronto \u2022 Hamilton \u2022 London \u2022 Kitchener-Waterloo & More",

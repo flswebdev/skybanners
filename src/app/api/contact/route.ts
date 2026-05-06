@@ -282,7 +282,7 @@ export async function POST(request: NextRequest) {
                 <div class="info">
                   <p><strong style="color:#0D1117;">What Happens Next?</strong></p>
                   <p>We'll prepare a customized quote and reach out to discuss your campaign details.</p>
-                  <p>Need to follow up? Call us at <a href="tel:+18777592266">1-877-SKY-BANNER</a> or email <a href="mailto:info@skybanners.ca">info@skybanners.ca</a></p>
+                  <p>Need to follow up? Call us at <a href="tel:+18337249559">1-833-724-9559</a> or email <a href="mailto:info@skybanners.ca">info@skybanners.ca</a></p>
                 </div>
                 <div class="cta">
                   <a href="https://skybanners.ca">Visit skybanners.ca</a>
@@ -291,7 +291,7 @@ export async function POST(request: NextRequest) {
               <div class="ftr">
                 <img src="https://skybanners.ca/logos/sky-banners-logo-v2.png" alt="Sky Banners" width="160" style="display:block;margin:0 auto 12px;height:auto;opacity:0.85;">
                 <p style="font-size:16px;font-weight:700;color:#ffffff;margin-bottom:8px;">SKY BANNERS</p>
-                <p>1-877-SKY-BANNER &nbsp;·&nbsp; <a href="mailto:info@skybanners.ca">info@skybanners.ca</a></p>
+                <p>1-833-724-9559 &nbsp;·&nbsp; <a href="mailto:info@skybanners.ca">info@skybanners.ca</a></p>
                 <p>Southern Ontario Aerial Advertising</p>
                 <p class="disc">This is an automated confirmation. Please do not reply directly to this message.<br>© ${new Date().getFullYear()} Sky Banners. All rights reserved.</p>
               </div>

@@ -118,11 +118,11 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-white/60">
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-red" />
-                {CONTACT.phone}
+                <a href="tel:+18337249559" className="hover:text-white transition-colors">{CONTACT.phone}</a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-red" />
-                {CONTACT.email}
+                <a href={`mailto:${CONTACT.email}`} className="hover:text-white transition-colors">{CONTACT.email}</a>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-red" />

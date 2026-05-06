@@ -118,8 +118,8 @@ export default function GalleryPage() {
             <Button href="/contact" variant="primary" size="large">
               Start Your Campaign <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button href="tel:1-877-759-2266" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">
-              Call 1-877-SKY-BANNER
+            <Button href="tel:+18337249559" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">
+              Call Us
             </Button>
           </div>
         </div>

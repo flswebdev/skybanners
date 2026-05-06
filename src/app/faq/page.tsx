@@ -62,8 +62,8 @@ export default function FAQPage() {
             <Button href="/contact" variant="primary" size="large">
               Ask Us Anything
             </Button>
-            <Button href="tel:1-877-759-2266" variant="secondary" size="large">
-              Call 1-877-SKY-BANNER
+            <Button href="tel:+18337249559" variant="secondary" size="large">
+              Call Us
             </Button>
           </div>
         </div>

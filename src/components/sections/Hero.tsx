@@ -1,26 +1,26 @@
 "use client";
 
+import Image from "next/image";
 import { LayoutGroup, motion } from "motion/react";
 import { TextRotate } from "@/components/ui/text-rotate";
 import { HERO } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[70vh] lg:min-h-0 lg:h-[75vh] flex flex-col items-start lg:items-stretch justify-start overflow-hidden">
-      {/* Hero video background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/videos/hero.mov"
-        autoPlay
-        loop
-        muted
-        playsInline
+    <section className="relative mt-[4.5rem] min-h-[50vh] lg:min-h-0 lg:h-[55vh] flex flex-col items-start lg:items-stretch justify-center overflow-hidden">
+      {/* Hero image background */}
+      <Image
+        src="/images/hero.jpg"
+        alt="Sky Banners plane towing a letter banner"
+        fill
+        className="object-cover object-top"
+        priority
       />
       {/* Top fade overlay */}
       <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-white/80 to-transparent z-10" />
 
       {/* Main headline — left side */}
-      <div className="relative z-20 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-48 lg:pt-16 lg:pb-0 lg:flex-1 lg:flex lg:flex-col lg:justify-center text-center lg:text-left">
+      <div className="relative z-20 w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center lg:text-left">
         <div className="lg:max-w-[50%]">
 <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
             <span className="text-red block mb-1 lg:mb-4">{HERO.title}</span>

@@ -1,15 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Paperclip } from "lucide-react";
+import { useState, useRef } from "react"; // useRef kept for formStartRef (timing/bot protection)
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui";
 import { CONTACT, CAMPAIGN_TYPES } from "@/lib/constants";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const formStartRef = useRef<number>(Date.now());
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -31,12 +29,6 @@ export function ContactForm() {
     if (!data.campaignType) { setErrorMsg("Please select a campaign type."); return; }
     if (data.message.trim().length < 10) { setErrorMsg("Please tell us a bit more about your campaign."); return; }
 
-    const totalSize = selectedFiles.reduce((sum, f) => sum + f.size, 0);
-    if (totalSize > 8 * 1024 * 1024) {
-      setErrorMsg("Total attachment size must be under 8MB. Please reduce the number or size of files.");
-      return;
-    }
-
     setStatus("sending");
 
     try {
@@ -48,9 +40,6 @@ export function ContactForm() {
       formData.append("message", data.message);
       formData.append("_timing", String(Date.now() - formStartRef.current));
       formData.append("_hp", "");
-      for (const file of selectedFiles) {
-        formData.append("files", file);
-      }
 
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -63,7 +52,6 @@ export function ContactForm() {
       }
 
       setStatus("success");
-      setSelectedFiles([]);
       form.reset();
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
@@ -89,9 +77,9 @@ export function ContactForm() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Form */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 flex flex-col">
             {status === "success" ? (
-              <div className="border border-blue/20 bg-blue/5 p-8 text-center">
+              <div className="border border-blue/20 bg-blue/5 p-8 text-center flex-1 flex flex-col items-center justify-center">
                 <CheckCircle className="h-12 w-12 text-blue-light mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-2">
                   Quote Request Sent!
@@ -110,7 +98,7 @@ export function ContactForm() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="border border-white/10 bg-white/5 p-6 space-y-5"
+                className="border border-white/10 bg-white/5 p-6 space-y-5 flex-1 flex flex-col"
               >
                 {/* Honeypot — hidden from real users, bots will fill it */}
                 <input type="text" name="_hp" aria-hidden="true" tabIndex={-1} className="sr-only" autoComplete="off" />
@@ -165,44 +153,11 @@ export function ContactForm() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-white mb-1.5">
-                    Attach Files <span className="text-white/40 font-normal">(logos, photos, design briefs — optional)</span>
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="flex items-center gap-2 border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/60 hover:border-blue hover:text-white transition-colors cursor-pointer"
-                  >
-                    <Paperclip className="h-4 w-4" />
-                    {selectedFiles.length === 0
-                      ? "Choose files…"
-                      : `${selectedFiles.length} file${selectedFiles.length > 1 ? "s" : ""} selected`}
-                  </button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    multiple
-                    accept=".jpg,.jpeg,.png,.gif,.webp,.pdf,.eps,.ai,.svg,.doc,.docx,.ppt,.pptx"
-                    className="sr-only"
-                    onChange={(e) => setSelectedFiles(Array.from(e.target.files ?? []))}
-                  />
-                  {selectedFiles.length > 0 && (
-                    <ul className="mt-2 space-y-1">
-                      {selectedFiles.map((f) => (
-                        <li key={f.name} className="text-xs text-white/50 truncate">
-                          {f.name} ({(f.size / 1024 / 1024).toFixed(1)} MB)
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-
                 {errorMsg && (
                   <p className="text-red text-sm">{errorMsg}</p>
                 )}
 
-                <Button type="submit" size="large" disabled={status === "sending"}>
+                <Button type="submit" size="large" disabled={status === "sending"} className="mt-auto">
                   {status === "sending" ? (
                     <>
                       <svg className="animate-spin h-4 w-4 mr-2 shrink-0" viewBox="0 0 24 24" fill="none">

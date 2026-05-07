@@ -229,7 +229,7 @@ export function ContactForm() {
                 <Phone className="h-5 w-5 text-red mt-0.5 shrink-0" />
                 <div>
                   <span className="block text-sm font-semibold text-white mb-1">Phone</span>
-                  <a href="tel:+18337249559" className="text-sm text-white/60 hover:text-white transition-colors">
+                  <a href="tel:+12263669680" className="text-sm text-white/60 hover:text-white transition-colors">
                     {CONTACT.phone}
                   </a>
                 </div>

@@ -62,7 +62,7 @@ export default function FAQPage() {
             <Button href="/contact" variant="primary" size="large">
               Ask Us Anything
             </Button>
-            <Button href="tel:+18337249559" variant="secondary" size="large">
+            <Button href="tel:+12263669680" variant="secondary" size="large">
               Call Us
             </Button>
           </div>

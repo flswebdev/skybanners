@@ -240,7 +240,7 @@ export default function BusinessPage() {
             <Button href="/contact" variant="primary" size="large">
               Request a Campaign Quote <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button href="tel:+18337249559" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">
+            <Button href="tel:+12263669680" variant="outline" size="large" className="border-white/20 text-white hover:bg-white/10">
               Call Us
             </Button>
           </div>

@@ -123,101 +123,41 @@ export async function POST(request: NextRequest) {
       timeStyle: 'short',
     });
 
-    // ── Staff notification email ───────────────────────────────────────────────
+    // ── Staff notification ────────────────────────────────────────────────────
+    // Plain text is what gets quoted when staff reply — keep it clean so the
+    // customer only sees a tidy summary if it ever appears in a reply thread.
+    const staffText = [
+      `NEW QUOTE REQUEST — ${receivedAt}`,
+      ``,
+      `Name:           ${sanitized.name}`,
+      `Email:          ${sanitized.email}`,
+      sanitized.phone ? `Phone:          ${sanitized.phone}` : null,
+      `Campaign Type:  ${campaignDisplay}`,
+      ``,
+      `Message:`,
+      sanitized.message,
+      attachments.length > 0 ? `\nAttachments: ${attachments.map(a => a.filename).join(', ')}` : null,
+      ``,
+      `Submitted via skybanners.ca`,
+    ].filter(line => line !== null).join('\n');
+
     const staffHtml = `
       <!DOCTYPE html>
       <html>
         <head><meta charset="utf-8"></head>
-        <body style="margin:0;padding:0;font-family:Arial,sans-serif;background-color:#f0f2f5;">
-          <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f0f2f5;padding:20px 0;">
-            <tr><td align="center">
-              <table width="640" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.12);">
-
-                <!-- Header -->
-                <tr>
-                  <td style="background:#0D1117;padding:28px 32px;border-bottom:4px solid #e24740;">
-                    <img src="https://skybanners.ca/logos/sky-banners-logo-v2.png" alt="Sky Banners" width="160" style="display:block;margin:0 0 14px;height:auto;">
-                    <h2 style="margin:0;font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.5px;">New Quote Request</h2>
-                    <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.75);">Received: ${receivedAt}</p>
-                    <span style="display:inline-block;background-color:#e24740;color:#ffffff;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-top:10px;">New Lead</span>
-                  </td>
-                </tr>
-
-                <!-- Body -->
-                <tr>
-                  <td style="padding:32px;">
-
-                    <!-- Customer info -->
-                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#F8F9FB;border-left:4px solid #2F6DC4;border-radius:4px;margin-bottom:24px;">
-                      <tr><td>
-                        <h3 style="margin:0 0 14px;color:#0D1117;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">Customer Information</h3>
-                        <table width="100%" cellpadding="5" cellspacing="0">
-                          <tr>
-                            <td style="font-weight:600;color:#4a5568;font-size:13px;width:130px;">Name:</td>
-                            <td style="color:#0D1117;font-size:14px;"><strong>${sanitized.name}</strong></td>
-                          </tr>
-                          <tr>
-                            <td style="font-weight:600;color:#4a5568;font-size:13px;">Email:</td>
-                            <td style="font-size:14px;"><a href="mailto:${sanitized.email}" style="color:#2F6DC4;text-decoration:none;font-weight:500;">${sanitized.email}</a></td>
-                          </tr>
-                          ${sanitized.phone ? `
-                          <tr>
-                            <td style="font-weight:600;color:#4a5568;font-size:13px;">Phone:</td>
-                            <td style="font-size:14px;"><a href="tel:${sanitized.phone}" style="color:#2F6DC4;text-decoration:none;font-weight:500;">${sanitized.phone}</a></td>
-                          </tr>` : ''}
-                          <tr>
-                            <td style="font-weight:600;color:#4a5568;font-size:13px;">Campaign Type:</td>
-                            <td style="color:#0D1117;font-size:14px;"><strong>${campaignDisplay}</strong></td>
-                          </tr>
-                        </table>
-                      </td></tr>
-                    </table>
-
-                    <!-- Message -->
-                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#F8F9FB;border:1px solid #e2e8f0;border-left:4px solid #e24740;border-radius:4px;margin-bottom:24px;">
-                      <tr><td>
-                        <h3 style="margin:0 0 10px;color:#0D1117;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">Campaign Details</h3>
-                        <div style="color:#2d3748;line-height:1.7;font-size:14px;background:#ffffff;padding:14px;border-radius:4px;">${sanitized.message.replace(/\n/g, '<br>')}</div>
-                      </td></tr>
-                    </table>
-
-                    ${attachments.length > 0 ? `
-                    <table width="100%" cellpadding="16" cellspacing="0" style="background:#F8F9FB;border-left:4px solid #2F6DC4;border-radius:4px;margin-bottom:24px;">
-                      <tr><td>
-                        <h3 style="margin:0 0 10px;color:#0D1117;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">Attached Files (${attachments.length})</h3>
-                        <p style="margin:0;color:#4a5568;font-size:13px;">${attachments.map(a => a.filename).join(', ')}</p>
-                      </td></tr>
-                    </table>` : ''}
-
-                    <!-- Action buttons -->
-                    <table width="100%" cellpadding="14" cellspacing="0" style="background:#F8F9FB;border-radius:6px;margin-bottom:8px;">
-                      <tr><td align="center">
-                        <table cellpadding="0" cellspacing="0"><tr>
-                          <td style="padding:0 6px;">
-                            <a href="mailto:${sanitized.email}" style="display:inline-block;padding:12px 22px;background:#2F6DC4;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Reply to Customer</a>
-                          </td>
-                          ${sanitized.phone ? `
-                          <td style="padding:0 6px;">
-                            <a href="tel:${sanitized.phone}" style="display:inline-block;padding:12px 22px;background:#e24740;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Call Customer</a>
-                          </td>` : ''}
-                        </tr></table>
-                      </td></tr>
-                    </table>
-
-                  </td>
-                </tr>
-
-                <!-- Footer -->
-                <tr>
-                  <td style="background:#F8F9FB;padding:18px 32px;border-top:1px solid #e2e8f0;">
-                    <p style="margin:4px 0;font-size:12px;color:#718096;"><strong>Action Required:</strong> Respond to this inquiry within 24 hours.</p>
-                    <p style="margin:4px 0;font-size:12px;color:#718096;">Submitted via the quote form on <strong>skybanners.ca</strong></p>
-                  </td>
-                </tr>
-
-              </table>
-            </td></tr>
+        <body style="margin:0;padding:24px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#1F2937;background:#ffffff;">
+          <p style="margin:0 0 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#e24740;">New Quote Request</p>
+          <p style="margin:0 0 20px;font-size:12px;color:#6B7280;">${receivedAt} &nbsp;·&nbsp; skybanners.ca</p>
+          <table cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:520px;border-collapse:collapse;">
+            <tr><td style="padding:6px 0;color:#6B7280;width:130px;vertical-align:top;">Name</td><td style="padding:6px 0;"><strong>${sanitized.name}</strong></td></tr>
+            <tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Email</td><td style="padding:6px 0;"><a href="mailto:${sanitized.email}" style="color:#2F6DC4;text-decoration:none;">${sanitized.email}</a></td></tr>
+            ${sanitized.phone ? `<tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Phone</td><td style="padding:6px 0;"><a href="tel:${sanitized.phone}" style="color:#2F6DC4;text-decoration:none;">${sanitized.phone}</a></td></tr>` : ''}
+            <tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Campaign Type</td><td style="padding:6px 0;">${campaignDisplay}</td></tr>
           </table>
+          <hr style="border:none;border-top:1px solid #E5E7EB;margin:20px 0;">
+          <p style="margin:0 0 8px;font-size:12px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:0.5px;">Message</p>
+          <p style="margin:0;line-height:1.7;white-space:pre-wrap;">${sanitized.message}</p>
+          ${attachments.length > 0 ? `<p style="margin:16px 0 0;font-size:12px;color:#6B7280;">Attachments: ${attachments.map(a => a.filename).join(', ')}</p>` : ''}
         </body>
       </html>
     `;
@@ -228,6 +168,7 @@ export async function POST(request: NextRequest) {
       replyTo: sanitized.email,
       subject: `New Quote Request: ${campaignDisplay} — ${sanitized.name}`,
       html: staffHtml,
+      text: staffText,
       ...(attachments.length > 0 && { attachments }),
     });
 

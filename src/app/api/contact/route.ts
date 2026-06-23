@@ -149,10 +149,10 @@ export async function POST(request: NextRequest) {
           <p style="margin:0 0 4px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#e24740;">New Quote Request</p>
           <p style="margin:0 0 20px;font-size:12px;color:#6B7280;">${receivedAt} &nbsp;·&nbsp; skybanners.ca</p>
           <table cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:520px;border-collapse:collapse;">
-            <tr><td style="padding:6px 0;color:#6B7280;width:130px;vertical-align:top;">Name</td><td style="padding:6px 0;"><strong>${sanitized.name}</strong></td></tr>
-            <tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Email</td><td style="padding:6px 0;"><a href="mailto:${sanitized.email}" style="color:#2F6DC4;text-decoration:none;">${sanitized.email}</a></td></tr>
-            ${sanitized.phone ? `<tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Phone</td><td style="padding:6px 0;"><a href="tel:${sanitized.phone}" style="color:#2F6DC4;text-decoration:none;">${sanitized.phone}</a></td></tr>` : ''}
-            <tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Campaign Type</td><td style="padding:6px 0;">${campaignDisplay}</td></tr>
+            <tr><td style="padding:6px 0;color:#6B7280;width:130px;vertical-align:top;">Name:&nbsp;&nbsp;</td><td style="padding:6px 0;"><strong>${sanitized.name}</strong></td></tr>
+            <tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Email:&nbsp;&nbsp;</td><td style="padding:6px 0;"><a href="mailto:${sanitized.email}" style="color:#2F6DC4;text-decoration:none;">${sanitized.email}</a></td></tr>
+            ${sanitized.phone ? `<tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Phone:&nbsp;&nbsp;</td><td style="padding:6px 0;"><a href="tel:${sanitized.phone}" style="color:#2F6DC4;text-decoration:none;">${sanitized.phone}</a></td></tr>` : ''}
+            <tr><td style="padding:6px 0;color:#6B7280;vertical-align:top;">Campaign:&nbsp;&nbsp;</td><td style="padding:6px 0;">${campaignDisplay}</td></tr>
           </table>
           <hr style="border:none;border-top:1px solid #E5E7EB;margin:20px 0;">
           <p style="margin:0 0 8px;font-size:12px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:0.5px;">Message</p>

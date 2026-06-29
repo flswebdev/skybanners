@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' *.tidio.co *.tidiochat.com",
               "style-src 'self' 'unsafe-inline' *.tidio.co *.tidiochat.com",
               "img-src 'self' data: https://media.skybanners.ca *.tidio.co *.tidiochat.com",
-              "media-src 'self' https://media.skybanners.ca",
+              "media-src 'self' https://media.skybanners.ca https://*.public.blob.vercel-storage.com",
               "font-src 'self' *.tidio.co *.tidiochat.com",
               "connect-src 'self' *.tidio.co *.tidiochat.com wss://*.tidio.co wss://*.tidiochat.com",
               "frame-src *.tidio.co *.tidiochat.com",

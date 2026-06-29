@@ -42,7 +42,7 @@ export default function HowItWorksPage() {
             poster="https://media.skybanners.ca/banner-pickup-poster.jpg"
             className="w-full shadow-lg"
           >
-            <source src="/videos/banner-pickup.mp4" type="video/mp4" />
+            <source src="https://vvnf7cvoumfmnhay.public.blob.vercel-storage.com/banner-pickup.mp4" type="video/mp4" />
           </video>
         </div>
       </section>

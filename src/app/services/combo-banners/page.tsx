@@ -26,7 +26,7 @@ const useCaseIcons = { Building2, Megaphone, Trophy, Heart, Store, Calendar } as
 export default function ComboBannersPage() {
   return (
     <main>
-      <ServiceHero {...COMBO_PAGE} video="https://vvnf7cvoumfmnhay.public.blob.vercel-storage.com/gender-reveal-hero.mp4" />
+      <ServiceHero {...COMBO_PAGE} image={{ src: "/images/combo-hero.jpg", alt: "Combo banner towed by aircraft over Southern Ontario" }} />
 
       {/* What It Is + Image */}
       <section id="details" className="py-20 bg-background">

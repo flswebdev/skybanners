@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 import { Header } from "@/components/layout";
 import { Footer } from "@/components/layout";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, CONTACT } from "@/lib/constants";
@@ -76,7 +77,7 @@ export default function RootLayout({
         </div>
         <Footer />
         <Analytics />
-        <script src="//code.tidio.co/aw9u3toowdocsvyksfw1qg3awkc4kvhx.js" async />
+        <Script src="//code.tidio.co/aw9u3toowdocsvyksfw1qg3awkc4kvhx.js" strategy="afterInteractive" />
       </body>
     </html>
   );

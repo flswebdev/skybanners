@@ -13,12 +13,13 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline'",
-              "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https://media.skybanners.ca",
+              "script-src 'self' 'unsafe-inline' *.tidio.co *.tidiochat.com",
+              "style-src 'self' 'unsafe-inline' *.tidio.co *.tidiochat.com",
+              "img-src 'self' data: https://media.skybanners.ca *.tidio.co *.tidiochat.com",
               "media-src 'self' https://media.skybanners.ca",
-              "font-src 'self'",
-              "connect-src 'self'",
+              "font-src 'self' *.tidio.co *.tidiochat.com",
+              "connect-src 'self' *.tidio.co *.tidiochat.com wss://*.tidio.co wss://*.tidiochat.com",
+              "frame-src *.tidio.co *.tidiochat.com",
             ].join("; "),
           },
           {

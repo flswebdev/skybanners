@@ -46,7 +46,7 @@ export function ServiceHero({
             poster={videoPoster}
             className="absolute inset-0 w-full h-full object-cover"
           >
-            <source src={video} type="video/mp4" />
+            <source src={video} type={video.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
           </video>
           <div className="absolute inset-0 bg-white/60" />
         </>

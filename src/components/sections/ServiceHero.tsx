@@ -1,4 +1,5 @@
-﻿import { Button } from "@/components/ui";
+﻿import Image from "next/image";
+import { Button } from "@/components/ui";
 
 interface ServiceHeroProps {
   badge: string;
@@ -52,10 +53,13 @@ export function ServiceHero({
       )}
       {!video && image && (
         <>
-          <img
+          <Image
+            fill
+            priority
             src={image.src}
             alt={image.alt}
-            className={image.className ?? "absolute inset-0 w-full h-full object-cover object-[80%_bottom] sm:object-center"}
+            className={image.className ?? "object-cover object-[80%_bottom] sm:object-center"}
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-white/60" />
         </>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ClipboardList, PenLine, Palette, Wind, ArrowRight } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 
@@ -37,10 +38,12 @@ export function Services() {
                 )}
                 {customIcon ? (
                   <div className="w-full h-10 mb-4 flex items-center justify-start">
-                    <img
+                    <Image
                       src={customIcon}
                       alt={service.title}
-                      className="max-h-full max-w-full object-contain object-left"
+                      width={160}
+                      height={40}
+                      className="object-contain object-left"
                     />
                   </div>
                 ) : (

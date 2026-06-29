@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { ALL_SERVICES } from "@/lib/constants";
 
@@ -22,10 +23,12 @@ export function CrossPromoSection({ currentSlug }: CrossPromoSectionProps) {
               className="flex items-center justify-between gap-6 py-5 group"
             >
               <div className="flex items-center gap-4">
-                <img
+                <Image
                   src={service.customIcon}
                   alt={service.title}
-                  className="h-7 w-28 object-contain shrink-0"
+                  width={112}
+                  height={28}
+                  className="object-contain shrink-0"
                 />
                 <div>
                   <span className="font-semibold text-heading group-hover:text-red transition-colors">

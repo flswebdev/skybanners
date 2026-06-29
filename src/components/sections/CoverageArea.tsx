@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Info } from "lucide-react";
 import { COVERAGE_AREAS, FLIGHT_INFO } from "@/lib/constants";
 
@@ -29,12 +30,8 @@ export function CoverageArea() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 items-stretch">
           {/* Photo */}
-          <div className="rounded-none overflow-hidden relative bg-gray-100 border border-card-border flex items-center justify-center min-h-[320px]">
-            <img
-              src="/images/coverage-banner.jpg"
-              alt="Aerial banner over Southern Ontario"
-              className="w-full h-full object-cover"
-            />
+          <div className="rounded-none overflow-hidden relative bg-gray-100 border border-card-border min-h-[320px]">
+            <Image fill src="/images/coverage-banner.jpg" alt="Aerial banner over Southern Ontario" className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
           </div>
 
           {/* Coverage list */}

@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Image from "next/image";
 import {
   MapPin, Handshake, Shield, Camera,
   ArrowRight,
@@ -114,10 +115,12 @@ export default function AboutPage() {
                 className="rounded-xl border border-card-border bg-card p-5 flex items-center justify-center shadow-sm hover:border-red/30 hover:shadow-md transition-all duration-300 min-h-[80px]"
               >
                 {client.logo ? (
-                  <img
+                  <Image
                     src={client.logo}
                     alt={client.name}
-                    className="max-h-10 max-w-full object-contain"
+                    width={120}
+                    height={40}
+                    className="object-contain"
                   />
                 ) : (
                   <span className="text-sm font-bold text-heading text-center leading-tight">{client.name}</span>

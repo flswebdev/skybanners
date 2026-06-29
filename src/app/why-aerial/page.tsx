@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui";
 import { ServiceHero, SocialProof } from "@/components/sections";
@@ -159,10 +160,12 @@ export default function WhyAerialPage() {
               ))}
             </ul>
             <div className="mt-10 overflow-hidden">
-              <img
+              <Image
                 src="/private-air-show.png"
                 alt="McDonald's $1.00 any size soft drink billboard banner in flight"
-                className="w-full object-cover"
+                width={1200}
+                height={600}
+                className="w-full h-auto"
               />
             </div>
           </div>

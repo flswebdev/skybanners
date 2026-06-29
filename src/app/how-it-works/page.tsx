@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function HowItWorksPage() {
   return (
     <main>
-      <ServiceHero {...HOW_IT_WORKS_PAGE} video="https://vvnf7cvoumfmnhay.public.blob.vercel-storage.com/how-it-works-hero.mp4" secondaryCtaClassName="bg-blue text-white border-blue hover:bg-blue/90" />
+      <ServiceHero {...HOW_IT_WORKS_PAGE} secondaryCtaClassName="bg-blue text-white border-blue hover:bg-blue/90" />
 
       {/* 5-Step Expanded Process */}
       <section id="details" className="py-20 bg-background">

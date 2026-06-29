@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { isSpamContent, isHoneypotFilled, isSubmittedTooQuickly } from '@/lib/botProtection';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 // Rate limiting: 5 requests per hour per IP
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -162,7 +162,7 @@ export async function POST(request: NextRequest) {
       </html>
     `;
 
-    await resend.emails.send({
+    await getResend().emails.send({
       from: `Sky Banners <${process.env.RESEND_FROM_EMAIL ?? 'noreply@skybanners.ca'}>`,
       to: process.env.CONTACT_EMAIL ?? 'info@skybanners.ca',
       replyTo: sanitized.email,
@@ -243,7 +243,7 @@ export async function POST(request: NextRequest) {
     `;
 
     try {
-      await resend.emails.send({
+      await getResend().emails.send({
         from: `Sky Banners <${process.env.RESEND_FROM_EMAIL ?? 'noreply@skybanners.ca'}>`,
         to: sanitized.email,
         subject: 'Quote Request Received — Sky Banners',
